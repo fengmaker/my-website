@@ -1,1 +1,34 @@
-site_name: My Docs
+site_name: 我的个人主站 # 网站标题
+site_url: https://your-name.github.io/my-blog/ # 后面部署时会用到，先留着
+site_author: Your Name
+
+# 核心：启用 Material 主题
+theme:
+  name: material
+  language: zh # 设置语言为中文
+  palette: 
+    primary: white # 顶栏颜色（模仿学姐的极简白）
+    accent: deep purple
+  features:
+    - navigation.tabs # 顶部导航条（可选，如果不加就是纯侧边栏）
+    - navigation.sections # 侧边栏折叠
+    - search.suggest # 搜索联想
+    - search.highlight # 搜索高亮
+
+# 扩展功能（Markdown 语法增强）
+markdown_extensions:
+  - pymdownx.highlight: # 代码高亮
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition # 提示块（那种带颜色的 Note/Warning 框）
+  - toc:
+      permalink: true # 标题旁边的锚点链接
+
+# 页面导航结构 (如果不写这一块，它会自动根据 docs 文件夹里的文件生成)
+nav:
+  - 首页: index.md
+  - 随笔: 
+      - 第一篇: posts/post1.md
+  - 关于: about.md
