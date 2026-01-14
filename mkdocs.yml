@@ -14,6 +14,9 @@ theme:
     - navigation.sections # 侧边栏折叠
     - search.suggest # 搜索联想
     - search.highlight # 搜索高亮
+    - search.share
+    - navigation.top
+    - navigation.indexes
 
 # 扩展功能（Markdown 语法增强）
 markdown_extensions:
@@ -30,5 +33,7 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 随笔: 
+      - 写在前面: posts/index.md
       - 第一篇: posts/post1.md
+      - 第二篇: posts/post2.md
   - 关于: about.md
