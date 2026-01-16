@@ -7,21 +7,23 @@ theme:
   name: material
   language: zh # 设置语言为中文
   palette: 
-    primary: white # 顶栏颜色（模仿学姐的极简白）
+    primary: indigo # 顶栏颜色（模仿学姐的极简白）
     accent: deep purple
   features:
-    - navigation.tabs # 顶部导航条（可选，如果不加就是纯侧边栏）
-    - navigation.sections # 侧边栏折叠
     - search.suggest # 搜索联想
     - search.highlight # 搜索高亮
     - search.share
     - navigation.top
-    - navigation.indexes
-
+    - navigation.tabs        # 开启顶部选项卡
+    - navigation.tracking    # 滚动时自动高亮左侧菜单
+    - content.code.copy      # 开启代码块复制功能
 # 扩展功能（Markdown 语法增强）
 markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.highlight: # 代码高亮
       anchor_linenums: true
+      linenums: true     #  显示行号，方便以后对代码进行引用
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -29,11 +31,92 @@ markdown_extensions:
   - toc:
       permalink: true # 标题旁边的锚点链接
 
+plugins:
+  - search
+  - roamlinks
+  # 开启阅读时长和字数统计
+  - tags
+
+
 # 页面导航结构 (如果不写这一块，它会自动根据 docs 文件夹里的文件生成)
 nav:
   - 首页: index.md
-  - 随笔: 
+  
+  # --- 运筹学核心板块 ---
+  - 运筹优化笔记:
+      - TSP 专题:
+          - 第一阶段: TSP/第一阶段.md
+          - 第二阶段: TSP/第二阶段.md
+          - 第三阶段: TSP/第三阶段.md
+          - 第四阶段: TSP/第四阶段.md
+          - 精确算法: TSP/精确算法.md
+          - 启发式算法: TSP/启发式算法.md
+      - CVRP 专题:
+          - 发展综述: CVRP/发展.md
+          - 第一阶段: CVRP/第一阶段.md
+          - 第二阶段: CVRP/第二阶段.md
+          - 第三阶段: CVRP/第三阶段.md
+          - 第四阶段: CVRP/第四阶段.md
+          - 启发式算法: CVRP/启发式算法.md
+      - VRPTW 专题:
+          - 发展路线: VRPTW/发展路线.md
+          - 研究方案: VRPTW/研究方案.md
+          - 模型建立: VRPTW/模型建立.md
+          - 路线规划: VRPTW/路线.md
+          - 精确算法: VRPTW/精确算法.md
+          - DW分解 (Dantzig-Wolfe): VRPTW/dw分解.md
+
+  # --- 基础算法专题 (LeetCode/求职方向) ---
+  - 算法竞赛笔记:
+      - 动态规划 (DP):
+          - 入门基础: 算法笔记/动态规划/入门.md
+          - 0-1 背包: 算法笔记/动态规划/0-1背包.md
+          - 网格图 DP: 算法笔记/动态规划/网格图dp.md
+          - 状态机 DP: 算法笔记/动态规划/状态机dp.md
+          - 数位 DP: 算法笔记/动态规划/数位dp.md
+          - 划分型 DP: 算法笔记/动态规划/划分型dp.md
+          - 最长公共子序列: 算法笔记/动态规划/最长公共子序列.md
+          - 最大子数组和: 算法笔记/动态规划/最大子数组和.md
+          - 打家劫舍: 算法笔记/动态规划/打家劫舍.md
+          - 回文专题: 算法笔记/动态规划/回文.md
+      - 二叉树:
+          - 自顶向下: 算法笔记/二叉树/自顶向下.md
+          - 自底向上: 算法笔记/二叉树/自底向上.md
+          - 枚举拐点 (直径): 算法笔记/二叉树/二叉树直径 枚举拐点.md
+          - 最近公共祖先 (LCA): 算法笔记/二叉树/LCA.md
+          - 删点操作: 算法笔记/二叉树/删点.md
+      - 二分搜索:
+          - 基础查找: 算法笔记/二分/二分查找.md
+          - 二分答案 (求最大): 算法笔记/二分/二分答案 求最大.md
+          - 二分答案 (求最小): 算法笔记/二分/二分答案 求最小.md
+          - 其他技巧: 算法笔记/二分/二分 其他.md
+      - 回溯算法:
+          - 子集型回溯: 算法笔记/回溯/子集型回溯.md
+          - 划分性回溯: 算法笔记/回溯/划分性回溯.md
+          - 重复元素处理: 算法笔记/回溯/重复元素回溯.md
+      - 数据结构:
+          - 前缀和: 算法笔记/数据结构/前缀和.md
+          - 差分数组: 算法笔记/数据结构/差分.md
+          - 栈的应用: 算法笔记/数据结构/栈.md
+          - 枚举技巧: 算法笔记/数据结构/枚举技巧.md
+      - 常用技巧:
+          - 双指针: 算法笔记/双指针/单序列双指针.md
+          - 图论基础: 算法笔记/图论/基础.md
+    # --- 其他板块 ---
+  - 随笔:
       - 写在前面: posts/index.md
-      - 第一篇: posts/post1.md
-      - 第二篇: posts/post2.md
   - 关于: about.md
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 在 mkdocs.yml 底部添加或修改
+copyright: >
+  Copyright &copy; 2024 Your Name
+  <br>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
