@@ -41,9 +41,22 @@ plugins:
 # 页面导航结构 (如果不写这一块，它会自动根据 docs 文件夹里的文件生成)
 nav:
   - 首页: index.md
-  
+  - 🛠️ Life OS (系统内核):
+      - 系统说明书 (README): Life-OS/README.md
+      - ⚙️ SOP 协议库: 
+          - 协议总览: Life-OS/SOP/index.md
+          - 睡眠与重启协议: Life-OS/SOP/shutdown.md
+          - 环境与抗干扰协议: Life-OS/SOP/environment.md
+          - 英语/算法突击协议: Life-OS/SOP/learning.md
+      - 🐛 系统日志 (Debug):
+          - 焦虑与决策日志: Life-OS/Logs/decision_journal.md
+          - 错题本 (Bug Tracker): Life-OS/Logs/bug_tracker.md
+      - 🔋 能量管理 (Areas):
+          - 驾照与听力: Life-OS/Areas/driving.md
+          - 身体维护: Life-OS/Areas/health.md
   # --- 运筹学核心板块 ---
   - 运筹优化笔记:
+      - 引言: index/or_index.md
       - TSP 专题:
           - 第一阶段: TSP/第一阶段.md
           - 第二阶段: TSP/第二阶段.md
@@ -67,7 +80,8 @@ nav:
           - DW分解 (Dantzig-Wolfe): VRPTW/dw分解.md
 
   # --- 基础算法专题 (LeetCode/求职方向) ---
-  - 算法竞赛笔记:
+  - LeetCode笔记:
+      - 写在前面: index/algorithm_introduction.md
       - 动态规划 (DP):
           - 入门基础: 算法笔记/动态规划/入门.md
           - 0-1 背包: 算法笔记/动态规划/0-1背包.md
