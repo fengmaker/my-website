@@ -1,0 +1,4013 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Your Name">
+      
+      
+        <link rel="canonical" href="https://your-name.github.io/my-blog/TSP/%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>第三阶段 - 我的个人主站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#held-karp" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="我的个人主站" class="md-header__button md-logo" aria-label="我的个人主站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的个人主站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第三阶段
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Life-OS/" class="md-tabs__link">
+          
+  
+  
+  🛠️ Life OS (系统内核)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index/or_index/" class="md-tabs__link">
+          
+  
+  
+  运筹优化笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../index/algorithm_introduction/" class="md-tabs__link">
+          
+  
+  
+  LeetCode笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../posts/" class="md-tabs__link">
+          
+  
+  
+  随笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="我的个人主站" class="md-nav__button md-logo" aria-label="我的个人主站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    我的个人主站
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Life OS (系统内核)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Life OS (系统内核)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统说明书 (README)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ SOP 协议库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⚙️ SOP 协议库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    协议总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/shutdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    睡眠与重启协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境与抗干扰协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    英语/算法突击协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐛 系统日志 (Debug)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐛 系统日志 (Debug)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Logs/decision_journal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    焦虑与决策日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Logs/bug_tracker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    错题本 (Bug Tracker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔋 能量管理 (Areas)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔋 能量管理 (Areas)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Areas/driving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    驾照与听力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Areas/health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体维护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    运筹优化笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/or_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TSP 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TSP 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三阶段
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-reformulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 问题的重构：从边的约束到树的结构 (Problem Reformulation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 问题的重构：从边的约束到树的结构 (Problem Reformulation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-1-tree-1-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 核心定义：1-Tree (1-树)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dantzig-wolfe-the-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dantzig-Wolfe 分解 (The Decomposition)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dantzig-Wolfe 分解 (The Decomposition)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 原始变量与分解变量的映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-restricted-master-problem-rmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 限制性主问题 (Restricted Master Problem, RMP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-column-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 列生成机制 (Column Generation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 列生成机制 (Column Generation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-reduced-cost-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 检验数推导 (Reduced Cost Derivation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 定价子问题模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-algorithm-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 算法全流程与物理意义 (Algorithm &amp; Interpretation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 算法全流程与物理意义 (Algorithm &amp; Interpretation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 物理意义：拉格朗日松弛
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-branch-in-bp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 分支 (The "Branch" in B&amp;P)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 总结 (Conclusion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 总结 (Conclusion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x_ij-lambda_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一部分：\(x_{ij}\) 与 \(\lambda_k\) 的关系 —— “图层的叠加”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一部分：\(x_{ij}\) 与 \(\lambda_k\) 的关系 —— “图层的叠加”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        举个具体的数字例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barc_k-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二部分：检验数 \(\bar{c}_k\) 的推导 —— 为什么 \(\pi\) 会跑到边权里去？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二部分：检验数 \(\bar{c}_k\) 的推导 —— 为什么 \(\pi\) 会跑到边权里去？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 检验数的原始定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sum_i-pi_i-d_ik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 关键难点：如何理解 \(\sum_{i} \pi_i d_{ik}\) ？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 最终代入推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 物理意义大揭秘
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CVRP 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CVRP 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E5%8F%91%E5%B1%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发展综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRPTW 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VRPTW 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发展路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型建立
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VRPTW/dw%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DW分解 (Dantzig-Wolfe)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LeetCode笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LeetCode笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/algorithm_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写在前面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态规划 (DP)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    动态规划 (DP)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0-1 背包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%BD%91%E6%A0%BC%E5%9B%BEdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网格图 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%8A%B6%E6%80%81%E6%9C%BAdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    状态机 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8Ddp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数位 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%88%92%E5%88%86%E5%9E%8Bdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    划分型 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最长公共子序列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最大子数组和
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    打家劫舍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%9B%9E%E6%96%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回文专题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二叉树
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    二叉树
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自顶向下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自底向上
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B4%E5%BE%84%20%E6%9E%9A%E4%B8%BE%E6%8B%90%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举拐点 (直径)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/LCA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最近公共祖先 (LCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%88%A0%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    删点操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分搜索
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    二分搜索
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%20%E6%B1%82%E6%9C%80%E5%A4%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分答案 (求最大)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%20%E6%B1%82%E6%9C%80%E5%B0%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分答案 (求最小)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%20%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    其他技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回溯算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    回溯算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E5%AD%90%E9%9B%86%E5%9E%8B%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    子集型回溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E5%88%92%E5%88%86%E6%80%A7%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    划分性回溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    重复元素处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前缀和
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分数组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    栈的应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9E%9A%E4%B8%BE%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用技巧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用技巧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    双指针
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA/%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随笔
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随笔
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../posts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写在前面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-reformulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 问题的重构：从边的约束到树的结构 (Problem Reformulation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 问题的重构：从边的约束到树的结构 (Problem Reformulation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-1-tree-1-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 核心定义：1-Tree (1-树)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dantzig-wolfe-the-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dantzig-Wolfe 分解 (The Decomposition)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Dantzig-Wolfe 分解 (The Decomposition)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 原始变量与分解变量的映射
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-restricted-master-problem-rmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 限制性主问题 (Restricted Master Problem, RMP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-column-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 列生成机制 (Column Generation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 列生成机制 (Column Generation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-reduced-cost-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 检验数推导 (Reduced Cost Derivation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 定价子问题模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-algorithm-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 算法全流程与物理意义 (Algorithm &amp; Interpretation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 算法全流程与物理意义 (Algorithm &amp; Interpretation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 物理意义：拉格朗日松弛
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-branch-in-bp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 分支 (The "Branch" in B&amp;P)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 总结 (Conclusion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 总结 (Conclusion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x_ij-lambda_k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一部分：\(x_{ij}\) 与 \(\lambda_k\) 的关系 —— “图层的叠加”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一部分：\(x_{ij}\) 与 \(\lambda_k\) 的关系 —— “图层的叠加”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        举个具体的数字例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barc_k-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二部分：检验数 \(\bar{c}_k\) 的推导 —— 为什么 \(\pi\) 会跑到边权里去？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二部分：检验数 \(\bar{c}_k\) 的推导 —— 为什么 \(\pi\) 会跑到边权里去？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 检验数的原始定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sum_i-pi_i-d_ik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 关键难点：如何理解 \(\sum_{i} \pi_i d_{ik}\) ？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 最终代入推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 物理意义大揭秘
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>这是为您精心编撰的《运筹学精确算法专题》第三章节。</p>
+<p>本章节将采用<strong>严谨的数学定义</strong>与<strong>逻辑推导</strong>，系统讲解 <strong>Branch-and-Price (分支定价)</strong> 及其核心组件 <strong>Dantzig-Wolfe 分解</strong>。我们将以 TSP 为载体，通过这一章节揭示运筹学中“Held-Karp 下界”的数学本质。</p>
+<hr />
+<h1 id="held-karp">运筹学精确算法专题三：分支定价与 Held-Karp 下界<a class="headerlink" href="#held-karp" title="Permanent link">&para;</a></h1>
+<p><strong>Topic 3: Branch-and-Price &amp; Dantzig-Wolfe Decomposition</strong></p>
+<h2 id="1-problem-reformulation">1. 问题的重构：从边的约束到树的结构 (Problem Reformulation)<a class="headerlink" href="#1-problem-reformulation" title="Permanent link">&para;</a></h2>
+<p>在 Branch-and-Cut 中，我们关注的是如何通过切割平面来修复“连通性”。而在 Branch-and-Price 中，我们采用反向思维：</p>
+<p>我们保留“连通性”（通过选择特定的图结构），转而将“度数约束”松弛化，交由主问题处理。</p>
+<h3 id="11-1-tree-1-">1.1 核心定义：1-Tree (1-树)<a class="headerlink" href="#11-1-tree-1-" title="Permanent link">&para;</a></h3>
+<p>为了实施分解，必须引入 TSP 中的核心子结构——<strong>1-Tree</strong>。</p>
+<p>定义 1.1 (1-Tree):</p>
+<p>给定图 <span class="arithmatex">\(G=(V, E)\)</span>，其中节点 <span class="arithmatex">\(1\)</span> 为特定节点（如 Depot）。一个子图 <span class="arithmatex">\(T\)</span> 被称为 1-Tree，当且仅当：</p>
+<ol>
+<li>
+<p>在节点集合 <span class="arithmatex">\(V \setminus \{1\}\)</span> 上，其边构成一棵<strong>生成树 (Spanning Tree)</strong>。</p>
+</li>
+<li>
+<p>节点 <span class="arithmatex">\(1\)</span> 恰好连接两条边到 <span class="arithmatex">\(V \setminus \{1\}\)</span> 中。</p>
+</li>
+</ol>
+<p><strong>性质：</strong></p>
+<ul>
+<li>
+<p><strong>边数性质：</strong> 1-Tree 恰好包含 <span class="arithmatex">\(|V|\)</span> 条边。</p>
+</li>
+<li>
+<p><strong>连通性：</strong> 1-Tree 包含且仅包含一个环（Cycle）。</p>
+</li>
+<li>
+<p><strong>与 TSP 的关系：</strong> 每一个合法的 TSP 巡回（Tour）都是一个 1-Tree，且是一个<strong>每个节点度数均为 2</strong> 的特殊 1-Tree。</p>
+</li>
+</ul>
+<hr />
+<h2 id="2-dantzig-wolfe-the-decomposition">2. Dantzig-Wolfe 分解 (The Decomposition)<a class="headerlink" href="#2-dantzig-wolfe-the-decomposition" title="Permanent link">&para;</a></h2>
+<p>我们将 TSP 问题分解为两部分：</p>
+<ul>
+<li>
+<p><strong>子问题 (Subproblem)</strong>：生成 1-Tree（天然满足连通性和部分结构，但不满足度数约束）。</p>
+</li>
+<li>
+<p><strong>主问题 (Master Problem)</strong>：通过凸组合（Convex Combination）混合多个 1-Tree，使得所有节点的<strong>平均度数</strong>等于 2。</p>
+</li>
+</ul>
+<h3 id="21">2.1 原始变量与分解变量的映射<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>设 <span class="arithmatex">\(K\)</span> 为图中所有可能存在的 1-Tree 的集合（虽然 <span class="arithmatex">\(|K|\)</span> 是指数级的，但理论存在）。</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T_k\)</span>：第 <span class="arithmatex">\(k\)</span> 个 1-Tree。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(c_k\)</span>：<span class="arithmatex">\(T_k\)</span> 的总成本。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(d_{ik}\)</span>：在 <span class="arithmatex">\(T_k\)</span> 中，节点 <span class="arithmatex">\(i\)</span> 的度数（可能是 1, 2, 3...）。</p>
+</li>
+</ul>
+<p>我们将原始决策变量 <span class="arithmatex">\(x_{ij}\)</span> 表示为 1-Tree 的加权组合：</p>
+<div class="arithmatex">\[x_{ij} = \sum_{k \in K} \mathbb{I}_{ij}^k \lambda_k\]</div>
+<p>其中 <span class="arithmatex">\(\mathbb{I}_{ij}^k\)</span> 为指示函数（若边 <span class="arithmatex">\((i,j)\)</span> 在 <span class="arithmatex">\(T_k\)</span> 中则为 1），<span class="arithmatex">\(\lambda_k\)</span> 为权重。</p>
+<h3 id="22-restricted-master-problem-rmp">2.2 限制性主问题 (Restricted Master Problem, RMP)<a class="headerlink" href="#22-restricted-master-problem-rmp" title="Permanent link">&para;</a></h3>
+<p>我们构建如下线性规划模型：</p>
+<div class="arithmatex">\[\begin{aligned} \textbf{Min} \quad &amp; Z = \sum_{k \in K'} c_k \lambda_k \\ \textbf{s.t.} \quad &amp; \sum_{k \in K'} d_{ik} \lambda_k = 2, \quad \forall i \in V \quad [\pi_i] \\ &amp; \sum_{k \in K'} \lambda_k = 1 \quad [\mu] \\ &amp; \lambda_k \ge 0 \end{aligned}\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(K' \subset K\)</span>：当前已生成的 1-Tree 子集。</p>
+</li>
+<li>
+<p><strong>约束 (1)</strong>：度数约束。要求所有被选中的 1-Tree 的加权平均度数，对于每个节点 <span class="arithmatex">\(i\)</span> 都必须等于 2。对偶变量为 <span class="arithmatex">\(\pi_i\)</span>。</p>
+</li>
+<li>
+<p><strong>约束 (2)</strong>：凸组合约束。权重之和为 1。对偶变量为 <span class="arithmatex">\(\mu\)</span>。</p>
+</li>
+</ul>
+<hr />
+<h2 id="3-column-generation">3. 列生成机制 (Column Generation)<a class="headerlink" href="#3-column-generation" title="Permanent link">&para;</a></h2>
+<p>由于 <span class="arithmatex">\(|K|\)</span> 极其巨大，我们无法直接求解完全的主问题。我们需要通过<strong>定价子问题 (Pricing Subproblem)</strong> 动态生成能够优化目标函数的列（即新的 1-Tree）。</p>
+<h3 id="31-reduced-cost-derivation">3.1 检验数推导 (Reduced Cost Derivation)<a class="headerlink" href="#31-reduced-cost-derivation" title="Permanent link">&para;</a></h3>
+<p>根据线性规划理论，我们需要寻找一个变量 <span class="arithmatex">\(\lambda_k\)</span>，使其检验数 (Reduced Cost) <span class="arithmatex">\(\bar{c}_k &lt; 0\)</span>。</p>
+<p>检验数公式为：</p>
+<div class="arithmatex">\[\bar{c}_k = c_k - \sum_{i \in V} \pi_i d_{ik} - \mu\]</div>
+<p>将 <span class="arithmatex">\(c_k = \sum_{e \in T_k} c_e\)</span> 和 <span class="arithmatex">\(d_{ik} = \sum_{e \in T_k, e \in \delta(i)} 1\)</span> 代入上式：</p>
+<div class="arithmatex">\[\bar{c}_k = \sum_{(i,j) \in T_k} c_{ij} - \sum_{i \in V} \pi_i (\sum_{(i,j) \in T_k, i \in e} 1) - \mu\]</div>
+<p>经过整理（每条边 <span class="arithmatex">\((i,j)\)</span> 连接了 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(j\)</span>，因此会减去 <span class="arithmatex">\(\pi_i\)</span> 和 <span class="arithmatex">\(\pi_j\)</span>）：</p>
+<div class="arithmatex">\[\bar{c}_k = \sum_{(i,j) \in T_k} (c_{ij} - \pi_i - \pi_j) - \mu\]</div>
+<h3 id="32">3.2 定价子问题模型<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>为了最小化 <span class="arithmatex">\(\bar{c}_k\)</span>，我们忽略常数 <span class="arithmatex">\(\mu\)</span>，问题等价于求解：</p>
+<p>在新的边权体系下，寻找一个总权重最小的 1-Tree。</p>
+<p>定义新边权：</p>
+<div class="arithmatex">\[\tilde{c}_{ij} = c_{ij} - \pi_i - \pi_j\]</div>
+<p><strong>子问题算法 (Solving the Pricing Problem):</strong></p>
+<ol>
+<li>
+<p><strong>更新权重</strong>：利用主问题传递的 <span class="arithmatex">\(\pi\)</span>，计算全图所有边的 <span class="arithmatex">\(\tilde{c}_{ij}\)</span>。</p>
+</li>
+<li>
+<p><strong>求解 MST</strong>：在节点集合 <span class="arithmatex">\(V \setminus \{1\}\)</span> 上，使用 Prim 或 Kruskal 算法求解基于 <span class="arithmatex">\(\tilde{c}\)</span> 的最小生成树。</p>
+</li>
+<li>
+<p><strong>连接根节点</strong>：找到连接节点 <span class="arithmatex">\(1\)</span> 的两条 <span class="arithmatex">\(\tilde{c}\)</span> 最小的边，加入 MST。</p>
+</li>
+<li>
+<p><strong>输出</strong>：若该 1-Tree 的计算成本 <span class="arithmatex">\(&lt; \mu\)</span>，则 <span class="arithmatex">\(\bar{c}_k &lt; 0\)</span>，将其加入 RMP；否则，当前解已达到最优。</p>
+</li>
+</ol>
+<hr />
+<h2 id="4-algorithm-interpretation">4. 算法全流程与物理意义 (Algorithm &amp; Interpretation)<a class="headerlink" href="#4-algorithm-interpretation" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 算法流程<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>初始化</strong>：生成若干个简单的 1-Tree 构成初始 <span class="arithmatex">\(K'\)</span>（可使用大 M 法保证可行性）。</p>
+</li>
+<li>
+<p><strong>求解 RMP</strong>：求解线性规划，得到最优解 <span class="arithmatex">\(\lambda^*\)</span> 和对偶解 <span class="arithmatex">\(\pi^*\)</span>。</p>
+</li>
+<li>
+<p><strong>定价</strong>：利用 <span class="arithmatex">\(\pi^*\)</span> 更新边权，求解最小 1-Tree。</p>
+</li>
+<li>
+<p><strong>收敛判定</strong>：</p>
+<ul>
+<li>
+<p>若 <span class="arithmatex">\(\bar{c}_{min} &lt; 0\)</span>：将新生成的 1-Tree 列加入 RMP，转步骤 2。</p>
+</li>
+<li>
+<p>若 <span class="arithmatex">\(\bar{c}_{min} \ge 0\)</span>：列生成结束。此时 RMP 的目标函数值 <span class="arithmatex">\(Z_{LP}\)</span> 即为 <strong>Held-Karp 下界</strong>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="42">4.2 物理意义：拉格朗日松弛<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>上述过程在数学上等价于求解 Lagrangian Dual Problem。</p>
+<p><span class="arithmatex">\(\pi_i\)</span> 可以被视为对“度数违规”的惩罚因子（Lagrangian Multipliers）。</p>
+<ul>
+<li>若某节点度数 <span class="arithmatex">\(&gt;2\)</span>，<span class="arithmatex">\(\pi_i\)</span> 增大，导致 <span class="arithmatex">\(\tilde{c}_{ij}\)</span> 减小（吸引更多边连接？不，注意公式是 <span class="arithmatex">\(c - \pi\)</span>。若 <span class="arithmatex">\(\pi\)</span> 增大，<span class="arithmatex">\(\tilde{c}\)</span> 减小，倾向于选该边... 等等，让我们严谨推导）。</li>
+</ul>
+<p>严谨修正：</p>
+<p>注意 RMP 约束方向 <span class="arithmatex">\(\sum d_{ik}\lambda_k = 2\)</span>。</p>
+<p>在最小化问题中，若 <span class="arithmatex">\(\sum d_{ik}\lambda_k &gt; 2\)</span>（度数过剩），且 <span class="arithmatex">\(\pi_i\)</span> 为对应等式约束对偶变量。</p>
+<p>根据对偶理论，若我们要惩罚过高的度数，应使得包含 <span class="arithmatex">\(i\)</span> 的边成本变高。</p>
+<p>但在 Reduced Cost 定义 <span class="arithmatex">\(\bar{c} = c - \pi^T A\)</span> 中，若 <span class="arithmatex">\(\pi_i\)</span> 为正且很大，<span class="arithmatex">\(\tilde{c}_{ij} = c_{ij} - \pi_i - \pi_j\)</span> 会变小。</p>
+<p>这似乎意味着 <span class="arithmatex">\(\pi_i\)</span> 越大，边权越小，越容易被选中，度数会更高？</p>
+<p>这里的符号依赖于具体的对偶定义方向。</p>
+<p>在标准的 Held-Karp 迭代中（次梯度法），我们通常最大化下界：</p>
+<div class="arithmatex">\[\max_{\pi} \min_{T} \sum_{(i,j) \in T} (c_{ij} + \pi_i + \pi_j) - 2\sum \pi_i\]</div>
+<p>这与列生成是对偶互补的。在列生成中，求解器会自动调整 <span class="arithmatex">\(\pi\)</span> 的符号以达到平衡。</p>
+<hr />
+<h2 id="5-the-branch-in-bp">5. 分支 (The "Branch" in B&amp;P)<a class="headerlink" href="#5-the-branch-in-bp" title="Permanent link">&para;</a></h2>
+<p>当列生成收敛时，主问题解 <span class="arithmatex">\(\lambda^*\)</span> 往往是小数。例如：</p>
+<div class="arithmatex">\[\lambda_1 = 0.5 (T_1) + \lambda_2 = 0.5 (T_2)\]</div>
+<p>这意味着我们得到的是两个树的“叠加态”，而非一条确定的路径。此时需要分支。</p>
+<p>分支策略：</p>
+<p>不建议直接对 <span class="arithmatex">\(\lambda\)</span> 分支（即 <span class="arithmatex">\(T_1\)</span> 选或不选），这会破坏子结构。</p>
+<p>标准做法是在原始边 <span class="arithmatex">\(x_{ij}\)</span> 上分支：</p>
+<ol>
+<li>
+<p>计算当前叠加态中每条边的流量 <span class="arithmatex">\(x^*_{ij} = \sum \mathbb{I}_{ij}^k \lambda_k\)</span>。</p>
+</li>
+<li>
+<p>选择一个 <span class="arithmatex">\(x^*_{ij}\)</span> 接近 0.5 的边。</p>
+</li>
+<li>
+<p><strong>分支节点 1 (<span class="arithmatex">\(x_{ij} = 0\)</span>)</strong>：</p>
+<ul>
+<li>
+<p><strong>主问题</strong>：去除所有包含边 <span class="arithmatex">\((i,j)\)</span> 的列。</p>
+</li>
+<li>
+<p><strong>子问题</strong>：将边 <span class="arithmatex">\((i,j)\)</span> 的成本设为 <span class="arithmatex">\(+\infty\)</span>（禁止选中）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>分支节点 2 (<span class="arithmatex">\(x_{ij} = 1\)</span>)</strong>：</p>
+<ul>
+<li>
+<p><strong>主问题</strong>：去除所有<strong>不</strong>包含边 <span class="arithmatex">\((i,j)\)</span> 的列（或者强行约束）。</p>
+</li>
+<li>
+<p><strong>子问题</strong>：强制连接 <span class="arithmatex">\((i,j)\)</span>（例如将其边权设为 <span class="arithmatex">\(-\infty\)</span>，或在 MST 中缩点）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="6-conclusion">6. 总结 (Conclusion)<a class="headerlink" href="#6-conclusion" title="Permanent link">&para;</a></h2>
+<p>Branch-and-Price 将 TSP 问题转化为在一个凸包内寻找最优组合的问题。</p>
+<ul>
+<li>
+<p><strong>优点</strong>：它生成的 <strong>Held-Karp 下界</strong> 极其紧致，通常优于 MTZ 模型和简单的割平面法。它证明了 TSP 的多面体可以通过 1-Tree 多面体的交集来逼近。</p>
+</li>
+<li>
+<p><strong>难点</strong>：在于子问题（Pricing）必须能高效求解。对于 TSP，MST 是多项式时间的，因此 B&amp;P 非常有效。但对于 VRPTW，子问题变成了 NP-Hard 的 ESPPRC，这也是为什么 VRP 求解器比 TSP 求解器更难开发的原因。</p>
+</li>
+</ul>
+<p>思考题：</p>
+<p>如果我们将子问题从 1-Tree 换成简单的“2-匹配 (2-Matching)”（即只要求度数为2，允许有子回路），主问题和对偶变量的物理含义会发生什么变化？这将引导你走向 Fenchel 切割等更深奥的领域。</p>
+<p>这两个问题都非常核心。第一个关于 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(\lambda\)</span> 的关系，是理解<strong>Dantzig-Wolfe 分解</strong>物理意义的关键；第二个关于<strong>检验数（Reduced Cost）</strong>的推导，是理解<strong>列生成</strong>算法运行机制的钥匙。</p>
+<p>我们一个一个拆开来讲。</p>
+<hr />
+<h3 id="x_ij-lambda_k">第一部分：<span class="arithmatex">\(x_{ij}\)</span> 与 <span class="arithmatex">\(\lambda_k\)</span> 的关系 —— “图层的叠加”<a class="headerlink" href="#x_ij-lambda_k" title="Permanent link">&para;</a></h3>
+<p>你问得好：“<span class="arithmatex">\(\lambda_k\)</span> 不是比例吗？那个公式是什么意思？”</p>
+<p>我们可以用<strong>PhotoShop 图层叠加</strong>或者<strong>调色盘</strong>来理解。</p>
+<ul>
+<li>
+<p><strong><span class="arithmatex">\(\lambda_k\)</span> (比例/透明度)</strong>：你手里有几张做好的透明底片（1-Tree），<span class="arithmatex">\(\lambda\)</span> 决定了你要把这张底片以多大的“透明度”叠加上去。</p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(\mathbb{I}_{ij}^k\)</span> (底片内容)</strong>：这是一张具体的底片 <span class="arithmatex">\(T_k\)</span>。如果这张底片上画了边 <span class="arithmatex">\((i,j)\)</span>，这个值为 1，否则为 0。</p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(x_{ij}\)</span> (最终画面)</strong>：这是所有底片叠加后，我们看到的最终结果（每条边的颜色深浅）。</p>
+</li>
+</ul>
+<h4 id="_1">举个具体的数字例子<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>假设我们有 4 个城市：A, B, C, D。</p>
+<p>我们在主问题里选中了 2 个不同的 1-Tree（记为 <span class="arithmatex">\(T_1\)</span> 和 <span class="arithmatex">\(T_2\)</span>），并且求解器告诉我们要以 0.5 : 0.5 的比例混合它们（即 <span class="arithmatex">\(\lambda_1 = 0.5, \lambda_2 = 0.5\)</span>）。</p>
+<p>底片 1 (<span class="arithmatex">\(T_1\)</span>) 的结构：</p>
+<p>这是一个环：<span class="arithmatex">\(A \to B \to C \to D \to A\)</span>。</p>
+<ul>
+<li>
+<p>包含边：<span class="arithmatex">\((A,B), (B,C), (C,D), (D,A)\)</span>。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbb{I}_{AB}^1 = 1, \mathbb{I}_{BC}^1 = 1, ...\)</span> 其他边为 0。</p>
+</li>
+</ul>
+<p>底片 2 (<span class="arithmatex">\(T_2\)</span>) 的结构：</p>
+<p>这是一个蝴蝶结形状：<span class="arithmatex">\(A \to C \to B \to D \to A\)</span>。</p>
+<ul>
+<li>
+<p>包含边：<span class="arithmatex">\((A,C), (C,B), (B,D), (D,A)\)</span>。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mathbb{I}_{AC}^2 = 1, \mathbb{I}_{CB}^2 = 1, ...\)</span> 其他边为 0。</p>
+</li>
+</ul>
+<p><strong>现在进行叠加计算 (<span class="arithmatex">\(x_{ij} = \sum \mathbb{I}_{ij}^k \lambda_k\)</span>)：</strong></p>
+<ol>
+<li>
+<p><strong>看边 <span class="arithmatex">\((A, B)\)</span></strong>：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T_1\)</span> 里有这条边 (1)；<span class="arithmatex">\(T_2\)</span> 里没有 (0)。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_{AB} = 1 \times 0.5 + 0 \times 0.5 = \mathbf{0.5}\)</span></p>
+</li>
+<li>
+<p><em>物理含义：这条路只有一半的几率被选中。</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>看边 <span class="arithmatex">\((D, A)\)</span></strong>：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T_1\)</span> 里有 (1)；<span class="arithmatex">\(T_2\)</span> 里也有 (1)。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_{DA} = 1 \times 0.5 + 1 \times 0.5 = \mathbf{1.0}\)</span></p>
+</li>
+<li>
+<p><em>物理含义：不管选哪个方案，这条路都要走，所以它是确定的。</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>看边 <span class="arithmatex">\((A, C)\)</span></strong>：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T_1\)</span> 里没有 (0)；<span class="arithmatex">\(T_2\)</span> 里有 (1)。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_{AC} = 0 \times 0.5 + 1 \times 0.5 = \mathbf{0.5}\)</span></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结：</strong> 这个公式就是把<strong>“宏观的方案选择”</strong>（<span class="arithmatex">\(\lambda\)</span>）翻译回<strong>“微观的边流量”</strong>（<span class="arithmatex">\(x\)</span>）。在分支定价的最后一步（分支），我们需要基于这个 <span class="arithmatex">\(x\)</span> 值（比如 0.5）去进行分支，所以这个转换至关重要。</p>
+<hr />
+<h3 id="barc_k-pi">第二部分：检验数 <span class="arithmatex">\(\bar{c}_k\)</span> 的推导 —— 为什么 <span class="arithmatex">\(\pi\)</span> 会跑到边权里去？<a class="headerlink" href="#barc_k-pi" title="Permanent link">&para;</a></h3>
+<p>这个推导困扰你的是如何把<strong>节点的度数</strong>（<span class="arithmatex">\(d_{ik}\)</span>）转化成<strong>边的求和</strong>。这是一步关键的代数变形。</p>
+<h4 id="1">1. 检验数的原始定义<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>在线性规划中，对于主问题的一个变量 <span class="arithmatex">\(\lambda_k\)</span>（代表第 <span class="arithmatex">\(k\)</span> 个 1-Tree），它的检验数公式是：</p>
+<div class="arithmatex">\[\text{Reduced Cost} = (\text{该列原本的成本}) - (\text{该列在约束中的贡献} \times \text{对偶价格})\]</div>
+<p>对应到我们的模型：</p>
+<ul>
+<li>
+<p>成本：<span class="arithmatex">\(c_k\)</span> （第 <span class="arithmatex">\(k\)</span> 个树的总边权）</p>
+</li>
+<li>
+<p>约束：<span class="arithmatex">\(\sum_{k} d_{ik} \lambda_k = 2\)</span> （针对每个节点 <span class="arithmatex">\(i\)</span> 都有一个约束）</p>
+</li>
+<li>
+<p>对偶变量：<span class="arithmatex">\(\pi_i\)</span> （对应节点 <span class="arithmatex">\(i\)</span> 的约束）</p>
+</li>
+</ul>
+<p>所以公式写出来是：</p>
+<div class="arithmatex">\[\bar{c}_k = c_k - \sum_{i \in V} (\pi_i \times d_{ik}) - \mu\]</div>
+<p>(注：<span class="arithmatex">\(\mu\)</span> 是 <span class="arithmatex">\(\sum \lambda = 1\)</span> 的对偶，是常数，我们先不管它)</p>
+<h4 id="2-sum_i-pi_i-d_ik">2. 关键难点：如何理解 <span class="arithmatex">\(\sum_{i} \pi_i d_{ik}\)</span> ？<a class="headerlink" href="#2-sum_i-pi_i-d_ik" title="Permanent link">&para;</a></h4>
+<p>这一项的意思是：<strong>计算这棵树 <span class="arithmatex">\(T_k\)</span> 在所有节点上产生的“度数罚款”总和。</strong></p>
+<p>我们来换个角度算这笔账：<strong>按边来算，而不是按点算。</strong></p>
+<p>假设树 <span class="arithmatex">\(T_k\)</span> 里有一条边 <span class="arithmatex">\((u, v)\)</span>。</p>
+<ul>
+<li>
+<p>这条边连在节点 <span class="arithmatex">\(u\)</span> 上 <span class="arithmatex">\(\rightarrow\)</span> 它给节点 <span class="arithmatex">\(u\)</span> 的度数贡献了 1 <span class="arithmatex">\(\rightarrow\)</span> 产生罚款 <span class="arithmatex">\(1 \times \pi_u\)</span>。</p>
+</li>
+<li>
+<p>这条边连在节点 <span class="arithmatex">\(v\)</span> 上 <span class="arithmatex">\(\rightarrow\)</span> 它给节点 <span class="arithmatex">\(v\)</span> 的度数贡献了 1 <span class="arithmatex">\(\rightarrow\)</span> 产生罚款 <span class="arithmatex">\(1 \times \pi_v\)</span>。</p>
+</li>
+</ul>
+<p><strong>结论：</strong> 树里的<strong>每一条边</strong> <span class="arithmatex">\((u, v)\)</span>，实际上都贡献了 <span class="arithmatex">\(\pi_u + \pi_v\)</span> 这么多罚款。</p>
+<p>所以，我们可以把求和符号从“对点求和”变成“对边求和”：</p>
+<div class="arithmatex">\[\sum_{i \in V} \pi_i d_{ik} = \sum_{(u,v) \in T_k} (\pi_u + \pi_v)\]</div>
+<h4 id="3">3. 最终代入推导<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>现在把上面的结论代回原始公式。</p>
+<div class="arithmatex">\[\begin{aligned} \bar{c}_k &amp;= c_k - \sum_{i \in V} \pi_i d_{ik} \\ &amp;= \left( \sum_{(u,v) \in T_k} c_{uv} \right) - \left( \sum_{(u,v) \in T_k} (\pi_u + \pi_v) \right) \quad \text{(把整棵树拆成边)} \\ &amp;= \sum_{(u,v) \in T_k} \left( c_{uv} - (\pi_u + \pi_v) \right) \quad \text{(合并同类项)} \end{aligned}\]</div>
+<h4 id="4">4. 物理意义大揭秘<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>看到最后这一步了吗？</p>
+<div class="arithmatex">\[\sum_{(u,v) \in T_k} (c_{uv} - \pi_u - \pi_v)\]</div>
+<p>这意味着，我们要找一个检验数最小的树，其实就是找一个树，它的边权之和最小。但是！边的权重不再是原始的距离 <span class="arithmatex">\(c_{uv}\)</span>，而是被修改后的权重：</p>
+<div class="arithmatex">\[\tilde{c}_{uv} = c_{uv} - \pi_u - \pi_v\]</div>
+<p>这就解释了列生成的核心逻辑：</p>
+<p>主问题通过 <span class="arithmatex">\(\pi\)</span> 告诉子问题：“我觉得 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 的度数太小了（<span class="arithmatex">\(\pi\)</span> 为负），你去连它们吧！”</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(\pi_u, \pi_v\)</span> 为负</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(-\pi_u\)</span> 变为正</p>
+<p><span class="arithmatex">\(\rightarrow\)</span> 新边权 <span class="arithmatex">\(\tilde{c}_{uv}\)</span> 变大？</p>
+<p><strong>等一下，这里的正负号逻辑要非常小心（这是最容易晕的地方）：</strong></p>
+<ul>
+<li>
+<p>如果是 <span class="arithmatex">\(\sum d \lambda = 2\)</span> 且<strong>最小化</strong>问题：</p>
+<ul>
+<li>
+<p>若某点度数<strong>过剩</strong>（<span class="arithmatex">\(&gt;2\)</span>），求解器希望减少连接，<span class="arithmatex">\(\pi\)</span> 会变<strong>大</strong>（正数）。</p>
+</li>
+<li>
+<p>代入 <span class="arithmatex">\(c - \pi\)</span> 公式，新边权 <span class="arithmatex">\(\tilde{c}\)</span> 变<strong>小</strong>。</p>
+</li>
+<li>
+<p>MST 算法倾向于选边权小的边。</p>
+</li>
+<li>
+<p><strong>哎？</strong> 边权变小 <span class="arithmatex">\(\rightarrow\)</span> 容易被选中 <span class="arithmatex">\(\rightarrow\)</span> 度数变得更大？这不就死循环了吗？</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>这里的逻辑修正（非常重要）：</p>
+<p>Reduced Cost 的目的是寻找能改善当前解的新列。</p>
+<ul>
+<li>
+<p>如果 <span class="arithmatex">\(\pi_i\)</span> 很大（说明主问题觉得点 <span class="arithmatex">\(i\)</span> 太“拥挤”，度数太高），那么 <span class="arithmatex">\(\tilde{c}_{uv} = c_{uv} - \pi_u - \pi_v\)</span> 会变得很小（甚至负无穷）。</p>
+</li>
+<li>
+<p>MST 算法会<strong>疯狂地</strong>把这条边选进来。</p>
+</li>
+<li>
+<p>这似乎是反直觉的？其实是因为 Held-Karp 下界的迭代通常是<strong>最大化</strong>问题，而列生成是<strong>最小化</strong>问题。</p>
+<ul>
+<li>
+<p>在列生成中，如果 <span class="arithmatex">\(\pi_i\)</span> 很大，意味着该点的<strong>约束极紧</strong>（Resource is valuable）。</p>
+</li>
+<li>
+<p>Reduced Cost 为负意味着：这条路径的成本 <span class="arithmatex">\(c\)</span> <strong>小于</strong> 它所能提供的价值 <span class="arithmatex">\(\pi\)</span>。</p>
+</li>
+<li>
+<p>所以我们要选它。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>简单的记忆法：</p>
+<p>不要纠结 <span class="arithmatex">\(\pi\)</span> 的正负，求解器会自动调整。你只需要记住推导结果：</p>
+<p>子问题就是在跑最小生成树，只是每条边的长度，被两端的“过路费”(<span class="arithmatex">\(\pi\)</span>) 给减掉了。</p>
+<p>这样这两个问题讲通了吗？</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Your Name <br> <span id="busuanzi_container_site_pv">
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+</span> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.top", "navigation.tabs", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

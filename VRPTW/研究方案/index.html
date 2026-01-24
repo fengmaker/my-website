@@ -1,0 +1,4573 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Your Name">
+      
+      
+        <link rel="canonical" href="https://your-name.github.io/my-blog/VRPTW/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88/">
+      
+      
+        <link rel="prev" href="../%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF/">
+      
+      
+        <link rel="next" href="../%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>研究方案 - 我的个人主站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pyvrp-alns-python-vrptw" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="我的个人主站" class="md-header__button md-logo" aria-label="我的个人主站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的个人主站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              研究方案
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Life-OS/" class="md-tabs__link">
+          
+  
+  
+  🛠️ Life OS (系统内核)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index/or_index/" class="md-tabs__link">
+          
+  
+  
+  运筹优化笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../index/algorithm_introduction/" class="md-tabs__link">
+          
+  
+  
+  LeetCode笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../posts/" class="md-tabs__link">
+          
+  
+  
+  随笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="我的个人主站" class="md-nav__button md-logo" aria-label="我的个人主站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    我的个人主站
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Life OS (系统内核)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Life OS (系统内核)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统说明书 (README)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ SOP 协议库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⚙️ SOP 协议库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    协议总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/shutdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    睡眠与重启协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境与抗干扰协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/SOP/learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    英语/算法突击协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐛 系统日志 (Debug)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐛 系统日志 (Debug)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Logs/decision_journal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    焦虑与决策日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Logs/bug_tracker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    错题本 (Bug Tracker)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔋 能量管理 (Areas)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔋 能量管理 (Areas)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Areas/driving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    驾照与听力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Life-OS/Areas/health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    身体维护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    运筹优化笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/or_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TSP 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TSP 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TSP/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CVRP 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CVRP 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E5%8F%91%E5%B1%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发展综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四阶段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CVRP/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRPTW 专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VRPTW 专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发展路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究方案
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 执行摘要与项目可行性深度评估
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 执行摘要与项目可行性深度评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 项目背景与目标概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 技术可行性分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 架构对齐策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vrptw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. VRPTW 问题理论基础与数学建模
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. VRPTW 问题理论基础与数学建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 问题定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 核心约束与目标函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-alns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 ALNS 算法原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 系统架构设计与文件结构规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 系统架构设计与文件结构规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 推荐的项目文件树
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 核心类与接口详细规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 核心类与接口详细规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-model-pyvrpmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 Model 类 (对应 pyvrp.Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-problemdata-pyvrp_problemdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 ProblemData 类 (对应 pyvrp._ProblemData)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-solution-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 Solution 与 Route 类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-alns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 核心算法引擎：自适应大邻域搜索 (ALNS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 核心算法引擎：自适应大邻域搜索 (ALNS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-destroy-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 破坏算子 (Destroy Operators)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 破坏算子 (Destroy Operators)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-random-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 随机移除 (Random Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-worst-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 最差移除 (Worst Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-shaw-shaw-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Shaw 移除 / 相关性移除 (Shaw Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-repair-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 修复算子 (Repair Operators)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 修复算子 (Repair Operators)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-greedy-insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 贪婪插入 (Greedy Insertion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-regret-k-insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 后悔插入 (Regret-k Insertion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接受准则 (Acceptance Criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 关键实现细节与性能优化策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 关键实现细节与性能优化策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-o1-delta-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 \(O(1)\) 的时间窗检验 (Delta Evaluation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 距离矩阵的内存优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-string-removal-sisr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 字符串移除 (String Removal / SISR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 完整的开发生命周期与路线图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 完整的开发生命周期与路线图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：基础设施搭建 (第 1-2 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：解的表示与验证 (第 3-4 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：初始解与贪婪算法 (第 5-6 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alns-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四阶段：ALNS 核心循环 (第 7-8 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五阶段：高级算子与优化 (第 9-10 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 数据结构对比表与性能基准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 技能构建与职业发展价值
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型建立
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dw%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DW分解 (Dantzig-Wolfe)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LeetCode笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LeetCode笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/algorithm_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写在前面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态规划 (DP)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    动态规划 (DP)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入门基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0-1 背包
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%BD%91%E6%A0%BC%E5%9B%BEdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网格图 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%8A%B6%E6%80%81%E6%9C%BAdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    状态机 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8Ddp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数位 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%88%92%E5%88%86%E5%9E%8Bdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    划分型 DP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最长公共子序列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最大子数组和
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    打家劫舍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%9B%9E%E6%96%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回文专题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二叉树
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    二叉树
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自顶向下
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自底向上
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B4%E5%BE%84%20%E6%9E%9A%E4%B8%BE%E6%8B%90%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举拐点 (直径)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/LCA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最近公共祖先 (LCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%88%A0%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    删点操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分搜索
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    二分搜索
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%20%E6%B1%82%E6%9C%80%E5%A4%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分答案 (求最大)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88%20%E6%B1%82%E6%9C%80%E5%B0%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分答案 (求最小)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86%20%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    其他技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回溯算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    回溯算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E5%AD%90%E9%9B%86%E5%9E%8B%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    子集型回溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E5%88%92%E5%88%86%E6%80%A7%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    划分性回溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%9E%E6%BA%AF/%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    重复元素处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前缀和
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分数组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    栈的应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9E%9A%E4%B8%BE%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    枚举技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用技巧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用技巧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    双指针
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA/%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随笔
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    随笔
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../posts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写在前面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 执行摘要与项目可行性深度评估
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 执行摘要与项目可行性深度评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 项目背景与目标概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 技术可行性分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 架构对齐策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vrptw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. VRPTW 问题理论基础与数学建模
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. VRPTW 问题理论基础与数学建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 问题定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 核心约束与目标函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-alns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 ALNS 算法原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 系统架构设计与文件结构规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 系统架构设计与文件结构规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 推荐的项目文件树
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 核心类与接口详细规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 核心类与接口详细规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-model-pyvrpmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 Model 类 (对应 pyvrp.Model)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-problemdata-pyvrp_problemdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 ProblemData 类 (对应 pyvrp._ProblemData)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-solution-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 Solution 与 Route 类
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-alns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 核心算法引擎：自适应大邻域搜索 (ALNS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 核心算法引擎：自适应大邻域搜索 (ALNS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-destroy-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 破坏算子 (Destroy Operators)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 破坏算子 (Destroy Operators)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-random-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 随机移除 (Random Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-worst-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 最差移除 (Worst Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-shaw-shaw-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Shaw 移除 / 相关性移除 (Shaw Removal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-repair-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 修复算子 (Repair Operators)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 修复算子 (Repair Operators)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-greedy-insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 贪婪插入 (Greedy Insertion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-regret-k-insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 后悔插入 (Regret-k Insertion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 接受准则 (Acceptance Criteria)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 关键实现细节与性能优化策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 关键实现细节与性能优化策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-o1-delta-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 \(O(1)\) 的时间窗检验 (Delta Evaluation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 距离矩阵的内存优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-string-removal-sisr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 字符串移除 (String Removal / SISR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 完整的开发生命周期与路线图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 完整的开发生命周期与路线图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：基础设施搭建 (第 1-2 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：解的表示与验证 (第 3-4 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：初始解与贪婪算法 (第 5-6 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alns-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四阶段：ALNS 核心循环 (第 7-8 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五阶段：高级算子与优化 (第 9-10 周)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 数据结构对比表与性能基准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 技能构建与职业发展价值
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pyvrp-alns-python-vrptw">基于 PyVRP 架构与 ALNS 算法的纯 Python VRPTW 求解器深度开发研究报告<a class="headerlink" href="#pyvrp-alns-python-vrptw" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 执行摘要与项目可行性深度评估<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 项目背景与目标概述<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>本报告旨在为一名计算机科学或运筹学专业的大四本科生提供一份详尽的指导方案，目标是开发一个基于纯 Python 语言的带时间窗车辆路径问题（Vehicle Routing Problem with Time Windows, VRPTW）求解器。该项目的核心约束在于必须严格参考当前业内最先进（SOTA）的开源库——PyVRP 的架构设计与接口规范，同时在算法内核上采用自适应大邻域搜索（Adaptive Large Neighborhood Search, ALNS）以替代 PyVRP 原生的混合遗传搜索（Hybrid Genetic Search, HGS）。</p>
+<p>这一项目的核心价值不仅仅在于复现一个求解器，而在于通过“白盒化”顶尖开源库的设计模式，深入理解元启发式算法的工程落地流程。通过模仿 PyVRP 的 <code>Model</code>、<code>solve</code>、<code>ProblemData</code> 等核心接口，开发者将在实践中掌握高内聚低耦合的软件架构能力；通过实现 ALNS 算法，将锻炼处理 NP-Hard 组合优化问题的核心算法能力。这对于本科生简历的构建，特别是在申请算法工程师、运筹优化专员或相关研究生项目时，具有极高的含金量。</p>
+<h3 id="12">1.2 技术可行性分析<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p>在纯 Python 环境下开发 VRPTW 求解器是完全可行的，但需要对性能预期有清晰的认知。</p>
+<ul>
+<li>
+<p><strong>语言特性与性能权衡</strong>：PyVRP 的底层核心计算模块（如距离矩阵查询、邻域搜索移动评估）是用 C++ 编写的，这使得它能够在极短时间内评估数百万次移动 1。Python 由于解释器的开销，在循环密集型的元启发式算法中性能会显著低于 C++。然而，对于学术界标准的 Solomon 100 节点基准测试集，一个优化良好的纯 Python ALNS 求解器通常能在 1 到 5 分钟内通过 10,000 到 20,000 次迭代找到高质量的解（Gap &lt; 5%）2。这对于学习目的和展示算法逻辑完全足够。</p>
+</li>
+<li>
+<p><strong>生态系统支持</strong>：Python 拥有强大的科学计算生态。<code>NumPy</code> 可用于高效的矩阵存储与向量化计算；<code>Matplotlib</code> 提供了便捷的路径可视化能力；<code>vrplib</code> 库则能直接解析标准的 VRPLIB 和 Solomon 格式数据 3。这些工具极大地降低了外围功能的开发成本，使开发者能专注于核心算法逻辑。</p>
+</li>
+<li>
+<p><strong>教育适配性</strong>：ALNS 算法相较于混合遗传算法（HGS）或分支定价切割（Branch-and-Price-and-Cut），其逻辑更加直观，模块化程度更高 5。它通过“破坏（Destroy）”和“修复（Repair）”两个主要算子交替工作，非常适合学生逐步实现并观察效果。</p>
+</li>
+</ul>
+<h3 id="13">1.3 架构对齐策略<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<p>PyVRP 采用了一种现代化的、面向对象的设计模式，将问题定义（Model）、静态数据（ProblemData）、动态解（Solution）和搜索过程（SearchMethod）进行了严格分离 7。</p>
+<ul>
+<li>
+<p><strong>Builder 模式</strong>：<code>Model</code> 类作为构建器，允许用户以流畅的接口添加车辆、客户和仓库，这种设计对用户极其友好，隐藏了底层的索引逻辑。</p>
+</li>
+<li>
+<p><strong>不可变数据对象</strong>：<code>ProblemData</code> 类一旦生成即不可变，这保证了在并行计算或复杂搜索过程中数据的一致性。</p>
+</li>
+<li>
+<p><strong>策略模式</strong>：<code>solve</code> 方法接受一个停止准则（StoppingCriterion），使得算法的终止条件与算法本身解耦。</p>
+</li>
+</ul>
+<p>本项目将严格复刻这些设计模式。虽然底层算法从 HGS 换成了 ALNS，但外部调用的 API 将保持一致，这意味着用户可以使用与 PyVRP 几乎相同的代码来定义问题，只是在调用求解器时，后台运行的是 Python 版的 ALNS 引擎。</p>
+<hr />
+<h2 id="2-vrptw">2. VRPTW 问题理论基础与数学建模<a class="headerlink" href="#2-vrptw" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 问题定义<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>带时间窗的车辆路径问题（VRPTW）是车辆路径问题（VRP）的一个重要变种。它要求使用一组同质或异质的车辆，从中心仓库出发，服务一系列客户，并最终返回仓库。每个客户都有特定的货物需求量和服务时间窗。车辆必须在时间窗内到达客户位置；如果早到，必须等待；如果晚于时间窗最晚时间，则该路径不可行（或受到巨额惩罚）。同时，车辆的总载重不能超过其容量上限 8。</p>
+<p>形式化地，VRPTW 定义在一个完全图 <span class="arithmatex">\(G=(V, A)\)</span> 上，其中 <span class="arithmatex">\(V = \{0, 1,..., N\}\)</span> 是节点集合，节点 0 代表仓库，节点 <span class="arithmatex">\(1\)</span> 到 <span class="arithmatex">\(N\)</span> 代表客户。弧 <span class="arithmatex">\((i, j) \in A\)</span> 具有行驶距离 <span class="arithmatex">\(c_{ij}\)</span> 和行驶时间 <span class="arithmatex">\(t_{ij}\)</span>。</p>
+<h3 id="22">2.2 核心约束与目标函数<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>本求解器主要关注以下核心约束，这与 PyVRP 支持的基础功能一致：</p>
+<ol>
+<li>
+<p><strong>流守恒约束</strong>：每个客户必须被确切服务一次。</p>
+</li>
+<li>
+<p><strong>容量约束（Capacity Constraint）</strong>：一条路径上所有客户的需求之和 <span class="arithmatex">\(\sum q_i\)</span> 不得超过车辆容量 <span class="arithmatex">\(Q\)</span>。</p>
+</li>
+<li>
+<p><strong>时间窗约束（Time Window Constraint）</strong>：</p>
+<ul>
+<li>
+<p>设 <span class="arithmatex">\(a_i\)</span> 为车辆到达客户 <span class="arithmatex">\(i\)</span> 的时间，<span class="arithmatex">\(s_i\)</span> 为服务时长。</p>
+</li>
+<li>
+<p>对于路径上的下一个节点 <span class="arithmatex">\(j\)</span>，到达时间 <span class="arithmatex">\(a_j = \max(e_j, a_i + s_i + t_{ij})\)</span>，其中 <span class="arithmatex">\(e_j\)</span> 是最早开始服务时间。</p>
+</li>
+<li>
+<p>约束条件为 <span class="arithmatex">\(a_i \le l_i\)</span>，其中 <span class="arithmatex">\(l_i\)</span> 是最晚允许开始服务时间。</p>
+</li>
+<li>
+<p>等待时间 <span class="arithmatex">\(w_i = \max(0, e_i - a_i)\)</span> 不计入违规，但计入总时长。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>目标函数：</p>
+<p>通常 VRPTW 的目标是分级的：</p>
+<ol>
+<li>
+<p>首先最小化使用的车辆数量（Fleet Size）。</p>
+</li>
+<li>
+<p>其次最小化总行驶距离（Total Distance）。</p>
+<p>在 ALNS 算法中，这通常通过加权目标函数或分阶段优化来实现。</p>
+</li>
+</ol>
+<h3 id="23-alns">2.3 ALNS 算法原理<a class="headerlink" href="#23-alns" title="Permanent link">&para;</a></h3>
+<p>自适应大邻域搜索（ALNS）是由 Ropke 和 Pisinger 提出的元启发式算法框架 6。其核心思想是通过不断地破坏解的结构（移除一组客户）并重新构建（重新插入这些客户）来搜索解空间。</p>
+<ul>
+<li>
+<p><strong>大邻域</strong>：与传统的本地搜索（Local Search）仅交换两个节点不同，ALNS 可以一次性移除 30-40% 的客户，从而跨越局部最优陷阱，在更大的范围内寻找更优解。</p>
+</li>
+<li>
+<p><strong>自适应性（Adaptivity）</strong>：算法维护一组破坏算子（如随机移除、最差移除、相关性移除）和一组修复算子（如贪婪插入、后悔插入）。在搜索过程中，根据每个算子在过去迭代中的表现（是否找到了新最优解、是否提升了当前解），动态调整其被选择的概率权重。这种机制使得算法能够“学习”哪些算子对当前的问题实例最有效 5。</p>
+</li>
+</ul>
+<hr />
+<h2 id="3">3. 系统架构设计与文件结构规范<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>为了满足“参考 PyVRP 库的所有核心函数和方法，接口尽量名称一致”的要求，我们需要对 PyVRP 的源码结构进行逆向工程，并将其映射到 Python 项目结构中。PyVRP 的核心组件包括 <code>Model</code>、<code>Solution</code>、<code>ProblemData</code>、<code>CostEvaluator</code> 以及搜索算法本身。</p>
+<h3 id="31">3.1 推荐的项目文件树<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>以下文件结构旨在模拟 PyVRP 的模块化设计，同时适应纯 Python 开发的便利性。</p>
+<p>py_vrptw_solver/</p>
+<p>├── pyvrp/ # 顶层包名，保持与官方库一致</p>
+<p>│ ├── init.py # 暴露 Model, read, solve 等核心接口</p>
+<p>│ ├── constants.py # 定义常量，如 MAX_INT, 默认罚值</p>
+<p>│ ├── exceptions.py # 自定义异常类</p>
+<p>│ │</p>
+<p>│ ├── _ProblemData.py # 【核心】不可变的问题数据类</p>
+<p>│ ├── _Solution.py # 【核心】解与路径的表示</p>
+<p>│ ├── Model.py # 【用户接口】问题构建器</p>
+<p>│ ├── Result.py # 【输出】求解结果容器</p>
+<p>│ ├── Statistics.py # 统计搜索过程数据</p>
+<p>│ │</p>
+<p>│ ├── plotting/ # 可视化模块</p>
+<p>│ │ ├── init.py</p>
+<p>│ │ └── plot_utils.py # 基于 Matplotlib 的绘图工具 10</p>
+<p>│ │</p>
+<p>│ ├── read.py # 读取 VRPLIB/Solomon 格式文件 3</p>
+<p>│ ├── stop.py # 停止准则 (MaxRuntime, MaxIterations)</p>
+<p>│ │</p>
+<p>│ └── search/ # 【算法核心】ALNS 引擎</p>
+<p>│ ├── init.py</p>
+<p>│ ├── alns.py # ALNS 主循环逻辑</p>
+<p>│ ├── weights.py # 算子权重管理逻辑</p>
+<p>│ ├── acceptance.py # 接受准则 (模拟退火等)</p>
+<p>│ ├── destroy_operators.py# 破坏算子 (Random, Shaw, Worst)</p>
+<p>│ └── repair_operators.py # 修复算子 (Greedy, Regret)</p>
+<p>│</p>
+<p>├── data/ # 测试数据</p>
+<p>│ └── solomon_100/ # Solomon 100 节点实例 (C101.txt 等)</p>
+<p>│</p>
+<p>├── examples/ # 示例脚本</p>
+<p>│ ├── quick_tutorial.py # 基础用法演示</p>
+<p>│ └── benchmark_solomon.py # 批量测试脚本</p>
+<p>│</p>
+<p>├── tests/ # 单元测试</p>
+<p>│ ├── test_model.py</p>
+<p>│ ├── test_solution.py</p>
+<p>│ └── test_operators.py</p>
+<p>│</p>
+<p>├── requirements.txt # 依赖: numpy, matplotlib, vrplib</p>
+<p>└── README.md # 项目说明文档</p>
+<h3 id="32">3.2 核心类与接口详细规范<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<h4 id="321-model-pyvrpmodel">3.2.1 <code>Model</code> 类 (对应 <code>pyvrp.Model</code>)<a class="headerlink" href="#321-model-pyvrpmodel" title="Permanent link">&para;</a></h4>
+<p>这是用户接触的第一个类，负责验证输入并将语义化的数据转换为内部索引。</p>
+<ul>
+<li>
+<p><strong>设计模式</strong>：Builder Pattern（建造者模式）。</p>
+</li>
+<li>
+<p><strong>属性</strong>：</p>
+<ul>
+<li>
+<p><code>_clients</code>: 存储客户对象的列表。</p>
+</li>
+<li>
+<p><code>_depots</code>: 存储仓库对象的列表。</p>
+</li>
+<li>
+<p><code>_vehicle_types</code>: 存储车辆类型配置。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>核心方法</strong> (需与 PyVRP 签名一致 7):</p>
+<ul>
+<li>
+<p><code>add_client(x, y, demand=0, service_duration=0, tw_early=0, tw_late=inf,...)</code>: 添加一个客户，返回 <code>Client</code> 对象引用。</p>
+</li>
+<li>
+<p><code>add_depot(x, y, tw_early=0, tw_late=inf,...)</code>: 添加仓库。</p>
+</li>
+<li>
+<p><code>add_vehicle_type(capacity, num_available,...)</code>: 定义车队属性。</p>
+</li>
+<li>
+<p><code>add_edge(frm, to, distance, duration)</code>: <em>可选</em>，允许用户手动覆盖特定边权重。</p>
+</li>
+<li>
+<p><code>solve(stop, seed=42, display=True)</code>: 核心入口，将数据冻结为 <code>ProblemData</code> 并启动 ALNS 求解。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="322-problemdata-pyvrp_problemdata">3.2.2 <code>ProblemData</code> 类 (对应 <code>pyvrp._ProblemData</code>)<a class="headerlink" href="#322-problemdata-pyvrp_problemdata" title="Permanent link">&para;</a></h4>
+<p>一旦调用 <code>solve</code>，<code>Model</code> 中的数据就被“冻结”进这个类。为了 Python 的性能，这里必须使用 <code>NumPy</code> 数组。</p>
+<ul>
+<li>
+<p><strong>属性</strong>：</p>
+<ul>
+<li>
+<p><code>dist_matrix</code>: <code>np.ndarray</code> (N+1, N+1)，距离矩阵。</p>
+</li>
+<li>
+<p><code>duration_matrix</code>: <code>np.ndarray</code> (N+1, N+1)，时间矩阵。</p>
+</li>
+<li>
+<p><code>time_windows</code>: <code>np.ndarray</code> (N+1, 2)，存储 <code>[early, late]</code>。</p>
+</li>
+<li>
+<p><code>demands</code>: <code>np.ndarray</code> (N+1)，需求数组。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>设计考量</strong>：在 Python 中，频繁访问对象的属性（如 <code>client.x</code>）比访问数组索引慢。因此，在算法核心循环中，应直接操作 <code>ProblemData</code> 中的 NumPy 数组或原生列表。</p>
+</li>
+</ul>
+<h4 id="323-solution-route">3.2.3 <code>Solution</code> 与 <code>Route</code> 类<a class="headerlink" href="#323-solution-route" title="Permanent link">&para;</a></h4>
+<p>PyVRP 的解由一组路径组成 7。</p>
+<ul>
+<li>
+<p><strong><code>Route</code> 类</strong>：</p>
+<ul>
+<li>
+<p><strong>职责</strong>：存储一个车辆的访问序列，并动态维护可行性状态。</p>
+</li>
+<li>
+<p><strong>属性</strong>：<code>visits</code> (客户索引列表), <code>load</code> (当前载重), <code>distance</code> (总距离), <code>schedule</code> (到达时间表)。</p>
+</li>
+<li>
+<p><strong>关键方法</strong>：<code>is_feasible()</code>。该方法需要以 <span class="arithmatex">\(O(N)\)</span> 或更优的复杂度检查时间窗和容量约束。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Solution</code> 类</strong>：</p>
+<ul>
+<li>
+<p><strong>职责</strong>：代表整个解方案。</p>
+</li>
+<li>
+<p><strong>属性</strong>：<code>routes</code> (Route 对象列表)。</p>
+</li>
+<li>
+<p><strong>方法</strong>：<code>cost()</code> (计算目标函数值), <code>copy()</code> (深拷贝，用于 ALNS 分支)。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="4-alns">4. 核心算法引擎：自适应大邻域搜索 (ALNS)<a class="headerlink" href="#4-alns" title="Permanent link">&para;</a></h2>
+<p>这是项目的核心难点，也是锻炼算法能力的重点区域。我们需要在 <code>pyvrp/search</code> 模块中实现 ALNS 的逻辑。</p>
+<h3 id="41-destroy-operators">4.1 破坏算子 (Destroy Operators)<a class="headerlink" href="#41-destroy-operators" title="Permanent link">&para;</a></h3>
+<p>破坏算子的作用是移除 <span class="arithmatex">\(q\)</span> 个客户，将其放入“未分配池（Unassigned Bank）”，从而让解“松动”，为重组创造空间。</p>
+<h4 id="411-random-removal">4.1.1 随机移除 (Random Removal)<a class="headerlink" href="#411-random-removal" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>原理</strong>：完全随机地选择 <span class="arithmatex">\(q\)</span> 个客户移除。</p>
+</li>
+<li>
+<p><strong>作用</strong>：主要用于增加多样性，防止算法陷入局部最优，是探索（Exploration）的重要手段 11。</p>
+</li>
+</ul>
+<h4 id="412-worst-removal">4.1.2 最差移除 (Worst Removal)<a class="headerlink" href="#412-worst-removal" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>原理</strong>：计算每个客户移除后解的目标函数值（成本）下降幅度。移除那些“最昂贵”的客户（即造成路径成本增加最多的客户）。</p>
+</li>
+<li>
+<p><strong>实现逻辑</strong>：</p>
+<ol>
+<li>
+<p>对每个客户 <span class="arithmatex">\(i\)</span>，计算 <span class="arithmatex">\(Cost(S) - Cost(S \setminus \{i\})\)</span>。</p>
+</li>
+<li>
+<p>按差值排序，依概率选择 <span class="arithmatex">\(q\)</span> 个成本最高的客户。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>作用</strong>：优化解的质量，剔除由于贪婪插入导致的糟糕决策。</p>
+</li>
+</ul>
+<h4 id="413-shaw-shaw-removal">4.1.3 Shaw 移除 / 相关性移除 (Shaw Removal)<a class="headerlink" href="#413-shaw-shaw-removal" title="Permanent link">&para;</a></h4>
+<p>这是 VRPTW 中最有效的算子之一，由 Shaw 提出 13。</p>
+<ul>
+<li>
+<p><strong>原理</strong>：移除一组“相关性”很高的客户。如果客户 A 和客户 B 在地理上很近、时间窗很接近、或者需求相似，那么它们很容易互换位置。如果只移除 A 而保留 B，很难改变局部结构；同时移除 A 和 B，修复算子就有机会重新安排这段路径。</p>
+</li>
+<li>
+<p>相关性度量 <span class="arithmatex">\(R(i, j)\)</span>：</p>
+<div class="arithmatex">\[R(i, j) = \phi \cdot d_{ij} + \chi \cdot |t_i - t_j| + \psi \cdot |q_i - q_j|\]</div>
+<p>其中 <span class="arithmatex">\(d_{ij}\)</span> 是归一化距离，<span class="arithmatex">\(|t_i - t_j|\)</span> 是到达时间差，<span class="arithmatex">\(|q_i - q_j|\)</span> 是需求差。<span class="arithmatex">\(\phi, \chi, \psi\)</span> 是权重参数。</p>
+</li>
+<li>
+<p><strong>实现步骤</strong>：</p>
+<ol>
+<li>
+<p>随机选择一个种子客户 <span class="arithmatex">\(i\)</span> 移除。</p>
+</li>
+<li>
+<p>计算所有剩余客户 <span class="arithmatex">\(j\)</span> 与 <span class="arithmatex">\(i\)</span> 的相关性 <span class="arithmatex">\(R(i, j)\)</span>。</p>
+</li>
+<li>
+<p>选择 <span class="arithmatex">\(R\)</span> 值最小（最相关）的客户移除。</p>
+</li>
+<li>
+<p>重复直到移除 <span class="arithmatex">\(q\)</span> 个客户。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="42-repair-operators">4.2 修复算子 (Repair Operators)<a class="headerlink" href="#42-repair-operators" title="Permanent link">&para;</a></h3>
+<p>修复算子的作用是将未分配池中的客户重新插入到现有路径或新路径中。</p>
+<h4 id="421-greedy-insertion">4.2.1 贪婪插入 (Greedy Insertion)<a class="headerlink" href="#421-greedy-insertion" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>原理</strong>：对于每个未分配客户，遍历所有路径的所有可行插入位置，计算插入成本增量 <span class="arithmatex">\(\Delta Cost\)</span>。选择成本增量最小的 <code>(客户, 位置)</code> 对进行插入，直到所有客户被安排。</p>
+</li>
+<li>
+<p><strong>时间复杂度</strong>：<span class="arithmatex">\(O(N^2)\)</span>（粗略估计），Python 实现需特别注意优化。</p>
+</li>
+</ul>
+<h4 id="422-regret-k-insertion">4.2.2 后悔插入 (Regret-k Insertion)<a class="headerlink" href="#422-regret-k-insertion" title="Permanent link">&para;</a></h4>
+<p>这是比贪婪插入更强大的算子 15。</p>
+<ul>
+<li>
+<p><strong>原理</strong>：贪婪算法往往把难插入的客户留到最后，导致最后无处可插或成本极高。后悔算法优先处理那些“现在不插，以后由于选择变少会付出巨大代价”的客户。</p>
+</li>
+<li>
+<p><strong>计算逻辑 (Regret-2)</strong>：</p>
+<ol>
+<li>
+<p>对于每个未分配客户 <span class="arithmatex">\(u\)</span>：</p>
+<ul>
+<li>
+<p>找到最佳插入位置，成本为 <span class="arithmatex">\(C_1(u)\)</span>。</p>
+</li>
+<li>
+<p>找到次佳插入位置（通常在不同的路径上），成本为 <span class="arithmatex">\(C_2(u)\)</span>。</p>
+</li>
+<li>
+<p>计算后悔值 <span class="arithmatex">\(Regret(u) = C_2(u) - C_1(u)\)</span>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>选择后悔值最大的客户 <span class="arithmatex">\(u^*\)</span>。</p>
+</li>
+<li>
+<p>将其插入到其最佳位置。</p>
+</li>
+<li>
+<p>更新其余客户的插入成本，重复上述过程。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>洞察</strong>：Regret-k 算子通过“前瞻”避免了短视行为，对于时间窗紧迫的 VRPTW 尤为有效。</p>
+</li>
+</ul>
+<h3 id="43-acceptance-criteria">4.3 接受准则 (Acceptance Criteria)<a class="headerlink" href="#43-acceptance-criteria" title="Permanent link">&para;</a></h3>
+<p>即使新解 <span class="arithmatex">\(S_{new}\)</span> 比当前解 <span class="arithmatex">\(S_{curr}\)</span> 差，我们也有概率接受它，以跳出局部最优。</p>
+<ul>
+<li>
+<p><strong>模拟退火 (Simulated Annealing)</strong>：接受概率 <span class="arithmatex">\(P = e^{-(C(S_{new}) - C(S_{curr})) / T}\)</span>，其中 <span class="arithmatex">\(T\)</span> 随迭代次数衰减。</p>
+</li>
+<li>
+<p><strong>记录更新 (Record-to-Record Travel)</strong>：只要新解不超过历史最优解的一定比例（例如 <span class="arithmatex">\(C(S_{new}) &lt; C(S_{best}) \times (1 + \delta)\)</span>），就接受。</p>
+</li>
+</ul>
+<hr />
+<h2 id="5">5. 关键实现细节与性能优化策略<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>在纯 Python 中实现上述逻辑，必须极其关注性能瓶颈。以下是针对大四学生技术水平的优化建议。</p>
+<h3 id="51-o1-delta-evaluation">5.1 <span class="arithmatex">\(O(1)\)</span> 的时间窗检验 (Delta Evaluation)<a class="headerlink" href="#51-o1-delta-evaluation" title="Permanent link">&para;</a></h3>
+<p>在插入算子中，我们需要尝试将客户 <span class="arithmatex">\(u\)</span> 插入到节点 <span class="arithmatex">\(i\)</span> 和 <span class="arithmatex">\(j\)</span> 之间。如果是 <span class="arithmatex">\(O(N)\)</span> 地重新遍历整条路径来检查时间窗可行性，算法会慢得无法接受。必须实现 <span class="arithmatex">\(O(1)\)</span> 的检验逻辑。</p>
+<p>技术方案：</p>
+<p>在 Route 对象中维护每个节点的两个辅助变量：</p>
+<ul>
+<li>
+<p><strong>前向最早到达时间 (<span class="arithmatex">\(E_k\)</span>)</strong>：从仓库出发，尽早行驶，到达节点 <span class="arithmatex">\(k\)</span> 的时间。</p>
+</li>
+<li>
+<p><strong>后向最晚到达时间 (<span class="arithmatex">\(L_k\)</span>)</strong>：在保证节点 <span class="arithmatex">\(k\)</span> 之后的所有节点都不违背时间窗的前提下，车辆能到达节点 <span class="arithmatex">\(k\)</span> 的最晚时间。</p>
+</li>
+</ul>
+<p>当尝试在 <span class="arithmatex">\(i, j\)</span> 之间插入 <span class="arithmatex">\(u\)</span> 时，只需检查：</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(E_i + t_{iu} \le l_u\)</span> （能否按时到达 <span class="arithmatex">\(u\)</span>）</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\max(E_i + t_{iu} + s_u, e_u) + t_{uj} \le L_j\)</span> （离开 <span class="arithmatex">\(u\)</span> 后能否按时到达 <span class="arithmatex">\(j\)</span>，且不影响后续节点）</p>
+</li>
+<li>
+<p>累计的时间推移（Time Shift）不会导致后续节点的等待时间被压缩至负数。</p>
+</li>
+</ol>
+<p>通过在 <code>ProblemData</code> 初始化时预计算距离矩阵，并在 <code>Route</code> 更新时维护 <span class="arithmatex">\(E\)</span> 和 <span class="arithmatex">\(L\)</span> 数组，可以将插入评估速度提升 1-2 个数量级。</p>
+<h3 id="52">5.2 距离矩阵的内存优化<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>PyVRP 默认使用双精度浮点数，但在 Solomon 实例中，通常涉及距离的四舍五入。</p>
+<ul>
+<li><strong>建议</strong>：在 <code>ProblemData</code> 中使用 Python 的原生 <code>list</code> 嵌套列表 <code>[[...], [...]]</code> 来存储距离。虽然 NumPy 在大规模向量运算时快，但在 ALNS 的单点访问（scalar access）场景下，Python 原生列表的索引速度（<code>dist[i][j]</code>）往往快于 NumPy (<code>dist[i, j]</code>)，因为减少了 C 语言层面的装箱/拆箱开销。</li>
+</ul>
+<h3 id="53-string-removal-sisr">5.3 字符串移除 (String Removal / SISR)<a class="headerlink" href="#53-string-removal-sisr" title="Permanent link">&para;</a></h3>
+<p>虽然标准 ALNS 使用 Shaw 移除，但为了简历的亮点，可以尝试实现 <strong>SISR (Slack Induction by String Removal)</strong> 的简化版 2。</p>
+<ul>
+<li>
+<p><strong>逻辑</strong>：不是移除单个点，而是移除一段连续的路径（String）。这对于通过破坏长路径来减少车辆数非常有效。</p>
+</li>
+<li>
+<p><strong>实现</strong>：随机选择一个节点，以此为中心，向前后延伸移除 <span class="arithmatex">\(k\)</span> 个相邻节点。</p>
+</li>
+</ul>
+<hr />
+<h2 id="6">6. 完整的开发生命周期与路线图<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>鉴于你是大四学生，可以将此项目划分为 10 周的开发周期，模拟敏捷开发流程。</p>
+<h3 id="1-2">第一阶段：基础设施搭建 (第 1-2 周)<a class="headerlink" href="#1-2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>目标</strong>：跑通“读取数据 -&gt; 建立模型 -&gt; 输出空结果”的流程。</p>
+</li>
+<li>
+<p><strong>任务</strong>：</p>
+<ol>
+<li>
+<p>建立 GitHub 仓库，配置 <code>.gitignore</code>。</p>
+</li>
+<li>
+<p>实现 <code>pyvrp/core/Model.py</code> 和 <code>pyvrp/core/ProblemData.py</code>。</p>
+</li>
+<li>
+<p>实现 <code>pyvrp/read.py</code>，能够解析 Solomon <code>.txt</code> 文件。使用正则表达式提取坐标和时间窗。</p>
+</li>
+<li>
+<p>编写 <code>tests/test_read.py</code>，验证读取的坐标与文件内容一致。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>里程碑</strong>：运行脚本能打印出 Solomon C101 实例的客户数量（100）和车辆容量。</p>
+</li>
+</ul>
+<h3 id="3-4">第二阶段：解的表示与验证 (第 3-4 周)<a class="headerlink" href="#3-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>目标</strong>：能够手动构建一条路径，并判断其是否合法。</p>
+</li>
+<li>
+<p><strong>任务</strong>：</p>
+<ol>
+<li>
+<p>实现 <code>Route</code> 类，包含 <code>is_feasible</code> 逻辑（由简入繁，先只写容量约束，再写时间窗）。</p>
+</li>
+<li>
+<p>实现 <code>Solution</code> 类，计算总距离成本。</p>
+</li>
+<li>
+<p><strong>单元测试</strong>：构造一个明显超时的路径，断言 <code>is_feasible()</code> 返回 <code>False</code>。这是后续算法正确性的基石。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>里程碑</strong>：提交一个脚本，手动硬编码一条路径 <code>Depot -&gt; Customer 1 -&gt; Customer 2 -&gt; Depot</code>，程序能输出其总距离和是否合法。</p>
+</li>
+</ul>
+<h3 id="5-6">第三阶段：初始解与贪婪算法 (第 5-6 周)<a class="headerlink" href="#5-6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>目标</strong>：实现第一个能跑出结果的算法。</p>
+</li>
+<li>
+<p><strong>任务</strong>：</p>
+<ol>
+<li>
+<p>实现 <code>GreedyInsertion</code> 算子。逻辑：遍历未分配客户，找成本增加最小的位置插入。</p>
+</li>
+<li>
+<p>在 <code>Model.solve()</code> 中调用贪婪算法生成初始解。</p>
+</li>
+<li>
+<p>实现 <code>plotting</code> 模块，使用 Matplotlib 画出贪婪算法生成的路径图（不同颜色的线段代表不同车辆）。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>里程碑</strong>：对 Solomon C101 运行求解，得到一个可行解（虽然质量可能很差），并生成可视化图片。</p>
+</li>
+</ul>
+<h3 id="alns-7-8">第四阶段：ALNS 核心循环 (第 7-8 周)<a class="headerlink" href="#alns-7-8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>目标</strong>：实现破坏与修复的循环，让解动起来。</p>
+</li>
+<li>
+<p><strong>任务</strong>：</p>
+<ol>
+<li>
+<p>实现 <code>RandomRemoval</code>。</p>
+</li>
+<li>
+<p>搭建 ALNS 主循环：<code>Destroy -&gt; Repair -&gt; Evaluate -&gt; Accept</code>。</p>
+</li>
+<li>
+<p>实现 <code>Statistics</code> 类，记录每次迭代的最优解变化。</p>
+</li>
+<li>
+<p>加入模拟退火接受准则。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>里程碑</strong>：运行 1000 次迭代，观察到 Cost 曲线呈下降趋势。</p>
+</li>
+</ul>
+<h3 id="9-10">第五阶段：高级算子与优化 (第 9-10 周)<a class="headerlink" href="#9-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>目标</strong>：提升解的质量，接近 SOTA 水平。</p>
+</li>
+<li>
+<p><strong>任务</strong>：</p>
+<ol>
+<li>
+<p>攻克 <code>ShawRemoval</code> 和 <code>Regret-2 Insertion</code>。这是最难也是提分最多的部分。</p>
+</li>
+<li>
+<p>实现算子权重的自适应调整逻辑（Roulette Wheel Selection）。</p>
+</li>
+<li>
+<p>进行 Benchmark 测试，记录 100 个客户的求解时间（预计 2-5 分钟）。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>里程碑</strong>：完成最终报告，对比贪婪算法与 ALNS 的结果差距（通常 ALNS 能优化 20% 以上）。</p>
+</li>
+</ul>
+<hr />
+<h2 id="7">7. 数据结构对比表与性能基准<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>为了清晰展示设计选择，以下是纯 Python 实现与 PyVRP (C++) 的关键差异对比：</p>
+<table>
+<thead>
+<tr>
+<th><strong>组件 (Component)</strong></th>
+<th><strong>PyVRP (C++) 实现</strong></th>
+<th><strong>纯 Python 推荐实现</strong></th>
+<th><strong>性能影响与优化建议</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>距离矩阵存储</strong></td>
+<td><code>std::vector&lt;int&gt;</code> (扁平化)</td>
+<td><code>List[List[float]]</code> 或 <code>numpy.ndarray</code></td>
+<td>Python 列表索引 <code>[i][j]</code> 比 NumPy <code>[i,j]</code> 快；建议用列表。</td>
+</tr>
+<tr>
+<td><strong>解的复制</strong></td>
+<td>Copy Constructor (高效内存块复制)</td>
+<td><code>copy.deepcopy()</code></td>
+<td>深拷贝极其耗时。<strong>优化</strong>：实现自定义 <code>Route.clone()</code>，只复制必要的索引列表。</td>
+</tr>
+<tr>
+<td><strong>邻域评估</strong></td>
+<td><span class="arithmatex">\(O(1)\)</span> 指针操作与缓存</td>
+<td><span class="arithmatex">\(O(N)\)</span> 遍历 (若未优化)</td>
+<td>必须实现前向/后向时间推移缓存 (Forward/Backward Slack)，否则无法收敛。</td>
+</tr>
+<tr>
+<td><strong>随机数生成</strong></td>
+<td><code>XorShift128</code> (位运算)</td>
+<td><code>random</code> 模块</td>
+<td>Python <code>random</code> 足够好，但为了复现性，必须在 <code>Model.solve</code> 中设定种子 <code>seed</code>。</td>
+</tr>
+<tr>
+<td><strong>并行计算</strong></td>
+<td>OpenMP 多线程评估</td>
+<td>单线程</td>
+<td>Python GIL 限制了多线程。对于本科项目，<strong>不建议</strong>尝试多进程，复杂度过高。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8">8. 技能构建与职业发展价值<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>通过完成这个项目，你将在简历上展示以下极具竞争力的技能点：</p>
+<ol>
+<li>
+<p><strong>复杂系统架构能力</strong>：你不仅是写脚本，而是设计了一个包含 Builder、Immutable Data、Strategy 模式的完整软件库。这是从“写代码”到“软件工程”的跨越。</p>
+</li>
+<li>
+<p><strong>运筹优化与算法深度</strong>：深入理解了 ALNS、模拟退火以及 NP-Hard 问题的处理策略。你能够解释为什么贪婪算法会失败，以及 Regret 机制如何通过“前瞻”来修正决策。</p>
+</li>
+<li>
+<p><strong>数值计算与性能敏感度</strong>：在 Python 中处理密集计算（如 <span class="arithmatex">\(100 \times 100\)</span> 矩阵的频繁查询），强迫你思考时间复杂度、内存布局和解释器开销。</p>
+</li>
+<li>
+<p><strong>测试驱动开发 (TDD)</strong>：为路径可行性编写单元测试的经历，展示了你对代码质量和鲁棒性的追求。</p>
+</li>
+</ol>
+<p>总结建议：</p>
+<p>不要一开始就追求 PyVRP 的 C++ 级速度，那是成百上千小时优化的结果。作为大四学生的项目，重点在于<strong>“接口的规范性”、“算法逻辑的正确性”以及“对结果的深刻分析”</strong>。能够清晰地画出 ALNS 的收敛曲线，并解释为什么某些算子在特定阶段更有效，比写出一个极快但代码混乱的求解器更有价值。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Your Name <br> <span id="busuanzi_container_site_pv">
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+</span> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.top", "navigation.tabs", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
