@@ -1,4 +1,5 @@
-mkdocs-material
-mkdocs-roamlinks-plugin
-mkdocs-callouts
-pymdown-extensions
+mkdocs==1.6.1
+mkdocs-material==9.7.1
+mkdocs-roamlinks-plugin==0.3.2
+mkdocs-callouts==1.16.0
+pymdown-extensions==10.20

@@ -1,6 +1,8 @@
-site_name: 我的个人主站 # 网站标题
-site_url: https://your-name.github.io/my-blog/ # 后面部署时会用到，先留着
-site_author: Your Name
+site_name: cjs 的学习笔记
+site_url: https://fengmaker.github.io/my-website/
+site_author: cjs
+site_description: 运筹优化、算法练习与个人成长记录
+repo_url: https://github.com/fengmaker/my-website
 
 # 核心：启用 Material 主题
 theme:
@@ -34,26 +36,16 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks
-  # 开启阅读时长和字数统计
   - tags
 
 
 # 页面导航结构 (如果不写这一块，它会自动根据 docs 文件夹里的文件生成)
 nav:
   - 首页: index.md
-  - 🛠️ Life OS (系统内核):
-      - 系统说明书 (README): Life-OS/README.md
-      - ⚙️ SOP 协议库: 
-          - 协议总览: Life-OS/SOP/index.md
-          - 睡眠与重启协议: Life-OS/SOP/shutdown.md
-          - 环境与抗干扰协议: Life-OS/SOP/environment.md
-          - 英语/算法突击协议: Life-OS/SOP/learning.md
-      - 🐛 系统日志 (Debug):
-          - 焦虑与决策日志: Life-OS/Logs/decision_journal.md
-          - 错题本 (Bug Tracker): Life-OS/Logs/bug_tracker.md
-      - 🔋 能量管理 (Areas):
-          - 驾照与听力: Life-OS/Areas/driving.md
-          - 身体维护: Life-OS/Areas/health.md
+  - 个人成长:
+      - 写在前面: 个人成长/index.md
+      - 学习与复盘: 个人成长/学习与复盘.md
+      - 作息与精力: 个人成长/作息与精力.md
   # --- 运筹学核心板块 ---
   - 运筹优化笔记:
       - 引言: index/or_index.md
@@ -116,21 +108,8 @@ nav:
       - 常用技巧:
           - 双指针: 算法笔记/双指针/单序列双指针.md
           - 图论基础: 算法笔记/图论/基础.md
-    # --- 其他板块 ---
-  - 随笔:
-      - 写在前面: posts/index.md
-  - 关于: about.md
-
 extra_javascript:
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-# 在 mkdocs.yml 底部添加或修改
-copyright: >
-  Copyright &copy; 2024 Your Name
-  <br>
-  <span id="busuanzi_container_site_pv">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-  </span>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+copyright: Copyright &copy; cjs

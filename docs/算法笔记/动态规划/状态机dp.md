@@ -1,10 +1,12 @@
-这几道题属于 **“多状态动态规划” (Multi-State DP)**，也被称为 **“状态机 DP” (State Machine DP)**。
+# 状态机 DP
+
+状态机 DP 用少量状态描述当前位置允许的选择，例如持有或空仓、奇数或偶数、上升或下降。
 
 它们的共同特点是：当前位置的最优解，不仅取决于数值大小，还取决于当前处于什么**“状态”**（如：正负、奇偶、峰谷、持有/空仓等）。
 
 ---
 
-### 一、 核心模版与心法
+## 一、 核心模版与心法
 
 1. 状态定义
 
@@ -19,11 +21,9 @@
 - **技巧**：使用 `new_state` 临时变量或 Python 的元组解包 `a, b = new_a, new_b` 来保证同时也更新，避免使用已经污染的新值。
     
 
-**3. 通用代码框架**
+**3. 通用伪代码框架**
 
-Python
-
-```
+```text
 # 初始化状态 (根据题意，可能是 0，-inf，或 nums[0])
 state_A = ...
 state_B = ...
@@ -31,7 +31,7 @@ state_B = ...
 for x in nums:
     # 暂存旧值 (如果需要)
     last_A, last_B = state_A, state_B
-    
+
     # 根据逻辑计算新值
     # 这里的逻辑通常涉及 max/min 以及状态之间的跳跃
     state_A = calculate_A(last_A, last_B, x)
@@ -42,9 +42,9 @@ return max(state_A, state_B)
 
 ---
 
-### 二、 题目详细解析
+## 二、 题目详细解析
 
-#### 1. 3259. 超级饮料的最大强化能量
+### 1. 3259. 超级饮料的最大强化能量
 
 - **DP 定义**：
     
@@ -57,31 +57,29 @@ return max(state_A, state_B)
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def maxEnergyBoost(self, a: List[int], b: List[int]) -> int:
         # prev: i-2 时刻的状态 (刚喝完 A/B)
         # curr: i-1 时刻的状态 (刚喝完 A/B)
         # 初始化：因为有冷却期，i=0 时之前的状态设为 -inf
-        prev_a = prev_b = float('-inf') 
+        prev_a = prev_b = float('-inf')
         curr_a, curr_b = a[0], b[0]
-        
+
         for i in range(1, len(a)):
             # 选项1: 继续喝同类 (接 curr)
             # 选项2: 切换类别 (接 prev，因为中间空了一格)
             new_a = max(curr_a, prev_b) + a[i]
             new_b = max(curr_b, prev_a) + b[i]
-            
+
             # 滚动
             prev_a, prev_b = curr_a, curr_b
             curr_a, curr_b = new_a, new_b
-            
+
         return max(curr_a, curr_b)
 ```
 
-#### 2. 2222. 选择建筑的方案数
+### 2. 2222. 选择建筑的方案数
 
 - **DP 定义**：这不是标准的状态机，而是**前缀状态计数**。
     
@@ -94,9 +92,7 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def numberOfWays(self, s: str) -> int:
         n0, n1 = 0, 0
@@ -114,7 +110,7 @@ class Solution:
         return ans
 ```
 
-#### 3. 2708. 一个小组的最大实力值 (联系 152)
+### 3. 2708. 一个小组的最大实力值 (联系 152)
 
 - **DP 定义**：
     
@@ -131,19 +127,17 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def maxStrength(self, nums: List[int]) -> int:
         # 特判：虽然题目说非空，但如果全是0或只有一个负数需要特殊处理
         # 这里的 DP 逻辑能覆盖大部分，但纯贪心其实更简单。
         # 为了演示 DP 模版：
-        
+
         # mx: 最大积, mn: 最小积
         # 初始化为 nums[0]
         mx = mn = nums[0]
-        
+
         for x in nums[1:]:
             # 可能性：
             # 1. 不选 x (保持 mx, mn)
@@ -152,11 +146,11 @@ class Solution:
             candidates = [mx, mn, x, mx * x, mn * x]
             mx = max(candidates)
             mn = min(candidates)
-            
+
         return mx
 ```
 
-#### 4. 1567. 乘积为正数的最长子数组长度
+### 4. 1567. 乘积为正数的最长子数组长度
 
 - **DP 定义**：
     
@@ -169,9 +163,7 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def getMaxLen(self, nums: List[int]) -> int:
         pos, neg = 0, 0
@@ -191,7 +183,7 @@ class Solution:
         return ans
 ```
 
-#### 5. 2786. 访问数组中的位置使分数最大
+### 5. 2786. 访问数组中的位置使分数最大
 
 - **DP 定义**：
     
@@ -204,24 +196,22 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def maxScore(self, nums: List[int], x: int) -> int:
         # 初始化：因为必须从 nums[0] 开始
         f = [float('-inf')] * 2
         f[nums[0] % 2] = nums[0]
-        
+
         for v in nums[1:]:
             r = v % 2
             # 转移：max(接同性，接异性-x)
             f[r] = max(f[r], f[1 - r] - x) + v
-            
+
         return max(f)
 ```
 
-#### 6. 1911. 最大交替子序列和
+### 6. 1911. 最大交替子序列和
 
 - **DP 定义**：
     
@@ -234,9 +224,7 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def maxAlternatingSum(self, nums: List[int]) -> int:
         even, odd = 0, 0
@@ -249,7 +237,7 @@ class Solution:
         return even
 ```
 
-#### 7. 376. 摆动序列
+### 7. 376. 摆动序列
 
 - **DP 定义**：
     
@@ -262,9 +250,7 @@ class Solution:
 - **空间优化代码**：
     
 
-Python
-
-```
+```python
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
         if len(nums) < 2: return len(nums)
@@ -279,7 +265,7 @@ class Solution:
 
 ---
 
-### 三、 总结：常用技巧清单
+## 三、 总结：常用技巧清单
 
 1. **奇偶性状态 (Parity)**
     

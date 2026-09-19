@@ -1,17 +1,19 @@
-# Welcome to MkDocs
+# cjs 的学习笔记
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+这里记录我学习运筹优化、练习算法和调整学习方法的过程。笔记重在写清楚：问题是什么、思路为什么成立、代码的边界在哪里。
 
-## Commands
+## 从这里开始
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+| 方向 | 适合先读 | 主要内容 |
+| --- | --- | --- |
+| 运筹优化 | [运筹优化笔记导读](index/or_index.md) | 从 TSP 到 CVRP、VRPTW，逐步增加约束，理解建模与求解方法。 |
+| 算法练习 | [算法笔记导读](index/algorithm_introduction.md) | 动态规划、图论、二分、回溯和数据结构中的常见模型。 |
+| 个人成长 | [个人成长](个人成长/index.md) | 学习、复盘以及维持稳定节奏的方法。 |
 
-## Project layout
+## 推荐阅读路线
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- 想了解路径优化：先读 [TSP 第一阶段](TSP/第一阶段.md)，再读 [CVRP 第一阶段](CVRP/第一阶段.md) 和 [VRPTW 模型建立](VRPTW/模型建立.md)。
+- 想复习动态规划：从 [DP 入门](算法笔记/动态规划/入门.md) 开始，再看 [0-1 背包](算法笔记/动态规划/0-1背包.md) 与 [网格图 DP](算法笔记/动态规划/网格图dp.md)。
+- 想按题型找思路：使用页面顶部的搜索，输入题号或关键词。
+
+这些文章是持续整理的学习笔记。遇到具体题目时，请结合题目约束和边界条件阅读代码。

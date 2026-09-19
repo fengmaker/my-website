@@ -1,3 +1,5 @@
+# 划分型 DP
+
 这一系列题目属于非常经典的 **“序列划分型动态规划” (Partition DP)**。
 
 这类问题的共同特征是：
@@ -19,11 +21,9 @@
 
 $f[i][j]$ 表示：将前 $j$ 个元素（下标 $0 \dots j-1$）恰好分成 $i$ 组所能达到的最优目标值（最大值或最小值）。
 
-**通用代码框架**：
+**通用伪代码框架**（`INF`、`cost` 与状态合并方式需要按题目定义）：
 
-Python
-
-```
+```text
 # 预处理 (Prefix Sum / Prefix XOR / Cost Matrix)
 # ...
 
@@ -40,10 +40,10 @@ for i in range(1, k + 1):
         # 第三重循环：枚举当前这一组的起始位置 l (即上一组的结束位置)
         # l 的范围通常是 [i-1, j-1]
         for l in range(j - 1, i - 2, -1):
-            
+
             # 1. 计算当前最后一段 (l 到 j) 的代价 cost
             # current_val = cost(l, j)
-            
+
             # 2. 状态转移
             # f[i][j] = combine(f[i][j], f[i-1][l] + current_val)
 ```

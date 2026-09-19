@@ -1,8 +1,9 @@
+# 📚 数位 DP 算法笔记
+
 这份 **数位 DP (Digit DP) 算法笔记** 旨在帮助你从“会写”进阶到“精通”，涵盖了你刚才练习的所有核心考点。
 
 ---
 
-# 📚 数位 DP 算法笔记
 
 ## 一、 核心思想
 
@@ -18,9 +19,7 @@ $$\text{Ans} = \text{calc}(R) - \text{calc}(L-1)$$
 
 这是最稳健的写法，涵盖了 `is_limit` (上界限制) 和 `is_num` (前导零处理)。
 
-Python
-
-```
+```python
 from functools import cache
 
 class Solution:
@@ -37,34 +36,34 @@ class Solution:
                 # 通常：如果填过数字(is_num)则算1个，否则算0个
                 # 有些题目这里需要检查 state 是否达标 (如 remainder == 0)
                 return 1 if is_num else 0
-            
+
             res = 0
-            
+
             # 2. 处理前导零 (跳过当前位)
             if not is_num:
                 # 保持 is_num=False，limit解除(因为位数变少了)
                 res += dfs(i + 1, state, False, False)
-            
+
             # 3. 确定填数范围
             # 这里的 start 取决于题目。
             # 大多数情况：如果还没填数字(not is_num)，这轮不能填0，只能从1开始(0的情况在上面跳过了)
             # 如果已经填过数字，可以从0开始。
             low = 1 if not is_num else 0
             up = int(s[i]) if is_limit else 9
-            
+
             # 4. 枚举当前位数字
             for d in range(low, up + 1):
                 # --- 业务逻辑 Check (剪枝) ---
                 # 例如：if d == 4: continue (不能含4)
                 # 例如：if (state >> d) & 1: continue (不能重复)
-                
+
                 # --- 状态转移 ---
                 # new_state = update(state, d)
-                res += dfs(i + 1, 
-                           new_state, 
-                           is_limit and d == up, 
+                res += dfs(i + 1,
+                           new_state,
+                           is_limit and d == up,
                            True) # 只要进循环填了数，is_num 肯定变 True
-            
+
             return res
 
         return dfs(0, 0, True, False)

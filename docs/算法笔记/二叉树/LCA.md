@@ -1,4 +1,6 @@
-这几道题构成了 LeetCode 中 **LCA（最近公共祖先）** 系列的完整版图。我们可以将这些题目总结为三个核心模型。
+# 二叉树最近公共祖先（LCA）
+
+这一组题目可以按节点是否保证存在、树是否有特殊结构等条件，分成几个模型讨论。
 
 ---
 
@@ -34,9 +36,7 @@
 - **思路**：最标准模型。遇到 $p, q$ 就返回，根据左右子树返回值判断。
     
 
-Python
-
-```
+```python
 def lowestCommonAncestor(self, root, p, q):
     if not root or root == p or root == q: return root
     left = self.lowestCommonAncestor(root.left, p, q)
@@ -52,9 +52,7 @@ def lowestCommonAncestor(self, root, p, q):
 - **思路**：不能遇到 $p$ 就立刻返回，必须**遍历完整个子树**来计数。只有计数为 2 时才返回 LCA。
     
 
-Python
-
-```
+```python
 class Solution:
     def lowestCommonAncestor(self, root, p, q):
         self.count = 0
@@ -68,7 +66,7 @@ class Solution:
                 return node
             if left and right: return node
             return left or right
-        
+
         res = dfs(root)
         return res if self.count == 2 else None
 ```
@@ -80,9 +78,7 @@ class Solution:
 - **思路**：将 `p, q` 的逻辑扩展到集合。只要当前节点在集合中，它就可能是 LCA 的一部分。
     
 
-Python
-
-```
+```python
 def lowestCommonAncestor(self, root, nodes):
     nodes_set = set(nodes)
     def dfs(node):
@@ -105,9 +101,7 @@ def lowestCommonAncestor(self, root, nodes):
 - **思路**：不需要后序遍历，直接**自顶向下**。如果 $p, q$ 都比根小，往左走；都比根大，往右走；否则当前节点就是分叉点。
     
 
-Python
-
-```
+```python
 def lowestCommonAncestor(self, root, p, q):
     while root:
         if p.val < root.val and q.val < root.val: root = root.left
@@ -122,9 +116,7 @@ def lowestCommonAncestor(self, root, p, q):
 - **思路**：这其实是**寻找两个链表的第一个交点**。让 $p$ 和 $q$ 分别向上走，走到头就交换起点，最终必会相遇。
     
 
-Python
-
-```
+```python
 def lowestCommonAncestor(self, p, q):
     a, b = p, q
     while a != b:
@@ -144,9 +136,7 @@ def lowestCommonAncestor(self, p, q):
 - **思路**：自底向上返回 `(深度, 该深度的 LCA)`。只有当左右子树高度相等时，当前节点才是暂时的 LCA。
     
 
-Python
-
-```
+```python
 def lcaDeepestLeaves(self, root):
     def dfs(node):
         if not node: return 0, None
