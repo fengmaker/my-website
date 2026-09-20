@@ -1,0 +1,10 @@
+# Preserve intentional two-space Markdown line breaks in imported articles.
+/运筹学基础/*.md -whitespace
+/离散优化/*.md -whitespace
+/应用建模/*.md -whitespace
+/求解算法/*.md -whitespace
+/路径规划/[A-Z]*.md -whitespace
+/不确定性/*.md -whitespace
+/解谜/*.md -whitespace
+/调度与生产/*.md -whitespace
+/其他专题/*.md -whitespace

@@ -1,2 +1,0 @@
-# Keep upstream Markdown spacing, including two-space line breaks.
-*.md -whitespace
