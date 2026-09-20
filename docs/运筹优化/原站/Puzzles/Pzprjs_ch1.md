@@ -28,7 +28,7 @@ https://puzz.link/p?slither/6/6/h712221dh7137158dh872d
 1. 考虑到谜题变体，完整的url设有变体段（`v:xxx/`）与 pflag 段（单个非数字字符）——它们是可选段，出现时位于 pid 之后、尺寸之前，语法见第 2 节。
 2. 世界各地的玩家对于不同谜题可能有不同的拼写，比如 **yajilin 有 `yajirin` 旧写法、akari 有 `lightup` 旧写法**，pzprjs 解析url时候会对 `pid` 做谜题路由，把输入兼容到正确的谜题解析方法中，以兼容"历史别名"，这是作为一个成熟在线工具的常见特征。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802121839391.png)
+![](../images/20260802121839391.png)
 
 我们在 [pzplus.tck.mn](https://pzplus.tck.mn/db) 上可以搜集到庞大的谜题数据，本次收集截止2026-01-29，共获得 63391 个真实谜题，覆盖250 种类型，剔除了谜题复杂变体。统计显示，**前 10 高频谜题**如下：
 
@@ -72,7 +72,7 @@ pzprjs 的 URL 解析框架负责把 URL 拆解成标准数据段。现代 v3 �
 
 pflag 还有一段完整的"历史兼容"故事：creek、gokigen、lits 曾用 `c/d` 区分 Applet 与 v3 格式；icebarn 多次改版 URL；bonsan/kramma 用 `c` 缩短 URL 等。细节在后续文章展开。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802122515513.png)
+![](../images/20260802122515513.png)
 
 除了 v3 格式，解析器还兼容多个**历史 URL 格式**：
 

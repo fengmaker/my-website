@@ -12,7 +12,7 @@
 
 同时优化这两个目标是平衡图分割（`Balanced graph partitioning`）问题。目前通常会将这两个目标同时考虑。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202503041610274.png)
+![](../../images/202503041610274.png)
 
 注意：一个有许多度的节点，在进行边分割的时候可以被切分到多个不同的集合中，而一个边只链接2个节点，这是二者一个主要区别，正是由于这种变化，**普遍认为边分割的效果比点分割更好。**
 
@@ -35,7 +35,7 @@
 
     可以参考：[Links](https://randall.math.gatech.edu/AlgsF05/nov7.pdf)
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202503041646230.png)
+    ![](../../images/202503041646230.png)
 
 ### 数学模型
 

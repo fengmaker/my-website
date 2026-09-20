@@ -19,7 +19,7 @@
 
 如下图所示，就是一个可行的任务调度方案。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202409091714901.png)
+![](../../images/202409091714901.png)
 
 > 图中有3个工作 Job 1/2/3，需要被安排在3台机器上：M 1/2/3。每个工作都有3道工序。上半部分表示工作的加工顺序约束，下半部分是从**机器视角**出发，展示每台机器上工作的加工状况。箭头表示工序约束。
 
@@ -196,7 +196,7 @@ C_{\max} \geq t_i + \sum_{k \in \mathcal{R}_i} p^k_i \alpha^k_i \quad \forall i 
 
 上述paper还阐述了几个Benchmark的情况，分析了一下每个benchmark的规模，做了一点小的总结。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202409111024357.png)
+![](../../images/202409111024357.png)
 
 比如，最后一列Flexibility，就是每个工序的可行机器的平均数量；（the average number of candidate machines for each operation）。
 
@@ -215,7 +215,7 @@ C_{\max} \geq t_i + \sum_{k \in \mathcal{R}_i} p^k_i \alpha^k_i \quad \forall i 
 
 在这种场景下，往往取消了“工作”的概念，只剩下“工序”的概念。给定一系列“工序”，每个工序都有各自可以加工的机器，这些工序之间存在非线性的先后次序关系。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202409111045996.png)
+![](../../images/202409111045996.png)
 
 如图，5工序需要在2/3工序都完成之后才能开始加工，但是，2/3都是在1工序完成后即可开始加工，这意味着可以将2/3并行地进行加工，都加工好了之后再处理工序5.
 

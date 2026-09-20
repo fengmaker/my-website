@@ -26,20 +26,20 @@
 === "Start!"
     按照 $\mu = 0$ 和 $\infty$ 的情况分别计算最优解：
     
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301650713.png)
+    ![](../../images/202512301650713.png)
 
 === "Step 2"
     基于前两个的均衡解计算 $\mu$，并计算在这个参数下的最优解；
     
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301651719.png)
+    ![](../../images/202512301651719.png)
     
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301652001.png)
+    ![](../../images/202512301652001.png)
 
 
 === "Step 3"
     继续迭代直到算法终止。
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301648563.png)
+    ![](../../images/202512301648563.png)
 
 
 ## 理论重点与核心洞察

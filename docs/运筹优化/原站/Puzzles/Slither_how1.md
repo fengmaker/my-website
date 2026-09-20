@@ -12,7 +12,7 @@
 2. 如果**尽可能少地借助暴力猜测、回溯，一个谜题该如何被求解掉？哪些规则对于求解是至关重要的**？
 3. 类似标准数独有 Elimination / Naked-Pairs / XY-Wing / Forcing-Chain 之类的求解技巧，不同技巧对应某种难度梯度，**数回谜题的难度应该如何衡量**？通过查找“一步步求解它所需要的技巧”，我们才能从逻辑难度上给出这个谜题的难度衡量方式（某一步必须通过某种推理完成），因此去追溯“求解链路”是比较重要的。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504211536064.png)
+![](../images/20260504211536064.png)
 
 > `sudokuwiki.org/XYZ_Wing`，关于数独求解技巧的解释，提供了详细的、可解释的使用方法。
 
@@ -25,7 +25,7 @@
 2. **数字规则**：每个标有数字的单元格，其四周边界中恰好有对应数量的线段属于回路
 3. **唯一性**：**合法的数回谜题有且仅有唯一解**
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504165735091.png)
+![](../images/20260504165735091.png)
 
 一个完整的数回求解逻辑，大致如上图所示，最开始的盘面，到求解的中间状态，最后是终盘。我们正好复习一下常用的标记：
 
@@ -43,7 +43,7 @@
 
 **示例**：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504170601123.png)
+![](../images/20260504170601123.png)
 
 <span style="color:#1E90FF;font-weight:bold">规则2：顶点度数规则（Vertex Degree Rule）</span>
 
@@ -55,7 +55,7 @@
 
 示例：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504171353586.png)
+![](../images/20260504171353586.png)
 
 <span style="color:#1E90FF;font-weight:bold">规则3：防止提前闭合（Prevent Premature Loop）</span>
 
@@ -63,7 +63,7 @@
 
 - 如果连接某条线段会行程某闭合回路，且该回路并不包含所有的已知连接，那么这条边界必须标记为叉号。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504172051253.png)
+![](../images/20260504172051253.png)
 
 ## 三、基础模式 (Pattern)
 
@@ -76,11 +76,11 @@
 - 连续3的两端边界必须是线段
 - 连续3之间的公共边界两侧的垂直线段（对于水平排列的3）或水平线段（对于垂直排列的3）必须是叉号
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504172644377.png)
+![](../images/20260504172644377.png)
 
 为什么？很Trivial，遍历一下组合就行了。3的格子共4种情况，做简单推理可得，其中第三种是不可行的，第四种几乎不可能在实际谜题中出现。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504173358621.png)
+![](../images/20260504173358621.png)
 
 <span style="color:#1E90FF;font-weight:bold">模式2：对角相邻的3（Diagonal Adjacent 3）</span>
 
@@ -88,11 +88,11 @@
 
 实例：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504174023508.png)
+![](../images/20260504174023508.png)
 
 现有一些基于 Pattern 进行推理的求解工具，感兴趣的伙伴可以移步 Jonathan Olson 的网站，他提供了数万种不同的基础模式，用以解决不同网格下的数回谜题。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504174724495.png)
+![](../images/20260504174724495.png)
 
 ## 四、染色 (Coloring)
 
@@ -100,7 +100,7 @@
 
 整个数回组成的回路是唯一的，是**一个若尔当曲线**。所以，整个回路一定会在整个盘面中圈出一个封闭区域。比如，下面最右图，**最终的线段包围的范围，我们默认用绿色表示，对于其他没有被包围的格子，用黄色表示**。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504165735091.png)
+![](../images/20260504165735091.png)
 
 > 若尔当曲线定律 (Jordan Curve Theorem, 1887)：每个平面单闭曲线都将平面划分为两个区域：1) 由曲线界定的内部区域；2) 包含所有近距离和远离的外部点的无界外部区域 。连接一个区域点到另一个区域点的每一条连续路径都会在某处与曲线相交。
 
@@ -125,7 +125,7 @@
 
 反之，**如果这两个边任意一个被确定为“连通”的**，也就意味着该格与虚拟黄格共享的边是“连通”态，那么这个格子一定是绿色的（与黄色格相反）。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504190245870.png)
+![](../images/20260504190245870.png)
 
 再举一例子，最后一行最中间的格子（红色标出），作为最后一行的格子，只有**一个边**处在边界上（下边），那么，它的下边和那个虚拟黄格相连。只要这个边能够被确定为连通或者不连通，这个格子的染色情况也就不言而喻了。
 
@@ -136,7 +136,7 @@
 
 做一个简单的示意图。当你对盘面做了一定推理后，通过染色机制，可以比较明确地看到整个盘面的大致情况。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504192513076.png)
+![](../images/20260504192513076.png)
 
 **这个染色机制其实暗含了两个非常强的约束**：
 
@@ -145,7 +145,7 @@
 
 上述1是显而易见的，2也很好理解，比如：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504200223861.png)
+![](../images/20260504200223861.png)
 
 上述基础的染色机制只是提供了一种盘面划分的方式，更重要的是，如何把染色落到最终“连通路”这个操作上。一个简单的思路：**染色传播**。
 
@@ -177,7 +177,7 @@
 2. 此格是绿色格，那么它有3条边必不相连，此时**有且只有一个边可连**（下边），这个连边会导致该格和下面的格子不同色；
 3. 由是，下面的无数字格得到了颜色确认，由颜色确认，可以反推出边的连接情况。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504195130437.png)
+![](../images/20260504195130437.png)
 
 
 
@@ -185,13 +185,13 @@
 
 这部分很大程度上借鉴参考了Jonathan Olson的文章。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504210451635.png)
+![](../images/20260504210451635.png)
 
 浏览器直接搜索即可找到这个blog。
 
 扇区 (Sector) 是指**一个单元格的某个顶点上的两条相邻边组成的扇形**。也就是，一个Sector指示“两条共顶点的边”的状态。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504200534129.png)
+![](../images/20260504200534129.png)
 
 我们参考 Jonathan Olson 的标记，他用一个红色小弧，表示 `OnlyOne`，用来标记“**这两条边有且仅有一个在最终答案里**。
 
@@ -204,15 +204,15 @@
 
 这个时候，我们可以定量地分析每一个格子的具体情况了，更重要的是，这种标记是可以传播的：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504201526185.png)
+![](../images/20260504201526185.png)
 
 「**解释**」：在对角顶点下，**NOT_1** 可以直接传播，因为某两个边要么0要么2，此时，对角的那两个边要么2，要么0，也就是 **NOT_1**；
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504201747101.png)
+![](../images/20260504201747101.png)
 
 「**解释**」：任何一个为 1 的格子，每个sector一定都默认为 **NOT_2**，否则违背数字约束；
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504201835678.png)
+![](../images/20260504201835678.png)
 
 「**解释**」：任何一个为 3 的格子，每个sector一定都默认为 **NOT_0**，否则凑不出3边；
 
@@ -240,7 +240,7 @@
 
 展示一部分推理结果：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504205233418.png)
+![](../images/20260504205233418.png)
 
 
 ### 扇区的组合推导
@@ -272,7 +272,7 @@
 
 上述是比较单薄的解释，更灵活的做法是根据每个格子具体的连接情况进行判断，譬如图中最后一种情况，一个边已连通，一个扇区是“NOT_1”，另一个sector则是 “NOT_2”，依然是简单假设一下即可找到共同性，不展开了。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260504210100310.png)
+![](../images/20260504210100310.png)
 
 
 ## 后续

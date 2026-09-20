@@ -220,4 +220,4 @@ $$\max -b^T v \\
 \text{s.t.} \ A^T v + c \geq 0$$
 
 !!! quote "推荐[This Link](https://zhuanlan.zhihu.com/p/597492395)，从更高的视角看整个线性规划的对偶。"
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202410162346326.png)
+    ![](../../images/202410162346326.png)

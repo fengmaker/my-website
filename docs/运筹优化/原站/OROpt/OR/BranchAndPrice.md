@@ -10,7 +10,7 @@
 
     - **问题二** ：对于主问题求解的线性规划问题，通过对决策变量四舍五入之后，得到的解**一定可以满足所有的需求吗？** 更加复杂的LP问题，怎么从LP得到IP问题的解？
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202404111531297.png)
+    ![](../../images/202404111531297.png)
 
 - ==问题1的解答== ：因为在严格的CSP的实现中，**主问题并不是解一个LP，而是求解的IP**。列生成仅仅是在生成列，减少主问题的整数变量的个数。这时候单纯形法的那些规则就不适用了。但是，只要主问题得到了一个解，就可以得出reduced cost，并不影响后面的列生成的操作。
 
@@ -94,7 +94,7 @@ $$\min \sum^n_{j} w_j C_j$$
 
 定义一个Schedule：也就是这个机器上进行工作的一个序列。注意，即使机器上进行的是相同的某些工作，这些工作的先后顺序也会构成不同的Schedule。用 $x_s$ （0-1 Binary）表示这个方案是否被选取；
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403061429767.png)
+![](../../images/202403061429767.png)
 
 
 |   标记   |                                                           含义                                                           |
@@ -243,9 +243,9 @@ def processing_bound(benchmark):
 
 从简单的Branch And Bound说起：一个简单的例子。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202404171138505.png)
+![](../../images/202404171138505.png)
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202404171138553.png)
+![](../../images/202404171138553.png)
 
 基于整数顶点进行分支。
 

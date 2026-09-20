@@ -166,7 +166,7 @@ Z. Liang*, W. A. Chaovalitwongse, A network-based model for the integrated weekl
 | $z_{mpd}$ | Integer      | 在第 $p$ 天结束时，于维修站 $m$ 经过 $d$ 天飞行后进入维修弧 $g_{mpd}$ 的飞机数量。               |
 | $w_l$     | Integer      | 地面弧 $l$ 上停场的飞机数量。                                                                    |
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202603241300674.png)
+![](../../images/202603241300674.png)
 
 ### 1.2 约束条件与目标函数 (Constraints & Objective)
 

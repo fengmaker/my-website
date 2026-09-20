@@ -125,7 +125,7 @@ $\bar z \geq z^{*} \geq  \bar z - \hat z$
 
 ## 参考笔记
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202507150148475.png)
+![](../../images/202507150148475.png)
 
 !!! quote "来自GPT：核心逻辑一句话"
 

@@ -8,7 +8,7 @@
 
 [HuggingFace🥳](https://huggingface.co/datasets/bluecoconut/pencil-puzzle-bench), [website & leaderboard 📊](https://ppbench.com).
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802234141438.png)
+![](../images/20260802234141438.png)
 
 ---
 
@@ -54,7 +54,7 @@
 | **解序无关** <br>                       | 终局唯一，但到达顺序任意，可撤销重做                          | 评测不怕"走法不同"     |
 | **多表示**                              | 同一棋盘有 ASCII / SVG / 像素图三种表示                       | 为多模态评测留后门     |
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802234228304.png)
+![](../images/20260802234228304.png)
 
 > 逻辑谜题求解过程。
 
@@ -186,7 +186,7 @@ if puzzle.is_complete():
 | **Golden 60**  | 60   | 20                                     | 3 个顶级模型的 Agentic 扩展集 |
 
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802235350222.png)
+![](../images/20260802235350222.png)
 
 > 作者的 20 类经典变体，测试 Agentic。注意标红的表示执行中途，发现矛盾、错误的位置。
 
@@ -246,7 +246,7 @@ Agentic 模式不是跑几步就算完，而是真正的长程多轮：
 | Claude Opus 4.6@thinking            | 27.3%    | 33.3%     | +6.0pp（匹配集 +4.8pp）   |
 | GPT-5.2@xhigh                       | 27.0%    | 56.0%     | +29.0pp（匹配集 +35.7pp） |
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802235142498.png)
+![](../images/20260802235142498.png)
 
 作者举例了 Claude Opus 4.6：以直问来看，它的**内部**推理几乎不存在（直问 0.3%正确率），但只要给它"能动手、能看报错"的外部闭环，成功率冲到 **30.0%**——**靠"外部脚手架"补足了"内部推理"的缺失**。而强如 GPT-5.2@xhigh，即使已经很强，也还能再靠迭代提升 35.7 个百分点。最强结果总是"深度推理 + 迭代验证"双轴叠加的结果。
 
@@ -258,7 +258,7 @@ Agentic 模式不是跑几步就算完，而是真正的长程多轮：
 - 2025 年初 o3 首次冒出 3.0% 的"非平凡"成绩；
 - **2025 年 11 月起，GPT-5 家族与推理增强模型带来爆发式增长**。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260802235543279.png)
+![](../images/20260802235543279.png)
 
 换句话说，**"不借助工具解日式逻辑谜题"是一项 2025 年底才从LLM中普遍诞生的新能力**——2024 年的模型一题都不会。没有这个基准，你很难把"模型变强了多少"量化得这么精确。
 
@@ -276,7 +276,7 @@ Sonnet 4.5 (0.0% / 3.3%)  →  Opus 4.5 (0.3% / 3.3%)  →  Opus 4.6 (0.3% / 30.
 - **更高 effort 不一定更好**：Claude Opus 4.6 默认配置（30.0%）反而胜过 @max（23.3%）。推理深度与 Agentic 有效性之间是**非单调**关系——想得太多可能适得其反。
 - **推理努力缩放惊人但带刺**：GPT-5.2 从无推理到最高 effort（xhigh），直问成功率从 0.33% 提升 81 倍到 27.0%（各档 0.33% → 2.3% → 9.3% → 20.7% → 27.0%）。但 xhigh 档有 **35% 的请求在返回前就失败了**——能力与可靠性之间出现了尖锐的权衡。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260803000210386.png)
+![](../images/20260803000210386.png)
 
 ### 5.6 解开"没人解过的变种"
 
@@ -334,7 +334,7 @@ Sonnet 4.5 (0.0% / 3.3%)  →  Opus 4.5 (0.3% / 3.3%)  →  Opus 4.6 (0.3% / 30.
 
 论文还记录了基础设施的系统性极限：xhigh 的失败并非随机网络抖动，**100% 的失败集中在 1–4 小时区间，62% 的峰值在 2–3 小时**——指向服务端约 2.5–3 小时的硬超时。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260803000333692.png)
+![](../images/20260803000333692.png)
 
 附录里作者给出了 Agentic 下 Token 燃烧的情况。Claude 4.6 的 Agentic 模式把求解成功率从几乎没有，拔高到了 23.3%，但是付出的代价是每次约 169.27 \$ 的成本。
 
@@ -374,7 +374,7 @@ Sonnet 4.5 (0.0% / 3.3%)  →  Opus 4.5 (0.3% / 3.3%)  →  Opus 4.6 (0.3% / 30.
 
 当然了，如果你不喜欢这些技术细节，只想看个好玩，你可以访问作者自己搭建的这个网站，动态更新着不同 LLM 在这些逻辑谜题上的分数：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260803001636120.png)
+![](../images/20260803001636120.png)
 
 ---
 

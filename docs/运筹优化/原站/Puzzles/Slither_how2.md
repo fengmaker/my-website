@@ -33,7 +33,7 @@
 
 示例如下：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512210434734.png)
+![](../images/20260512210434734.png)
 
 从左往右：数字格为 1，有一个sector两边都被 cross，那么剩下的那个sector必定是 **ONLY_1**； 
 
@@ -60,11 +60,11 @@
 
 <span style="color:#1E90FF;font-weight:bold">若 A 格为 ONLY_1，那么 B 也是 ONLY_1</span>.
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512214251164.png)
+![](../images/20260512214251164.png)
 
 <span style="color:#1E90FF;font-weight:bold">若 A 格为 NOT_0，那么 B 一定是 NOT_2 </span>.
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512214757565.png)
+![](../images/20260512214757565.png)
 
 <span style="color:#1E90FF;font-weight:bold">若 A 格为 NOT_1，那么 B 也是 NOT_1 </span>.
 
@@ -80,7 +80,7 @@
 
 <span style="color:#1E90FF;font-weight:bold">如果两个对角相邻的格子颜色不同，那么他们所夹外侧的 Sector 必然是 ONLY_1 的。</span>
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512211701514.png)
+![](../images/20260512211701514.png)
 
 **就算我们忽略掉现有的 Cross 和 Line，不借助任何数字，我们依然可以做出上述推断**。这是显而易见的。我们记上图4个格子分别 (0,0), (0,1), (1,0), (1,1)。。
 
@@ -94,7 +94,7 @@
 
 <span style="color:#1E90FF;font-weight:bold">如果两个对角相邻的格子颜色相同，那么他们所夹外侧的 Sector 必然是  NOT_1 的。</span>
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512213008844.png)
+![](../images/20260512213008844.png)
 
 
 同样关注两个绿色格子。我们先不看数字 2 个字的推断是怎么实现的，我们只用关注斜向同色格子导致最中间顶点的两个 Sector 为 NOT_1。原理同上。罗列一下为 1 的情况即可反证。
@@ -139,15 +139,15 @@
 
 比如，下图是一个大图中的局部示意图，会构成子环路的地方必须被删掉。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512222436916.png)
+![](../images/20260512222436916.png)
 
 ---
 
 基于局部策略的推断、常用的标记语言，两篇文章基本介绍完了，但是如果试图实现一个基于规则和分步推断的Slitherlink 求解工具，**看看僵硬的规则在强大而精巧的谜题前无能为力的时候，你就知道这个谜题的乐趣了**，试举几例：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512224118012.png)
+![](../images/20260512224118012.png)
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260512224136868.png)
+![](../images/20260512224136868.png)
 
 原因很简单，再怎么折腾这些局部推断，最好的情况也只是从全盘的不同区域向内进行推理，但是并不能保证我们获得一个全局层面的感知，**有的推理，尤其是连通性、染色/同色/异色性，依赖于更加强大的分析求解工具**，而那或许是第三篇文章的内容了。
 

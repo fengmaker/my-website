@@ -16,11 +16,11 @@
 ## 从单纯形法开始
 
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403271241367.png)
+![](../../images/202403271241367.png)
 
 左右两个线性规划问题，LP2只是增加了两个变量，单纯形表引入了两个新列，但是都是非基变量，加入两个列之后对最优解没有影响。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403271244195.png)
+![](../../images/202403271244195.png)
 
 
 在实际中，可能存在一系列问题，他们的列很多，没有办法把这些列枚举穷尽完，而单纯形法在出入基操作上**每次都需计算检验数**，需要显式地对入基的列进行计算。 
@@ -59,7 +59,7 @@
 
 这个问题最初是前苏联科学家Kantorovich提出并建模的，最初的模型与现在略有不同，也更加复杂一点，先展开目前我们最常用的解决方法。
 
-![切法示例](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403252152597.png)
+![切法示例](../../images/202403252152597.png)
 
 比如，对于原料木板，列出一些**切割方法**（Cutting Pattern）。什么是切割方法？比如，对于 **一个** 9寸的木板，我们可以这样切：
 
@@ -209,7 +209,7 @@ if $\max \sum_i \omega_i a_{ij} - c_k > 0$ , pattern is good, add to RMP.
 
 我们可以把整个求解过程罗列如下：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403281535739.png)
+![](../../images/202403281535739.png)
 
 
 --------------
@@ -364,7 +364,7 @@ a_{ij} \in Z^*
 把箱子看成CSP问题中的原料木材，把货物看作是目标木材，货物重量看作目标木材的长度。在这种情境下的 Bin-Packing Problem **实际上就是CSP问题**。
 
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403281517188.png)
+![](../../images/202403281517188.png)
 
 
 
@@ -388,7 +388,7 @@ $$\min \sum^n_{j} w_j c_j$$
 
 定义一个Schedule：也就是这个机器上进行工作的一个序列。注意，即使机器上进行的是相同的某些工作，这些工作的先后顺序也会构成不同的Schedule。用 $x_s$ （0-1 Binary）表示这个方案是否被选取；
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202403061429767.png)
+![](../../images/202403061429767.png)
 
 
 - 一些参数：

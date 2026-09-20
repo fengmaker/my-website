@@ -14,7 +14,7 @@
 
 事实上已经有一些文献做了一些划分。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202510221537373.png)
+![](../../images/202510221537373.png)
 
 ## Models
 
@@ -230,7 +230,7 @@ TBD.
 
 同样地，每一个顾客都有时间窗，每一个顾客都有载重量。车辆也有载重量。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202412291859702.png)
+![](../../images/202412291859702.png)
 
 > 图中的 `L` 就是先访问的 `linehauls`，`B` 是后访问的 `backhauls` 顾客们。
 

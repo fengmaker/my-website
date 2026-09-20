@@ -69,7 +69,7 @@ x_{ij} = 0 \text{ or } 1 \quad \text{for all } (i,j) \in A
 
 一个图示为：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301453268.png)
+![](../../images/202512301453268.png)
 
 我们来试着解决这个问题。
 
@@ -157,21 +157,21 @@ $$L(\lambda) \leq z^*(\lambda) \leq z^* \quad \forall \lambda \geq 0$$
 我们甚至可以给 \lambda 取不同的值，来看一下解的情况：
 
 === "$\lambda = 1$"
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301523675.png)
+    ![](../../images/202512301523675.png)
 
 === "$\lambda = 2$"
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301522797.png)
+    ![](../../images/202512301522797.png)
 
 === "$\lambda = 5$"
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301523887.png)
+    ![](../../images/202512301523887.png)
 
 === "Objective Value with diff values of $\lambda$"
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301534291.png)
+    ![](../../images/202512301534291.png)
 
 我们如果把这种基于参数 $\lambda$ 的分析做得更细，就能找到随着 $\lambda$ 变化，最优解的变化，以及，最优解的构成变化，如下：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301527490.png)
+![](../../images/202512301527490.png)
 
 上面提到过，$L(\lambda)$ 问题构成了原问题的下界，所以，为了让我们目前拍脑袋找到的解**尽可能**贴近原问题的解，我们需要让这个下界**尽可能地高**，要是能直接碰到原问题，就最好了，这也就是经常看到的一些课件里一笔带过说的那个：
 
@@ -255,7 +255,7 @@ $$L^* = \max(L(\mu) : \mu \in \mathbb{R}^n)$$
 
 很多时候，我们并不知道一个好的惩罚项 $\lambda$ 在哪。比如如果一个人拍脑袋把上述约束最短路的 $\lambda$ 定为 13，会发现差得很远，这就不是一个紧的 $\lambda$：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301600326.png)
+![](../../images/202512301600326.png)
 
 
 ## 案例: 旅行商问题 TSP 
@@ -299,7 +299,7 @@ $$c'_e = c_{ij} + \mu_i + \mu_j$$
 
 这个解法解下来类似：
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512301611654.png)
+![](../../images/202512301611654.png)
 
 
 ### 5. 另一种更高级的松弛方式（子巡回消除）

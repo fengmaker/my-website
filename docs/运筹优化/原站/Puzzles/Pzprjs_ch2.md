@@ -12,7 +12,7 @@ http://pzv.jp/p.html?slither/10/10/gb812c8bj6887ccc2ci812d337bi0ccc8867cj7d017dd
 
 上面的 URL 中，`?` 之后依次是 `pid / cols / rows / body`。这篇长仅 45 字符的 body，压缩了一张 **10×10**、含 **40** 个数字的 Slitherlink 盘面。它是怎么做到的？下面逐步拆解。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260809163228737.png)
+![](../images/20260809163228737.png)
 
 ---
 
@@ -124,13 +124,13 @@ http://pzv.jp/p.html?slither/10/10/gb812c8bj6887ccc2ci812d337bi0ccc8867cj7d017dd
 | 17   | 4      | 已攒满 count              | `h` `e` | `(2+15)=17='h'`，再写 `10+4='e'`，跳 2 格            |
 | 20   | —      | 循环结束，count=0         | —       | 无尾随空段                                           | -->  |
 
-<!-- ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260809171158534.png) -->
+<!-- ![](../images/20260809171158534.png) -->
 
 逐字符拼出 body：`2 6 d i c a h e` → **`26dicahe`**。
 
 整条 URL 为 `slither/5/4/26dicahe`。解码后格子序列为 `2, 1, -1, 3, -1, -1, -1, -1, -1, 2, -1, -1, 0, -1, -1, -1, -1, 4, -1, -1`（`-1` 表示空格），正是上面这张盘面，完全一致。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260809165518390.png)
+![](../images/20260809165518390.png)
 
 
 两个更小的例子（便于在脑中核对），恰好补齐上面未涉及的两种边界：20 格封顶与尾随空段——
@@ -195,7 +195,7 @@ http://pzv.jp/p.html?slither/10/10/gb812c8bj6887ccc2ci812d337bi0ccc8867cj7d017dd
 shakashaka/10/10/cl.scj.n.kbicjch2bh.ibtbk.g
 ```
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260809164630575.png)
+![](../images/20260809164630575.png)
 
 > 求解过程
 
@@ -255,7 +255,7 @@ shakashaka/10/10/cl.scj.n.kbicjch2bh.ibtbk.g
 | `.`       | 黑墙 | c98(10,9) = # | 无数字黑块                 |
 | `g`       | g–z  | —             | 空段 1：c99                |
 
-<!-- ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/20260809171125397.png) -->
+<!-- ![](../images/20260809171125397.png) -->
 
 **Shakashaka 特有的黑块表示**，归纳三点：
 

@@ -422,7 +422,7 @@ $$ c_{ij}^{\pi^*} \geq 0, \quad \forall (i, j) \in G(x^*) $$
     5.  **丢弃**：弧 $(j', n+1)$，脏餐巾不再清洗，费用 $0$。
     6.  **循环流**：添加弧 $(n+1, 0)$，费用 $0$，使网络形成循环流 (Circulation)，便于求解。
 
-![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202603141827633.png)
+![](../../images/202603141827633.png)
 
 这就能构成一个对应关系表，映射到最小费用流上：
 

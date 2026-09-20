@@ -63,7 +63,7 @@ $$\begin{align}
 
 !!! example "举个例子"
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202507060003792.png)
+    ![](../../images/202507060003792.png)
 
     总共有7个航班，其OD分别给出，也包括其起飞和结束时间和其在一周内的安排。
 
@@ -121,7 +121,7 @@ $$\begin{align}
     
     为了编制成周度计划，还需要一些额外的置位（因为有些航班是仅在特定日期飞，也就是：
 
-    ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202507060035068.png)
+    ![](../../images/202507060035068.png)
 
 
 ## Pair Generation 
