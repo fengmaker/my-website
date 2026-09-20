@@ -31,4 +31,4 @@ Dantzig–Wolfe（DW）分解先识别“容易处理的局部可行域”和把
 
 在路径问题中，可以把一条完整可行路径视为一列。这样，复杂的单车约束进入路径生成过程，客户覆盖约束留在主问题。对照 [VRPTW 的 DW 分解笔记](../../VRPTW/dw分解.md)，重点看主问题、对偶价格、定价子问题各自负责什么。
 
-参考整理：[列生成方法](https://smilingwayne.github.io/me/OROpt/OR/Chapter12/)与[DW 分解](https://smilingwayne.github.io/me/OROpt/OR/DWDcmp/)，笑笑的站。
+参考整理：站内归档的[列生成方法](../原站/OROpt/OR/Chapter12.md)与[DW 分解](../原站/OROpt/OR/DWDcmp.md)，笑笑的站。

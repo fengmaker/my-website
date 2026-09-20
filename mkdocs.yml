@@ -21,6 +21,11 @@ theme:
     - content.code.copy      # 开启代码块复制功能
 # 扩展功能（Markdown 语法增强）
 markdown_extensions:
+  - meta
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight: # 代码高亮
@@ -28,7 +33,24 @@ markdown_extensions:
       linenums: true     #  显示行号，方便以后对代码进行引用
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition # 提示块（那种带颜色的 Note/Warning 框）
   - toc:
       permalink: true # 标题旁边的锚点链接
@@ -46,41 +68,122 @@ nav:
       - 写在前面: 个人成长/index.md
       - 学习与复盘: 个人成长/学习与复盘.md
       - 作息与精力: 个人成长/作息与精力.md
-  # --- 运筹优化学习路线 ---
+  # --- 运筹优化学习路线与原站资料 ---
   - 运筹优化:
-      - 学习路线: index/or_index.md
+    - 学习路线: index/or_index.md
+    - 本站导读:
       - 基础建模:
-          - 线性规划与对偶: 运筹优化/基础建模/线性规划与对偶.md
-          - 整数规划与松弛: 运筹优化/基础建模/整数规划与松弛.md
-          - 0-1 变量建模: 运筹优化/基础建模/0-1变量建模.md
+        - 线性规划与对偶: 运筹优化/基础建模/线性规划与对偶.md
+        - 整数规划与松弛: 运筹优化/基础建模/整数规划与松弛.md
+        - 0-1 变量建模: 运筹优化/基础建模/0-1变量建模.md
       - 图与离散优化:
-          - 最短路与网络流: 运筹优化/图与离散优化/最短路与网络流.md
-          - 分支定界: 运筹优化/图与离散优化/分支定界.md
+        - 最短路与网络流: 运筹优化/图与离散优化/最短路与网络流.md
+        - 分支定界: 运筹优化/图与离散优化/分支定界.md
       - 求解方法:
-          - 列生成与 DW 分解: 运筹优化/求解方法/列生成与DW分解.md
-      - 路径规划:
-          - 问题谱系: 运筹优化/路径规划/问题谱系.md
-          - TSP 专题:
-              - 第一阶段: TSP/第一阶段.md
-              - 第二阶段: TSP/第二阶段.md
-              - 第三阶段: TSP/第三阶段.md
-              - 第四阶段: TSP/第四阶段.md
-              - 精确算法: TSP/精确算法.md
-              - 启发式算法: TSP/启发式算法.md
-          - CVRP 专题:
-              - 发展综述: CVRP/发展.md
-              - 第一阶段: CVRP/第一阶段.md
-              - 第二阶段: CVRP/第二阶段.md
-              - 第三阶段: CVRP/第三阶段.md
-              - 第四阶段: CVRP/第四阶段.md
-              - 启发式算法: CVRP/启发式算法.md
-          - VRPTW 专题:
-              - 发展路线: VRPTW/发展路线.md
-              - 研究方案: VRPTW/研究方案.md
-              - 模型建立: VRPTW/模型建立.md
-              - 路线规划: VRPTW/路线.md
-              - 精确算法: VRPTW/精确算法.md
-              - DW分解 (Dantzig-Wolfe): VRPTW/dw分解.md
+        - 列生成与 DW 分解: 运筹优化/求解方法/列生成与DW分解.md
+    - 原站栏目介绍（归档）: 运筹优化/原站/OROpt/index.md
+    - 给进组研一er的 Brief（原站）: 运筹优化/原站/OROpt/OR/Intro.md
+    - 运筹学基础:
+      - 原站基础目录: 运筹优化/原站/OROpt/OR/index.md
+      - 运筹学刷题本: 运筹优化/原站/OROpt/OR/ORExercise/Works.md
+      - 线性规划、单纯形法（plus pro max版）: 运筹优化/原站/OROpt/OR/Chapter1.md
+      - 灵敏度分析（太敏感了）: 运筹优化/原站/OROpt/OR/Chapter1_plugin.md
+      - 对偶理论及对偶单纯形法（一种哲学）: 运筹优化/原站/OROpt/OR/Chapter2.md
+      - 线性规划对偶的解题向写法: 运筹优化/原站/OROpt/OR/Chapter3_ext1.md
+      - 运输问题: 运筹优化/原站/OROpt/OR/Chapter3.md
+      - 多目标规划: 运筹优化/原站/OROpt/OR/Chapter3_ext2.md
+      - 数据包络分析与扩展: 运筹优化/原站/OROpt/OR/Chapter3_plugin.md
+      - 整数规划、求解算法和指派问题: 运筹优化/原站/OROpt/OR/Chapter4.md
+      - 非线性规划、凸规划理论: 运筹优化/原站/OROpt/OR/Chapter5.md
+      - 最优化基础（锥锥们觉得很赞）: 运筹优化/原站/OROpt/OR/Chapter5_1.md
+      - 动态规划: 运筹优化/原站/OROpt/OR/Chapter6.md
+      - 图的搜索: 运筹优化/原站/OROpt/OR/Chapter7_0.md
+      - 图论算法:最短路问题: 运筹优化/原站/OROpt/OR/Chapter7.md
+      - 图论算法:最小费用流与推广: 运筹优化/原站/OROpt/OR/Chapter7_1.md
+      - 图论算法:最大流与最小割: 运筹优化/原站/OROpt/OR/Chapter7_2.md
+      - 图论算法:极大团与独立集: 运筹优化/原站/OROpt/OR/Chapter7_3.md
+      - 图论算法:二分图与匹配问题: 运筹优化/原站/OROpt/OR/Chapter7_4.md
+      - 图论建模:多商品网络流: 运筹优化/原站/OROpt/OR/Chapter7_5.md
+      - 排队论: 运筹优化/原站/OROpt/OR/Chapter9.md
+      - 仓储论（EOQ模型和它的一万个分身）: 运筹优化/原站/OROpt/OR/Chapter10.md
+      - 博弈论: 运筹优化/原站/OROpt/OR/Chapter11.md
+      - 多智能体寻路(MAPF): 运筹优化/原站/OROpt/OR/MAPF.md
+      - 对偶与拉格朗日理论: 运筹优化/原站/OROpt/OR/DualityLagrangian.md
+      - 常见的 0-1 变量处理技巧: 运筹优化/原站/OROpt/OR/GeneralTechnique.md
+    - 离散优化:
+      - 复习｜复杂度理论: 运筹优化/原站/OROpt/DiscreteOpt/Ch_01.md
+      - 复习｜更整洁的图论基础: 运筹优化/原站/OROpt/DiscreteOpt/Ch_02.md
+      - 复习｜更干货的线性规划: 运筹优化/原站/OROpt/DiscreteOpt/Ch_03.md
+      - 知识｜更紧凑的模型表达: 运筹优化/原站/OROpt/DiscreteOpt/Ch_04.md
+      - 知识｜更详细的分支定界: 运筹优化/原站/OROpt/DiscreteOpt/Ch_05.md
+      - 知识｜更易解的组合优化: 运筹优化/原站/OROpt/DiscreteOpt/Ch_06.md
+      - 知识｜更深入的平面切割: 运筹优化/原站/OROpt/DiscreteOpt/Ch_07.md
+      - 知识｜更巧妙的分解方法: 运筹优化/原站/OROpt/DiscreteOpt/Ch_08.md
+      - 知识｜更灵活的动态规划: 运筹优化/原站/OROpt/DiscreteOpt/Ch_09.md
+      - 图同构问题: 运筹优化/原站/OROpt/OR/Isomorphism.md
+    - 应用建模:
+      - 最大割问题｜MaxCut: 运筹优化/原站/OROpt/OR/Max_k_cut.md
+      - 航班分配｜FAP: 运筹优化/原站/OROpt/OR/FAP.md
+      - 机组排班｜CS: 运筹优化/原站/OROpt/OR/CrewSch.md
+      - 拉格朗日松弛｜LR: 运筹优化/原站/OROpt/OR/LR.md
+    - 求解算法:
+      - 图划分问题｜GP: 运筹优化/原站/OROpt/OR/GraphPartition.md
+      - 拉格朗日松弛｜LR: 运筹优化/原站/OROpt/OR/LR_2.md
+      - 列生成方法｜CG: 运筹优化/原站/OROpt/OR/Chapter12.md
+      - DW分解: 运筹优化/原站/OROpt/OR/DWDcmp.md
+      - 分支定价-CSP: 运筹优化/原站/OROpt/OR/BranchAndPrice.md
+      - 分支定价-VRP: 运筹优化/原站/OROpt/OR/ExactVRP.md
+      - Benders 分解: 运筹优化/原站/OROpt/OR/BendersDcpt.md
+      - Dijkstra 的桶优化: 运筹优化/原站/OROpt/OR/ORExercise/Bucket_opt_SPP.md
+    - 路径规划:
+      - 问题谱系: 运筹优化/路径规划/问题谱系.md
+      - TOP: 运筹优化/原站/OROpt/OR/TOP.md
+      - TSP: 运筹优化/原站/OROpt/OR/TSP.md
+      - VRP: 运筹优化/原站/OROpt/OR/VRP.md
+      - PDP: 运筹优化/原站/OROpt/OR/PDP.md
+      - IRP: 运筹优化/原站/OROpt/OR/IRP.md
+      - TSP 专题:
+        - 第一阶段: TSP/第一阶段.md
+        - 第二阶段: TSP/第二阶段.md
+        - 第三阶段: TSP/第三阶段.md
+        - 第四阶段: TSP/第四阶段.md
+        - 精确算法: TSP/精确算法.md
+        - 启发式算法: TSP/启发式算法.md
+      - CVRP 专题:
+        - 发展综述: CVRP/发展.md
+        - 第一阶段: CVRP/第一阶段.md
+        - 第二阶段: CVRP/第二阶段.md
+        - 第三阶段: CVRP/第三阶段.md
+        - 第四阶段: CVRP/第四阶段.md
+        - 启发式算法: CVRP/启发式算法.md
+      - VRPTW 专题:
+        - 发展路线: VRPTW/发展路线.md
+        - 研究方案: VRPTW/研究方案.md
+        - 模型建立: VRPTW/模型建立.md
+        - 路线规划: VRPTW/路线.md
+        - 精确算法: VRPTW/精确算法.md
+        - DW分解 (Dantzig-Wolfe): VRPTW/dw分解.md
+    - 不确定性:
+      - SAA: 运筹优化/原站/OROpt/OR/SAA.md
+    - 解谜:
+      - 一种高效求解环路类逻辑谜题的方法: 运筹优化/原站/OROpt/OR/CPSAT/CPSAT_1.md
+      - 涂色类谜题连通性的两种刻画方法: 运筹优化/原站/OROpt/OR/CPSAT/CPSAT_2.md
+      - 让LLM逐步解决纸笔逻辑谜题: 运筹优化/原站/Puzzles/Pencil_puzzle_bench.md
+      - pzprjs编码规则详解:
+        - 总览｜pzprjs的URL构成: 运筹优化/原站/Puzzles/Pzprjs_ch1.md
+        - 4Cell｜数回的紧凑编码: 运筹优化/原站/Puzzles/Pzprjs_ch2.md
+      - 「应该」如何求解数回｜一: 运筹优化/原站/Puzzles/Slither_how1.md
+      - 「应该」如何求解数回｜二: 运筹优化/原站/Puzzles/Slither_how2.md
+      - 「应该」如何求解数回｜三: 运筹优化/原站/Puzzles/Slither_how3.md
+    - 调度与生产:
+      - 车间调度 (JSP): 运筹优化/原站/OROpt/OR/JSP.md
+      - 发电机组调度(UCP): 运筹优化/原站/OROpt/OR/UnitCommitmentProblem.md
+      - 批量生产 (LSP): 运筹优化/原站/OROpt/OR/LotSizingProblem.md
+    - 其他专题:
+      - 其他｜理论知识: 运筹优化/原站/OROpt/OR/Interview.md
+      - 当组合优化遇到深度学习: 运筹优化/原站/OROpt/OR/VRPmeetsNeurIPS.md
+      - 有趣的优化问题: 运筹优化/原站/OROpt/OR/Interesting.md
+    - 来源与许可: 运筹优化/来源与许可.md
 
   # --- 基础算法专题 (LeetCode/求职方向) ---
   - LeetCode笔记:
