@@ -283,6 +283,14 @@ def check_tag_policy(policy_path: Path, files: list[Path], docs_dir: Path) -> li
                 raise ValueError(f"{key} must be a list of non-empty strings")
         if not policy["allowed"] or len(set(policy["allowed"])) != len(policy["allowed"]):
             raise ValueError("allowed must contain unique tag names")
+        aliases = policy.get("aliases", {})
+        if not isinstance(aliases, dict):
+            raise ValueError("aliases must be a mapping")
+        for alias, canonical in aliases.items():
+            if (not isinstance(alias, str) or not alias.strip() or alias != alias.strip()
+                    or alias in policy["allowed"] or not isinstance(canonical, str)
+                    or canonical not in policy["allowed"]):
+                raise ValueError("aliases must map non-canonical names to allowed tag names")
     except (yaml.YAMLError, ValueError) as exc:
         return [f"{policy_path.name}: invalid tag policy: {exc}"]
 
@@ -306,7 +314,10 @@ def check_tag_policy(policy_path: Path, files: list[Path], docs_dir: Path) -> li
         elif isinstance(tags, list):
             for tag in tags:
                 if isinstance(tag, str) and tag not in allowed:
-                    errors.append(f"{display}: unknown tag {tag!r}; update {policy_path.name} deliberately")
+                    if tag in aliases:
+                        errors.append(f"{display}: non-canonical tag {tag!r}; use {aliases[tag]!r}")
+                    else:
+                        errors.append(f"{display}: unknown tag {tag!r}; update {policy_path.name} deliberately")
     return errors
 
 

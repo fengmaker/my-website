@@ -11,3 +11,97 @@
   overflow-x: auto;
   padding-block: 0.25rem;
 }
+
+/* Linked knowledge flow: native anchors work with instant navigation and keyboards. */
+.md-typeset .knowledge-map {
+  margin-block: 1.25rem;
+}
+
+.md-typeset .knowledge-map > ol {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset .knowledge-map > ol > li {
+  position: relative;
+  margin: 0;
+}
+
+.md-typeset .knowledge-map > ol > li:not(:last-child)::after {
+  position: absolute;
+  inset-inline-end: -0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--md-default-fg-color--light);
+  content: "→";
+}
+
+.md-typeset a.knowledge-map__node {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 6.5rem;
+  padding: 0.65rem 0.45rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.3rem;
+  background: var(--md-code-bg-color);
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.md-typeset a.knowledge-map__node br {
+  display: none;
+}
+
+.md-typeset a.knowledge-map__node span {
+  margin-top: 0.35rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.64rem;
+  word-break: keep-all;
+}
+
+.md-typeset a.knowledge-map__node:hover,
+.md-typeset a.knowledge-map__node:focus-visible {
+  border-color: var(--md-accent-fg-color);
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.md-typeset .knowledge-map__feedback {
+  margin: 0.9rem 0 0;
+  padding: 0.65rem 0.8rem;
+  border-inline-start: 3px solid var(--md-primary-fg-color);
+  background: var(--md-code-bg-color);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 59.984375em) {
+  .md-typeset .knowledge-map > ol {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+  }
+
+  .md-typeset a.knowledge-map__node {
+    min-height: 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .md-typeset a.knowledge-map__node span {
+    font-size: 0.7rem;
+  }
+
+  .md-typeset .knowledge-map > ol > li:not(:last-child)::after {
+    inset-inline-end: 50%;
+    top: auto;
+    bottom: -1.25rem;
+    transform: translateX(50%);
+    content: "↓";
+  }
+}

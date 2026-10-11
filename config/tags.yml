@@ -74,3 +74,14 @@ allowed:
 - GMRP
 - 作品集
 - 实验结果
+# Rejected aliases with actionable canonical-name suggestions. Not extra tags.
+aliases:
+  CPSAT: CP-SAT
+  CP SAT: CP-SAT
+  DW分解: DW 分解
+  Dantzig-Wolfe 分解: DW 分解
+  Branch and Price: 分支定价
+  启发式: 启发式算法
+  Heuristics: 启发式算法
+  GMRP-ALNS: GMRP
+  实测结果: 实验结果

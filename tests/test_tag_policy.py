@@ -42,6 +42,32 @@ class TagPolicyTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn("invalid tag policy", errors[0])
 
+    def test_alias_is_rejected_with_canonical_suggestion(self):
+        errors = self.check(
+            {"a.md": "---\ntags: [CPSAT]\n---\n# A", "b.md": "---\ntags: [CP-SAT]\n---\n# B"},
+            "required: ['*.md']\nexclude: []\nallowed: [CP-SAT]\naliases: {CPSAT: CP-SAT}\n",
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("non-canonical tag 'CPSAT'; use 'CP-SAT'", errors[0])
+
+    def test_aliases_respect_content_scope_and_exclusions(self):
+        self.assertEqual(self.check(
+            {"OR/a.md": "---\ntags: [CP-SAT]\n---\n# A",
+             "OR/index.md": "---\ntags: [CPSAT]\n---\n# Utility",
+             "other.md": "---\ntags: [CPSAT]\n---\n# Other"},
+            "required: ['OR/*.md']\nexclude: ['OR/index.md']\nallowed: [CP-SAT]\naliases: {CPSAT: CP-SAT}\n",
+        ), [])
+
+    def test_invalid_alias_definitions_fail_actionably(self):
+        for aliases in ("[]", "{CPSAT: missing}", "{CP-SAT: CP-SAT}", "{' CPSAT': CP-SAT}", "{CPSAT: [CP-SAT]}"):
+            with self.subTest(aliases=aliases):
+                errors = self.check(
+                    {"a.md": "# A"},
+                    "required: ['*.md']\nexclude: []\nallowed: [CP-SAT]\naliases: " + aliases + "\n",
+                )
+                self.assertEqual(len(errors), 1)
+                self.assertIn("invalid tag policy", errors[0])
+
 
 if __name__ == "__main__":
     unittest.main()
