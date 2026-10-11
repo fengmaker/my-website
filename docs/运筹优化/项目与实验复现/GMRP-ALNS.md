@@ -15,7 +15,7 @@ search:
 
 [GitHub 仓库](https://github.com/fengmaker/GMRP-ALNS) · [结果观察表](../../assets/projects/gmrp/m7-observations.csv) · [主方法汇总](../../assets/projects/gmrp/m7-methods.csv) · [来源与 SHA-256](../../assets/projects/provenance.json)
 
-本页整理本人项目已经完成的归档实测，核查日期为 2026-10-11。本次建站核对记录和哈希、重新汇总并作图，没有重跑求解器。来源为本人本地仓库快照 `0ce7fd206124`；公开仓库接口本次返回 404，本站提供的结果表仍可直接下载。M7 实验源码冻结于 `ee29875c39c1`，与后续文档快照分别记录。
+本页整理本人项目已经完成的归档实测，核查日期为 2026-10-11。本次建站核对记录和哈希、重新汇总并作图，没有重跑求解器。材料核查采用本人本地仓库快照 `0ce7fd206124`，源码现已公开。M7 实验源码冻结于 `ee29875c39c1`，与后续文档快照分别记录。
 
 ## 问题与实现
 
@@ -110,4 +110,4 @@ python -m gmrp_alns.experiments report results/m7 results/report/m7-regen
     python -m gmrp_alns.experiments report results/runs/m7-local results/report/m7-local
     ```
 
-核查来源：[M7 协议与验证记录](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/m7_verification.md)、[发布审计](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/release_audit_v1.0.0.md)、[复现说明](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/reproducibility.md)。上述源码链接当前公开访问受限；本站[来源清单](../../assets/projects/provenance.json)保留固定版本和原文件哈希。返回[个人作品集](index.md)，方法基础见[通用启发式搜索](../求解算法体系/通用启发式搜索.md)与 [CP-SAT 建模入门](../求解算法体系/CP-SAT建模入门.md)。
+核查来源：[M7 协议与验证记录](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/m7_verification.md)、[发布审计](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/release_audit_v1.0.0.md)、[复现说明](https://github.com/fengmaker/GMRP-ALNS/blob/0ce7fd2061240144d9430d417070fe8951de7113/docs/reproducibility.md)。本站[来源清单](../../assets/projects/provenance.json)保留固定版本和原文件哈希。返回[个人作品集](index.md)，方法基础见[通用启发式搜索](../求解算法体系/通用启发式搜索.md)与 [CP-SAT 建模入门](../求解算法体系/CP-SAT建模入门.md)。
