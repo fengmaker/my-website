@@ -1,6 +1,11 @@
+---
+search:
+  boost: 2
+---
+
 # 运筹优化：知识体系与学习地图
 
-这部分按“理论 → 方法 → 问题 → 实现 → 项目”的主线组织，面向运筹优化算法的系统学习与工程实践。大部分既有内容参考[笑笑的站](https://smilingwayne.github.io/me/OROpt/)；我会随着学习加入自己的理解并持续修订。引用内容的来源与授权信息见文末“参考资料与许可”。
+这部分按“理论 → 方法 → 问题 → 实现 → 项目”的主线组织，面向运筹优化算法的系统学习与工程实践。大部分既有内容参考[笑笑的站](https://smilingwayne.github.io/me/OROpt/)；我会随着学习加入自己的理解并持续修订。引用内容的来源与授权信息见[参考资料与许可](../运筹优化/资料库与面试/参考资料与许可.md)。
 
 ## 六个知识模块
 
@@ -26,31 +31,4 @@
 
 未完成的 CP-SAT 通用教程、独立 FJSP Solver、鲁棒优化等逐步补充；项目方案与实测成果分别标记，不为未来主题建立空目录。新项目采用[专题与实验记录模板](../运筹优化/项目与实验复现/专题与实验记录模板.md)。
 
-??? info "参考资料与许可"
-    本栏主要参考 [SmilingWayne/me](https://github.com/SmilingWayne/me/tree/371cfb49f7f9b0c2ee1c25a69a81352deae3558b) 的“运筹与优化”内容，作者 SmilingWayne。配图主要来自 [SmilingWayne/picsrepo](https://github.com/SmilingWayne/picsrepo)，另有一张来自 [博客园原图](https://img2018.cnblogs.com/blog/1903168/201912/1903168-20191220004845529-3040599.jpg)。
-
-    原文档的 MIT 许可声明如下：
-
-    ```text
-    MIT License
-
-    Copyright (c) 2023 SmilingWayne
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-    ```
+来源说明和完整 MIT 声明见[参考资料与许可](../运筹优化/资料库与面试/参考资料与许可.md)。

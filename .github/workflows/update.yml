@@ -27,5 +27,9 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r requirements.txt
+      - name: Check documentation quality
+        run: |
+          python -B -m unittest discover -s tests -p "test_*.py"
+          python -B scripts/check_docs.py --report
       - run: mkdocs build --strict
       - run: mkdocs gh-deploy --force

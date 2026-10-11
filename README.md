@@ -9,11 +9,16 @@ python -m pip install -r requirements.txt
 python -m mkdocs serve
 ```
 
-打开终端显示的本地地址查看页面。提交前运行：
+打开终端显示的本地地址查看页面。本轮进度、完成证据与后续事项见[重构进度](重构进度.md)。提交前运行：
 
 ```powershell
+python -B -m unittest discover -s tests -p "test_*.py"
+python -B scripts/check_docs.py --report
 python -m mkdocs build --strict
+git diff --check
 ```
+
+离线检查覆盖导航、标签元数据、本地图片和完全重复文章提示；外链连通性与文章内容正确性仍需单独检查。中文术语词典在 `config/search/jieba-user.dict`，添加条目时沿用现有格式。
 
 `site/` 是生成目录，已被 Git 忽略。编辑文章时，优先检查页面链接、公式、代码块和导航是否正确。
 

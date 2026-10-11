@@ -3,3 +3,4 @@ mkdocs-material==9.7.1
 mkdocs-roamlinks-plugin==0.3.2
 mkdocs-callouts==1.16.0
 pymdown-extensions==10.20
+jieba==0.42.1

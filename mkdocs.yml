@@ -3,14 +3,31 @@ site_url: https://fengmaker.github.io/my-website/
 site_author: cjs
 site_description: 运筹优化、算法练习与个人成长记录
 repo_url: https://github.com/fengmaker/my-website
+edit_uri: edit/main/docs/
 
 # 核心：启用 Material 主题
 theme:
   name: material
   language: zh # 设置语言为中文
-  palette: 
-    primary: indigo # 顶栏颜色（模仿学姐的极简白）
-    accent: deep purple
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: 切换到浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: 跟随系统配色
   features:
     - search.suggest # 搜索联想
     - search.highlight # 搜索高亮
@@ -19,10 +36,17 @@ theme:
     - navigation.tabs        # 开启顶部选项卡
     - navigation.sections
     - navigation.indexes
+    - navigation.path
     - navigation.prune
+    - navigation.instant
+    - navigation.instant.progress
     - toc.follow
     - navigation.tracking    # 滚动时自动高亮左侧菜单
     - content.code.copy      # 开启代码块复制功能
+    - content.code.select
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
 # 扩展功能（Markdown 语法增强）
 markdown_extensions:
   - meta
@@ -34,6 +58,8 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight: # 代码高亮
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
       linenums: true     #  显示行号，方便以后对代码进行引用
   - pymdownx.inlinehilite
   - pymdownx.snippets
@@ -60,7 +86,8 @@ markdown_extensions:
       permalink: true # 标题旁边的锚点链接
 
 plugins:
-  - search
+  - search:
+      jieba_dict_user: config/search/jieba-user.dict
   - roamlinks
   - tags
 
@@ -185,6 +212,7 @@ nav:
               - 发电机组调度（UCP）: 运筹优化/调度与生产/UnitCommitmentProblem.md
       - 04 · 求解器与工程实现:
           - 实现与工具索引: 运筹优化/求解器与工程实现/index.md
+          - 公式、伪代码与代码写作规范: 运筹优化/求解器与工程实现/公式与代码写作规范.md
           - 数据集与实验规范: 运筹优化/求解器与工程实现/实验规范.md
           - Dijkstra 桶优化：Dial 与 Radix Heap: 运筹优化/求解算法/Bucket_opt_SPP.md
       - 05 · 项目与实验复现:
@@ -194,6 +222,7 @@ nav:
       - 06 · 资料库与面试:
           - 资料导读: 运筹优化/资料库与面试/index.md
           - 标签索引: 运筹优化/资料库与面试/标签索引.md
+          - 参考资料与许可: 运筹优化/资料库与面试/参考资料与许可.md
           - 面试题库:
               - 运筹优化算法岗题库（80 题）: 运筹优化/面试题库/运筹优化算法岗面试题库.md
               - 运筹优化算法岗参考答案: 运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md
@@ -255,6 +284,9 @@ nav:
       - 常用技巧:
           - 双指针: 算法笔记/双指针/单序列双指针.md
           - 图论基础: 算法笔记/图论/基础.md
+extra_css:
+  - stylesheets/extra.css
+
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
