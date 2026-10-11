@@ -33,6 +33,10 @@ python -X utf8 -B scripts/measure_site.py --measure-network --samples 5 --networ
 
 性能脚本先读取本地严格构建后的 `site/`，仅指定 `--measure-network` 或 `--url URL` 时联网。HTTP 采样不执行 JavaScript，不能代表浏览器首屏或公式渲染时间。首次结果、复测步骤与限制见[维护记录](reports/maintenance/README.md)。
 
+## 个人项目与实验记录
+
+[作品集](docs/运筹优化/项目与实验复现/index.md)已收录 GMRP-ALNS 与 VRPTW Solver，含固定版本、归档实测、限制、下载表格与复现入口。本轮材料核查见 [project-evidence](reports/project-evidence/README.md)，来源和文件哈希见 `docs/assets/projects/provenance.json`。两张汇总图可用 `python -B scripts/plot_project_results.py` 重画，仅需可选 Matplotlib 依赖，不会执行求解器。
+
 ## 发布
 
 推送到 `main` 后，[GitHub Actions](.github/workflows/update.yml)会先执行严格构建，再将站点发布到 `gh-pages` 分支。GitHub Pages 的发布源需要指向该分支。

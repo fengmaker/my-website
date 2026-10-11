@@ -1,0 +1,137 @@
+{
+  "audited_at": "2026-10-11T09:58:07.213088+00:00",
+  "scope": "Historical project archives; records and summaries audited, no solvers rerun. Official benchmark datasets are not redistributed.",
+  "gmrp": {
+    "repository": "https://github.com/fengmaker/GMRP-ALNS",
+    "snapshot_commit": "0ce7fd2061240144d9430d417070fe8951de7113",
+    "experiment_commit": "ee29875c39c111c0b2a651e56450829b6f376599",
+    "access": "Local checkout supplied by owner; public repository returned 404 at audit time. Unrelated local edits excluded.",
+    "source_files": [
+      {
+        "path": "results/m7/records.jsonl",
+        "sha256": "aca9570d6a3c47ad5afff0d5a16e23547ab9261d47b8d8a63f834380b119a0b2",
+        "bytes": 4100186
+      },
+      {
+        "path": "results/m7/summary.csv",
+        "sha256": "6defcc18cf5bbb25ad41dc852f88613959b19e04cf38d3d24b1cf7caa7e0cd96",
+        "bytes": 18973
+      },
+      {
+        "path": "results/m7/manifest.json",
+        "sha256": "829de290e1e374b13b06024e66bcacf16a75785bc13b7662b9522e328e8005e5",
+        "bytes": 107266
+      },
+      {
+        "path": "docs/m7_verification.md",
+        "sha256": "0754d2b0fd951bde015b718874f7d9c25a0f2002b51e44d52262143702dedd0c",
+        "bytes": 9676
+      },
+      {
+        "path": "docs/release_audit_v1.0.0.md",
+        "sha256": "2e78203beb50ee3a78075a8db10e962a4756c45fd053ec7049ea48185af601ec",
+        "bytes": 3501
+      }
+    ]
+  },
+  "vrptw": {
+    "repository": "https://github.com/fengmaker/vrptw_slover",
+    "snapshot_commit": "9fe59ad51b9533f00bb8efe097143ad0fa5ba8ef",
+    "access": "Pinned public GitHub snapshot.",
+    "source_files": [
+      {
+        "path": "benchmarks/FOUR_SOLVER_REPORT.md",
+        "sha256": "f7bd137484a03d532ed71cbb9e0482f7bba7c4db063f49c30cf2a64f2d818b81",
+        "bytes": 7881
+      },
+      {
+        "path": "benchmarks/four_solver/results/raw_runs.csv",
+        "sha256": "a57b922ed298466256a48cabfaf2595657a9fd921c91cbe85746ccdb5e050656",
+        "bytes": 632041
+      },
+      {
+        "path": "benchmarks/four_solver/results/summary.csv",
+        "sha256": "4cedc7db04ef392a6d3e1ec6f470faf2de256a793d2388e3628e4219128b4b8e",
+        "bytes": 2552
+      },
+      {
+        "path": "benchmarks/four_solver/archive_manifest.json",
+        "sha256": "5f1128c7985ebbc40157ae1ead7d6a0ac5fcabff2fdf42dbfdd5a4dfae0f607e",
+        "bytes": 83649
+      },
+      {
+        "path": "benchmarks/M12_REPORT.md",
+        "sha256": "774328475df6c27c5a5fd51a10a31fc05aa9bbe6936ce3bbc3695666e98416c6",
+        "bytes": 10307
+      }
+    ],
+    "copied_figures": [
+      {
+        "file": "vrptw/RC108-routes.png",
+        "source_path": "benchmarks/m12/delivery/RC108/seed-0/routes.png",
+        "sha256": "3e565d5417100aafaa9c844f68fe4a64df3e406270a7aae8c8944ecdd837d16c",
+        "protocol": "M12 delivery; seed 0; 0.5 seconds; not the four-solver 5-second result"
+      },
+      {
+        "file": "vrptw/RC108-convergence.png",
+        "source_path": "benchmarks/m12/delivery/RC108/seed-0/convergence.png",
+        "sha256": "6b1034caca6b45445dc27ef961c5114fefd197785d9d9e860042aa48682785ea",
+        "protocol": "M12 delivery; seed 0; 0.5 seconds; not the four-solver 5-second result"
+      }
+    ]
+  },
+  "derived_files": {
+    "gmrp/m7-observations.csv": "Column projection of all 660 original records; hashes identify original full records, not projected rows.",
+    "gmrp/m7-methods.csv": "Arithmetic means over the 100 records of each main method; overruns > 1.1 seconds.",
+    "vrptw/four-solver-runs.csv": "All 448 original rows, excluding metadata_json and solution_path.",
+    "gmrp/m7-summary.csv": "Byte-identical archived summary.",
+    "vrptw/four-solver-summary.csv": "Byte-identical archived summary."
+  },
+  "published_files": [
+    {
+      "path": "gmrp/m7-methods.csv",
+      "bytes": 501,
+      "sha256": "7b6bff7c7b3e0b76c947211d857d75958e95d66ff37db43acf013430853e04df"
+    },
+    {
+      "path": "gmrp/m7-observations.csv",
+      "bytes": 151732,
+      "sha256": "c1c05d50349e7b100196d7bf8b300da8ac1af91c885a306c6c4dffa5082e1f5f"
+    },
+    {
+      "path": "gmrp/m7-quality-runtime.png",
+      "bytes": 119459,
+      "sha256": "53c54264bd1c5551f753948e37cc764fd6d62a10b832458bec60ad1456a7beac"
+    },
+    {
+      "path": "gmrp/m7-summary.csv",
+      "bytes": 18973,
+      "sha256": "6defcc18cf5bbb25ad41dc852f88613959b19e04cf38d3d24b1cf7caa7e0cd96"
+    },
+    {
+      "path": "vrptw/fleet-distance.png",
+      "bytes": 104636,
+      "sha256": "51aa020cd5fe968335cfcab7c000362a5d077e82a02b6c61b5c82db8d6b38809"
+    },
+    {
+      "path": "vrptw/four-solver-runs.csv",
+      "bytes": 153918,
+      "sha256": "f6d857ac158ebc0203475a6c69fc600351d7bb0dd9b77aeab83aaeecee05ceeb"
+    },
+    {
+      "path": "vrptw/four-solver-summary.csv",
+      "bytes": 2552,
+      "sha256": "4cedc7db04ef392a6d3e1ec6f470faf2de256a793d2388e3628e4219128b4b8e"
+    },
+    {
+      "path": "vrptw/RC108-convergence.png",
+      "bytes": 27666,
+      "sha256": "6b1034caca6b45445dc27ef961c5114fefd197785d9d9e860042aa48682785ea"
+    },
+    {
+      "path": "vrptw/RC108-routes.png",
+      "bytes": 129496,
+      "sha256": "3e565d5417100aafaa9c844f68fe4a64df3e406270a7aae8c8944ecdd837d16c"
+    }
+  ]
+}

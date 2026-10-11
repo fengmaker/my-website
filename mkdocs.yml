@@ -220,7 +220,9 @@ nav:
           - 数据集与实验规范: 运筹优化/求解器与工程实现/实验规范.md
           - Dijkstra 桶优化：Dial 与 Radix Heap: 运筹优化/求解算法/Bucket_opt_SPP.md
       - 05 · 项目与实验复现:
-          - 项目状态与路线: 运筹优化/项目与实验复现/index.md
+          - 个人作品集与实验总览: 运筹优化/项目与实验复现/index.md
+          - GMRP-ALNS：机器重分配: 运筹优化/项目与实验复现/GMRP-ALNS.md
+          - VRPTW Solver：实现与四方实验: 运筹优化/项目与实验复现/VRPTW-Solver.md
           - 纯 Python VRPTW 求解器开发方案: 运筹优化/路径规划/VRPTW/研究方案.md
           - 专题与实验记录模板: 运筹优化/项目与实验复现/专题与实验记录模板.md
       - 06 · 资料库与面试:

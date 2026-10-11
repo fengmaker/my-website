@@ -1,0 +1,4 @@
+# Preserve published evidence bytes and SHA-256 values on every platform.
+docs/assets/projects/** -text
+# Archived CSV files may use CRLF; keep normal whitespace checks for these files.
+docs/assets/projects/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
