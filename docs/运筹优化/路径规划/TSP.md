@@ -1,3 +1,9 @@
+---
+tags:
+  - TSP
+  - 建模
+---
+
 # TSP 问题
 
 !!! abstract "感谢GPT-4o以及Claude在本文章编写过程中提供的帮助。"

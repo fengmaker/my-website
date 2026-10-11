@@ -1,3 +1,9 @@
+---
+tags:
+  - 精确算法
+  - DW 分解
+---
+
 # Danzig-Wolfe Decomposition: DW 分解
 
 一种用来求解大规模线性规划问题 (Large Scale Linear Programming) 的算法。

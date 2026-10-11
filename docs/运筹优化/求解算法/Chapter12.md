@@ -1,3 +1,9 @@
+---
+tags:
+  - 精确算法
+  - 列生成
+---
+
 # 列生成算法 (Column Generation)
 
 

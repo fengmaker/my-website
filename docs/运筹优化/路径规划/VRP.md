@@ -1,3 +1,9 @@
+---
+tags:
+  - VRP
+  - 建模
+---
+
 # 车辆路径问题（Vehicle Routing Problem）
 
 一个经典的组合优化问题。在物流、通信、交通领域应用广泛。给定一个车场Depot，给定若干顾客。需要你规划一些车辆服务顾客的路线，来最小化总运输成本，同时满足：
@@ -222,7 +228,7 @@ TBD.
 
 ### VRP with Backhauls
 
-送货后取货问题。其实和[取送货问题(Pickup and Delivery Problem)](PDP.md)非常类似，但是又有不同。区别在于：
+送货后取货问题。其实和[取送货问题(Pickup and Delivery Problem)](./PDP.md)非常类似，但是又有不同。区别在于：
 
 本问题下，不再是以“订单”来衡量了，而是回到了“顾客”，不考虑“订单”区分起终点的概念了。但是顾客的属性有区别。有一些是 `linehauls` 顾客，有一些是 `backhauls` 顾客。我们必须先从depot拿货物运给 `linehauls` 顾客，直到**服务完所有的 `linehauls` 顾客后**，再去服务 `backhauls` 顾客，从这些顾客处取。是一个**先送后取**的过程。
 

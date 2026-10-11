@@ -1,3 +1,9 @@
+---
+tags:
+  - 随机优化
+  - SAA
+---
+
 # Sample Average Approximation (SAA)
 
 

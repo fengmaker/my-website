@@ -1,3 +1,9 @@
+---
+tags:
+  - 精确算法
+  - Benders 分解
+---
+
 # Benders 分解
 
 我们来深入探讨另一个非常重要的分解算法——**Benders 分解 (Benders Decomposition)**。

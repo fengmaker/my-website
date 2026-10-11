@@ -1,3 +1,9 @@
+---
+tags:
+  - CP-SAT
+  - 解谜
+---
+
 # 一种快速求解环路类逻辑谜题的方法: AddCircuit
 
 本文主要讨论一类逻辑谜题 (Logic Puzzle)，尤其是环路类逻辑谜题（make-a-loop style），比如数回（Slitherlink）、简单回路（Simple Loop）、珍珠（Masyu, Pearl）、仙人指路（Yajilin）等，并介绍一个用于求解这一整类谜题的高效且灵活的约束规划方法，以及这种方法在开源求解器 OR-Tools 下完整的数值试验的结果。

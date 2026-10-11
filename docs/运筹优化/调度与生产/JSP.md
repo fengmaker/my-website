@@ -1,3 +1,10 @@
+---
+tags:
+  - JSP
+  - FJSP
+  - 建模
+---
+
 # Job Shop Problem (JSP)
 
 !!! note "Reference"
