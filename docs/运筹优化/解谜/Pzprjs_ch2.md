@@ -1,3 +1,9 @@
+---
+tags:
+  - 解谜
+  - 编码
+---
+
 # Slitherlink 的 4Cell 紧凑编码：数字、跳格、空段
 
 > 本文是「pzprjs URL 编码体系」系列的第 2 篇，讲解逻辑谜题 **Slitherlink（URL 标识 `slither`）** 的紧凑 URL 编码规则，并顺带讲清**复用同一编码原语的 Shakashaka（`shakashaka`）与 Akari（内部标识 `lightup`，URL 别名 `akari`）**。

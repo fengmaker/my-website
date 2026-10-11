@@ -1,3 +1,9 @@
+---
+tags:
+  - UCP
+  - 建模
+---
+
 # 发电机组调度问题（Unit-Commitment-Problem）
 
 !!! quote "Reference / 说在前面"

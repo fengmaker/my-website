@@ -1,3 +1,9 @@
+---
+tags:
+  - LSP
+  - 建模
+---
+
 # Lot Sizing Problem 批量生产问题
 
 !!! quote "Reference"

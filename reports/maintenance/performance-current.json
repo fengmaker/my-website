@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-11T09:32:13Z",
+  "network_requested": true,
+  "network_label": "当前执行环境网络；未切换网络；2026-10-11",
+  "network_label_note": "Operator supplied; this tool does not emulate or infer a network type.",
+  "limitations": [
+    "Static file sizes do not measure browser transfer scheduling or cache behavior.",
+    "HTTP time_to_headers_ms includes DNS, connection, TLS, request, and response-header time; it is not pure server TTFB.",
+    "FCP, LCP, and actual MathJax formula-render time require browser instrumentation and are not measured.",
+    "HTTP byte counts cover response bodies, excluding headers and protocol framing; bodies are streamed and discarded.",
+    "JavaScript is never executed."
+  ],
+  "static_audit": {
+    "site_dir": "site",
+    "file_count": 377,
+    "total_bytes": 46466871,
+    "large_file_threshold_bytes": 262144,
+    "totals": {
+      "css": {
+        "files": 3,
+        "bytes": 152731
+      },
+      "html": {
+        "files": 154,
+        "bytes": 12302634
+      },
+      "images": {
+        "files": 175,
+        "bytes": 26942677
+      },
+      "javascript": {
+        "files": 37,
+        "bytes": 1061404
+      },
+      "other": {
+        "files": 7,
+        "bytes": 1359213
+      },
+      "search_index": {
+        "files": 1,
+        "bytes": 4648212
+      }
+    },
+    "large_html_pages": [],
+    "largest_html_pages": [
+      {
+        "path": "运筹优化/面试题库/路径规划算法岗面试题库_参考答案/index.html",
+        "bytes": 235707,
+        "category": "html"
+      },
+      {
+        "path": "算法笔记/二叉树/自底向上/index.html",
+        "bytes": 172712,
+        "category": "html"
+      },
+      {
+        "path": "算法笔记/数据结构/枚举技巧/index.html",
+        "bytes": 168003,
+        "category": "html"
+      },
+      {
+        "path": "运筹优化/运筹学基础/Chapter7_2/index.html",
+        "bytes": 159552,
+        "category": "html"
+      },
+      {
+        "path": "运筹优化/面试题库/运筹优化算法岗面试题库_参考答案/index.html",
+        "bytes": 152964,
+        "category": "html"
+      },
+      {
+        "path": "算法笔记/二分/二分查找/index.html",
+        "bytes": 152283,
+        "category": "html"
+      },
+      {
+        "path": "算法笔记/二叉树/自顶向下/index.html",
+        "bytes": 139316,
+        "category": "html"
+      },
+      {
+        "path": "运筹优化/解谜/CPSAT_2/index.html",
+        "bytes": 133504,
+        "category": "html"
+      },
+      {
+        "path": "运筹优化/资料库与面试/标签索引/index.html",
+        "bytes": 130285,
+        "category": "html"
+      },
+      {
+        "path": "运筹优化/离散优化/Ch_07/index.html",
+        "bytes": 129750,
+        "category": "html"
+      }
+    ],
+    "large_resources": [
+      {
+        "path": "search/search_index.json",
+        "bytes": 4648212,
+        "category": "search_index"
+      },
+      {
+        "path": "运筹优化/images/202411252008954.png",
+        "bytes": 1487656,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/202507150148475.png",
+        "bytes": 1125857,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260421180401534.png",
+        "bytes": 1074064,
+        "category": "images"
+      },
+      {
+        "path": "assets/javascripts/bundle.79ae519e.min.js.map",
+        "bytes": 1026989,
+        "category": "other"
+      },
+      {
+        "path": "运筹优化/images/202310251200191.png",
+        "bytes": 946146,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260504210451635.png",
+        "bytes": 911138,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260504192513076.png",
+        "bytes": 871297,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/202310251200190.png",
+        "bytes": 708673,
+        "category": "images"
+      },
+      {
+        "path": "assets/javascripts/lunr/wordcut.js",
+        "bytes": 677463,
+        "category": "javascript"
+      }
+    ],
+    "largest_resources": [
+      {
+        "path": "search/search_index.json",
+        "bytes": 4648212,
+        "category": "search_index"
+      },
+      {
+        "path": "运筹优化/images/202411252008954.png",
+        "bytes": 1487656,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/202507150148475.png",
+        "bytes": 1125857,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260421180401534.png",
+        "bytes": 1074064,
+        "category": "images"
+      },
+      {
+        "path": "assets/javascripts/bundle.79ae519e.min.js.map",
+        "bytes": 1026989,
+        "category": "other"
+      },
+      {
+        "path": "运筹优化/images/202310251200191.png",
+        "bytes": 946146,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260504210451635.png",
+        "bytes": 911138,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/20260504192513076.png",
+        "bytes": 871297,
+        "category": "images"
+      },
+      {
+        "path": "运筹优化/images/202310251200190.png",
+        "bytes": 708673,
+        "category": "images"
+      },
+      {
+        "path": "assets/javascripts/lunr/wordcut.js",
+        "bytes": 677463,
+        "category": "javascript"
+      }
+    ],
+    "external_javascript_urls": [
+      "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ],
+    "external_mathjax_urls": [
+      "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ],
+    "config_errors": []
+  },
+  "network_measurements": [
+    {
+      "url": "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
+      "samples_requested": 5,
+      "success_count": 5,
+      "failure_counts": {},
+      "successful_median_time_to_headers_ms": 569.22,
+      "successful_median_body_download_ms": 378.501,
+      "successful_median_total_ms": 944.672,
+      "successful_median_bytes": 1173007,
+      "samples": [
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 630.781,
+          "body_download_ms": 388.626,
+          "total_ms": 1019.406,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 1
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 608.699,
+          "body_download_ms": 362.392,
+          "total_ms": 971.091,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 2
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 546.606,
+          "body_download_ms": 394.61,
+          "total_ms": 941.216,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 3
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 528.844,
+          "body_download_ms": 378.501,
+          "total_ms": 907.345,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 4
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 569.22,
+          "body_download_ms": 375.452,
+          "total_ms": 944.672,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 5
+        }
+      ]
+    },
+    {
+      "url": "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+      "samples_requested": 5,
+      "success_count": 4,
+      "failure_counts": {
+        "http_status": 1
+      },
+      "successful_median_time_to_headers_ms": 1386.542,
+      "successful_median_body_download_ms": 404.634,
+      "successful_median_total_ms": 1767.267,
+      "successful_median_bytes": 1173007.0,
+      "samples": [
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 1657.958,
+          "body_download_ms": 409.814,
+          "total_ms": 2067.772,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 1
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 1235.787,
+          "body_download_ms": 361.997,
+          "total_ms": 1597.784,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 2
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 1103.902,
+          "body_download_ms": 434.023,
+          "total_ms": 1537.925,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 3
+        },
+        {
+          "status": 200,
+          "bytes": 1173007,
+          "time_to_headers_ms": 1537.297,
+          "body_download_ms": 399.454,
+          "total_ms": 1936.751,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 4
+        },
+        {
+          "status": 302,
+          "bytes": 50,
+          "time_to_headers_ms": 701.514,
+          "body_download_ms": 0.252,
+          "total_ms": 701.766,
+          "completed": true,
+          "error_class": "http_status",
+          "error": "HTTP 302",
+          "sample": 5
+        }
+      ]
+    },
+    {
+      "url": "https://fengmaker.github.io/my-website/",
+      "samples_requested": 5,
+      "success_count": 5,
+      "failure_counts": {},
+      "successful_median_time_to_headers_ms": 737.136,
+      "successful_median_body_download_ms": 0.452,
+      "successful_median_total_ms": 737.435,
+      "successful_median_bytes": 25060,
+      "samples": [
+        {
+          "status": 200,
+          "bytes": 25060,
+          "time_to_headers_ms": 976.48,
+          "body_download_ms": 0.452,
+          "total_ms": 976.931,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 1
+        },
+        {
+          "status": 200,
+          "bytes": 25060,
+          "time_to_headers_ms": 656.51,
+          "body_download_ms": 0.559,
+          "total_ms": 657.07,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 2
+        },
+        {
+          "status": 200,
+          "bytes": 25060,
+          "time_to_headers_ms": 623.065,
+          "body_download_ms": 0.388,
+          "total_ms": 623.453,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 3
+        },
+        {
+          "status": 200,
+          "bytes": 25060,
+          "time_to_headers_ms": 737.136,
+          "body_download_ms": 0.3,
+          "total_ms": 737.435,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 4
+        },
+        {
+          "status": 200,
+          "bytes": 25060,
+          "time_to_headers_ms": 740.778,
+          "body_download_ms": 50.201,
+          "total_ms": 790.979,
+          "completed": true,
+          "error_class": null,
+          "error": null,
+          "sample": 5
+        }
+      ]
+    }
+  ],
+  "network_sample_report_generated_at": "2026-10-11T09:25:17Z"
+}

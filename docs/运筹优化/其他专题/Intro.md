@@ -1,3 +1,9 @@
+---
+tags:
+  - 学习路线
+  - 参考资料
+---
+
 # 一个交通er（物流er）给研一新生的Brief
 
 笑笑的研究方向：**低空物流经济[^1]，多式联运[^2]交通网络。** (`Low-altitude Logistics Economy, Multi-/Inter-modal Transport Network`)。专业是物流工程与管理[^3] (Logistics Engineering and Management)。本文内容同样可能对管理科学与工程、工业工程、交通与运输工程、运营管理等类似专业的同学有一些帮助。

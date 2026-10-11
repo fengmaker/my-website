@@ -1,3 +1,9 @@
+---
+tags:
+  - 库存优化
+  - 建模
+---
+
 # Claude Code: EOQ, 报童模型，(s,S) 策略的深度研究
 
 !!! note "本内容完全生成自Claude Code的深度研究Skills。[来源链接](https://github.com/Weizhena/Deep-Research-skills/blob/master/README.zh.md)"

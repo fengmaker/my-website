@@ -209,7 +209,7 @@ C_{\max} \geq t_i + \sum_{k \in \mathcal{R}_i} p^k_i \alpha^k_i \quad \forall i 
 
 > 这部分是一个私货。对这个做了点简单研究，主要是2024.08打了个华为的比赛 【链接待补充】，虽然啥成果也没有，但是毕竟自己以前从来没做过JSP相关，倒也是有一些探索。
 >
-> 主要参考：Kasapidis Gregory A. et.al., Flexible Job Shop Scheduling Problems with Arbitrary Precedence Graphs. Production and Operations Management (2021), https://doi.org/doi:10.1111/poms.13501
+> 主要参考：Kasapidis Gregory A. et.al., Flexible Job Shop Scheduling Problems with Arbitrary Precedence Graphs. Production and Operations Management (2021), https://doi.org/10.1111/poms.13501
 
 
 对应最开始的Review文章的6.1节。许多文章对这个概念的描述不同，但是场景实际上是没什么差异的。也就是：

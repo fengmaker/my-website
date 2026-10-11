@@ -1,0 +1,73 @@
+# Paths are relative to docs/. '*' matches nested paths too (fnmatch).
+# Keep topic names stable; add vocabulary deliberately.
+required:
+- 运筹优化/*.md
+- index/or_index.md
+exclude:
+- 运筹优化/资料库与面试/参考资料与许可.md
+- 运筹优化/资料库与面试/标签索引.md
+allowed:
+- ALNS
+- Benders 分解
+- CP-SAT
+- CS
+- CVRP
+- DEA
+- DW 分解
+- FAP
+- FJSP
+- IRP
+- JSP
+- LLM
+- LSP
+- MAPF
+- MaxCut
+- PDP
+- SAA
+- TOP
+- TSP
+- UCP
+- VRP
+- VRPTW
+- 习题
+- 写作规范
+- 凸优化
+- 分支定价
+- 分支定界
+- 列生成
+- 割平面
+- 动态规划
+- 匹配
+- 单纯形法
+- 博弈论
+- 参考资料
+- 启发式算法
+- 图划分
+- 图同构
+- 图算法
+- 基础理论
+- 复杂度理论
+- 多目标优化
+- 学习路线
+- 实验规范
+- 对偶理论
+- 工程实现
+- 库存优化
+- 建模
+- 拉格朗日松弛
+- 排队论
+- 整数规划
+- 最短路
+- 机器学习
+- 灵敏度分析
+- 精确算法
+- 线性规划
+- 组合优化
+- 编码
+- 网络流
+- 解谜
+- 趣味优化
+- 运输问题
+- 随机优化
+- 面试
+- 项目方案

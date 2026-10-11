@@ -1,3 +1,9 @@
+---
+tags:
+  - 对偶理论
+  - 线性规划
+---
+
 <style>
 .centertable 
 {

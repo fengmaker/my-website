@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
 import html
 import os
@@ -268,6 +269,47 @@ def find_duplicate_articles(files: list[Path], docs_dir: Path) -> list[list[str]
     return sorted((sorted(paths) for paths in by_hash.values() if len(paths) > 1), key=lambda group: group[0])
 
 
+def check_tag_policy(policy_path: Path, files: list[Path], docs_dir: Path) -> list[str]:
+    """Require controlled tags only within the explicitly configured content scope."""
+    if not policy_path.is_file():
+        return []
+    try:
+        policy = yaml.safe_load(policy_path.read_text(encoding="utf-8"))
+        if not isinstance(policy, dict):
+            raise ValueError("expected a mapping")
+        for key in ("required", "exclude", "allowed"):
+            values = policy.get(key)
+            if not isinstance(values, list) or not all(isinstance(v, str) and v.strip() for v in values):
+                raise ValueError(f"{key} must be a list of non-empty strings")
+        if not policy["allowed"] or len(set(policy["allowed"])) != len(policy["allowed"]):
+            raise ValueError("allowed must contain unique tag names")
+    except (yaml.YAMLError, ValueError) as exc:
+        return [f"{policy_path.name}: invalid tag policy: {exc}"]
+
+    errors: list[str] = []
+    allowed = set(policy["allowed"])
+    for path in files:
+        relative = path.relative_to(docs_dir)
+        if not any(fnmatch.fnmatchcase(relative.as_posix(), pattern) for pattern in policy["required"]):
+            continue
+        if any(fnmatch.fnmatchcase(relative.as_posix(), pattern) for pattern in policy["exclude"]):
+            continue
+        display = relative.as_posix()
+        front, _ = _front_matter(path.read_text(encoding="utf-8"))
+        try:
+            metadata = yaml.safe_load(front) if front is not None else {}
+        except yaml.YAMLError:
+            continue  # check_tags already reports malformed front matter.
+        tags = metadata.get("tags") if isinstance(metadata, dict) else None
+        if not tags:
+            errors.append(f"{display}: tags required by {policy_path.name}")
+        elif isinstance(tags, list):
+            for tag in tags:
+                if isinstance(tag, str) and tag not in allowed:
+                    errors.append(f"{display}: unknown tag {tag!r}; update {policy_path.name} deliberately")
+    return errors
+
+
 def scan(root: Path) -> ScanReport:
     root = root.resolve()
     docs_dir = root / "docs"
@@ -290,6 +332,7 @@ def scan(root: Path) -> ScanReport:
         report.image_references += count
         report.errors.extend(image_errors)
 
+    report.errors.extend(check_tag_policy(root / "config" / "tags.yml", files, docs_dir))
     report.duplicate_groups = find_duplicate_articles(files, docs_dir)
     return report
 

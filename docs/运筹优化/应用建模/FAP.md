@@ -1,3 +1,9 @@
+---
+tags:
+  - FAP
+  - 建模
+---
+
 # 航班分配问题（Fleet Assignment Problem）
 
 需要看MP上一篇很经典的文章：Hane et al., “The fleet assignment problem: Solving a large-scale integer program”, Mathematical Programming, 70 (1995) 211-232。也可以参考梁哲老师的[公众号文章](https://mp.weixin.qq.com/s/m4KhLtzgwakYYi5ZG2MdRw)。时空网络模型、最大化利润。

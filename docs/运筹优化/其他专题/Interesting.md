@@ -1,3 +1,9 @@
+---
+tags:
+  - 趣味优化
+  - 建模
+---
+
 # 记录一些有趣的问题
 
 1. Art Gallery Problem

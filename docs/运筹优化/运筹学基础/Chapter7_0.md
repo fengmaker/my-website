@@ -1,3 +1,9 @@
+---
+tags:
+  - 图算法
+  - 基础理论
+---
+
 # 图的搜索
 
 **课程:** Network Optimization (15.082J/6.855J/ESD.78J)  

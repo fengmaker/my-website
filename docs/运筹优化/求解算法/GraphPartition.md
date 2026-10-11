@@ -1,3 +1,9 @@
+---
+tags:
+  - 图划分
+  - 建模
+---
+
 # 图划分问题 (Graph Partition)
 
 有两种主要的图划分(Graph Partition)场景。第一个，点分割（Vertex Partition）；第二个，边分割（Edge Partition）。

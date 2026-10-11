@@ -1,3 +1,9 @@
+---
+tags:
+  - PDP
+  - 建模
+---
+
 # 取送货问题(Pickup and Delivery Problem) 以及拓展
 
 !!! quote "参考资料"

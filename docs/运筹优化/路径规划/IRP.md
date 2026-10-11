@@ -1,3 +1,9 @@
+---
+tags:
+  - IRP
+  - 建模
+---
+
 # The Inventory Routing Problem (IRP)
 
 The Inventory Routing Problem 问题：模型、求解。来自1997年的回声。

@@ -1,0 +1,1944 @@
+{
+  "generated_at": "2026-10-11T09:32:13.563608+00:00",
+  "inventory_count": 132,
+  "checked_count": 132,
+  "summary": {
+    "redirected": 6,
+    "restricted": 10,
+    "success": 113,
+    "timeout": 1,
+    "tls_error": 2
+  },
+  "results": [
+    {
+      "url": "http://combopt.org/tables/LiLim/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 300
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "http://combopt.org/tables/LiLim/"
+    },
+    {
+      "url": "http://www.fms-journal.net/journals/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 32
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://www.fms-journal.net/journals/",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.fms-journal.net/journals/"
+    },
+    {
+      "url": "http://www.moe.gov.cn/srcsite/A15/moe_778/s3261/202509/t20250918_1413836.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "http://www.moe.gov.cn/srcsite/A15/moe_778/s3261/202509/t20250918_1413836.html"
+    },
+    {
+      "url": "http://www.vrp-rep.org/references/item/uchoa-et-al-2017.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 302
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://www.vrp-rep.org/references/item/uchoa-et-al-2017.html",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.vrp-rep.org/references/item/uchoa-et-al-2017.html"
+    },
+    {
+      "url": "http://www2.ic.uff.br/~celso/artigos/fprr02.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/应用建模/Max_k_cut.md",
+          "line": 36
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "http://www2.ic.uff.br/~celso/artigos/fprr02.pdf"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2603.02119",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Pencil_puzzle_bench.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://arxiv.org/pdf/2603.02119"
+    },
+    {
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/3154899/An%20adaptive%20large%20neighborhood%20search%20heuristic%20for%20the%20pickup%20and%20delivery%20problem%20with%20time%20windows_TechRep_ropke_pisinger.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法体系/通用启发式搜索.md",
+          "line": 80
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/3154899/An%20adaptive%20large%20neighborhood%20search%20heuristic%20for%20the%20pickup%20and%20delivery%20problem%20with%20time%20windows_TechRep_ropke_pisinger.pdf"
+    },
+    {
+      "url": "https://developers.google.cn/optimization/routing/vrp?hl=zh-cn",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 324
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.cn/optimization/routing/vrp?hl=zh-cn"
+    },
+    {
+      "url": "https://developers.google.com/optimization",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 179
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization"
+    },
+    {
+      "url": "https://developers.google.com/optimization/cp/channeling",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法体系/CP-SAT建模入门.md",
+          "line": 28
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/cp/channeling"
+    },
+    {
+      "url": "https://developers.google.com/optimization/cp/cp_solver",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法体系/CP-SAT建模入门.md",
+          "line": 16
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 171
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 827
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/cp/cp_solver"
+    },
+    {
+      "url": "https://developers.google.com/optimization/mip",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 111
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 827
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/mip"
+    },
+    {
+      "url": "https://developers.google.com/optimization/routing",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 133
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 1325
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/routing"
+    },
+    {
+      "url": "https://developers.google.com/optimization/routing/routing_options",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法体系/通用启发式搜索.md",
+          "line": 89
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/routing/routing_options"
+    },
+    {
+      "url": "https://developers.google.com/optimization/scheduling/job_shop",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法体系/CP-SAT建模入门.md",
+          "line": 71
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 121
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://developers.google.com/optimization/scheduling/job_shop"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 827
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/logging/mip.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 93
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 123
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 1325
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 131
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/logging/mip.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/numericguide/tolerances_scaling.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 537
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/numericguide/tolerances_scaling.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/parameters/guidelines.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 303
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/concepts/parameters/guidelines.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/features/infeasibility.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 181
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/features/infeasibility.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/attributes/model.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 223
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/attributes/model.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/attributes/variable.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 527
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 799
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/attributes/variable.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/numericcodes/statuscodes.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 163
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 223
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 1325
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 171
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/numericcodes/statuscodes.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/python/callback.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 809
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/python/callback.html"
+    },
+    {
+      "url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/python/model.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 709
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://docs.gurobi.com/projects/optimizer/en/current/reference/python/model.html"
+    },
+    {
+      "url": "https://doi.org/10.1007/s12351-020-00564-8",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7_5.md",
+          "line": 15
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://link.springer.com/10.1007/s12351-020-00564-8",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://link.springer.com/10.1007/s12351-020-00564-8"
+    },
+    {
+      "url": "https://doi.org/10.1111/poms.13501",
+      "sources": [
+        {
+          "file": "docs/运筹优化/调度与生产/JSP.md",
+          "line": 212
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://journals.sagepub.com/doi/10.1111/poms.13501"
+    },
+    {
+      "url": "https://doi.org/10.1287/TRSC.1050.0135",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRPTW/研究方案.md",
+          "line": 86
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://pubsonline.informs.org/doi/10.1287/trsc.1050.0135"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Slitherlink",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Slither_how1.md",
+          "line": 292
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://en.wikipedia.org/wiki/Slitherlink"
+    },
+    {
+      "url": "https://euro-neurips-vrp-2022.challenges.ortec.com/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/VRPmeetsNeurIPS.md",
+          "line": 137
+        }
+      ],
+      "status": "tls_error",
+      "detail": "[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)",
+      "http_status": null,
+      "method": "HEAD",
+      "final_url": null
+    },
+    {
+      "url": "https://github.com/Ar-Kareem/puzzle_solver/blob/master/src/puzzle_solver/puzzles/slitherlink/slitherlink.py",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/CPSAT_1.md",
+          "line": 68
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/Ar-Kareem/puzzle_solver/blob/master/src/puzzle_solver/puzzles/slitherlink/slitherlink.py"
+    },
+    {
+      "url": "https://github.com/COPT-Public/COPT-Release",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 181
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/COPT-Public/COPT-Release"
+    },
+    {
+      "url": "https://github.com/PyVRP/PyVRP",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 323
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/PyVRP/PyVRP"
+    },
+    {
+      "url": "https://github.com/SmilingWayne/me/tree/371cfb49f7f9b0c2ee1c25a69a81352deae3558b",
+      "sources": [
+        {
+          "file": "docs/运筹优化/资料库与面试/参考资料与许可.md",
+          "line": 3
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/SmilingWayne/me/tree/371cfb49f7f9b0c2ee1c25a69a81352deae3558b"
+    },
+    {
+      "url": "https://github.com/SmilingWayne/picsrepo",
+      "sources": [
+        {
+          "file": "docs/运筹优化/资料库与面试/参考资料与许可.md",
+          "line": 3
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/SmilingWayne/picsrepo"
+    },
+    {
+      "url": "https://github.com/SmilingWayne/puzzlekit",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/CPSAT_1.md",
+          "line": 336
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/SmilingWayne/puzzlekit"
+    },
+    {
+      "url": "https://github.com/SmilingWayne/puzzlekit-dataset",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/CPSAT_1.md",
+          "line": 336
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/SmilingWayne/puzzlekit-dataset"
+    },
+    {
+      "url": "https://github.com/Weizhena/Deep-Research-skills/blob/master/README.zh.md",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter10.md",
+          "line": 9
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/Weizhena/Deep-Research-skills/blob/master/README.zh.md"
+    },
+    {
+      "url": "https://github.com/acco93/filo2",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 326
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/acco93/filo2"
+    },
+    {
+      "url": "https://github.com/ankx22/Multi-Robot-Motion-Planning-for-Warehouse-Management-using-WHCA-",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 25
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/ankx22/Multi-Robot-Motion-Planning-for-Warehouse-Management-using-WHCA-"
+    },
+    {
+      "url": "https://github.com/chkwon/PyHygese",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 325
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/chkwon/PyHygese"
+    },
+    {
+      "url": "https://github.com/coin-or",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 178
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/coin-or"
+    },
+    {
+      "url": "https://github.com/google/or-tools",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 179
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/google/or-tools"
+    },
+    {
+      "url": "https://github.com/inria-UFF/VRPSolverEasy",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 335
+        },
+        {
+          "file": "docs/运筹优化/路径规划/VRPTW/精确算法.md",
+          "line": 149
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/inria-UFF/VRPSolverEasy"
+    },
+    {
+      "url": "https://github.com/msaudulhassan/mapf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 31
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/msaudulhassan/mapf"
+    },
+    {
+      "url": "https://github.com/robx/pzprjs",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Pzprjs_ch1.md",
+          "line": 17
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/robx/pzprjs"
+    },
+    {
+      "url": "https://github.com/scipopt/PySCIPOpt",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 180
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/scipopt/PySCIPOpt"
+    },
+    {
+      "url": "https://github.com/torressa/cspy",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRPTW/精确算法.md",
+          "line": 89
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/torressa/cspy"
+    },
+    {
+      "url": "https://github.com/vidalt/HGS-CVRP",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 325
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/vidalt/HGS-CVRP"
+    },
+    {
+      "url": "https://github.com/yuzhenfeng2002/Multi-Commodity-Network-Flow/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法/DWDcmp.md",
+          "line": 143
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://github.com/yuzhenfeng2002/Multi-Commodity-Network-Flow/"
+    },
+    {
+      "url": "https://gurobi.github.io/modeling-examples/colgen-cutting_stock/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRPTW/精确算法.md",
+          "line": 41
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://gurobi.github.io/modeling-examples/colgen-cutting_stock/"
+    },
+    {
+      "url": "https://highs.dev/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 184
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://highs.dev/"
+    },
+    {
+      "url": "https://huggingface.co/datasets/bluecoconut/pencil-puzzle-bench",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Pencil_puzzle_bench.md",
+          "line": 13
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://huggingface.co/datasets/bluecoconut/pencil-puzzle-bench"
+    },
+    {
+      "url": "https://img2018.cnblogs.com/blog/1903168/201912/1903168-20191220004845529-3040599.jpg",
+      "sources": [
+        {
+          "file": "docs/运筹优化/资料库与面试/参考资料与许可.md",
+          "line": 3
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://img2018.cnblogs.com/blog/1903168/201912/1903168-20191220004845529-3040599.jpg"
+    },
+    {
+      "url": "https://itsc.nju.edu.cn/EndNote/list.htm",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 114
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://itsc.nju.edu.cn/EndNote/list.htm"
+    },
+    {
+      "url": "https://jonathanolson.net/slitherlink/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Slither_how1.md",
+          "line": 293
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://jonathanolson.net/slitherlink/"
+    },
+    {
+      "url": "https://leetcode.cn/discuss/post/SqopEo/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/二分/二分查找.md",
+          "line": 4
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/discuss/post/SqopEo/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/count-tested-devices-after-test-operations/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/数据结构/差分.md",
+          "line": 236
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/count-tested-devices-after-test-operations/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/二分/二分查找.md",
+          "line": 40
+        }
+      ],
+      "status": "timeout",
+      "detail": "_ssl.c:983: The handshake operation timed out",
+      "http_status": null,
+      "method": "HEAD",
+      "final_url": null
+    },
+    {
+      "url": "https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/动态规划/0-1背包.md",
+          "line": 461
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/maximum-total-reward-using-operations-i/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/动态规划/0-1背包.md",
+          "line": 369
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/maximum-total-reward-using-operations-i/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/my-calendar-iii/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/数据结构/差分.md",
+          "line": 77
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/my-calendar-iii/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/partition-equal-subset-sum/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/动态规划/0-1背包.md",
+          "line": 342
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/partition-equal-subset-sum/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/target-sum/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/动态规划/0-1背包.md",
+          "line": 400
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/target-sum/"
+    },
+    {
+      "url": "https://leetcode.cn/problems/ways-to-express-an-integer-as-sum-of-powers/",
+      "sources": [
+        {
+          "file": "docs/算法笔记/动态规划/0-1背包.md",
+          "line": 432
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://leetcode.cn/problems/ways-to-express-an-integer-as-sum-of-powers/"
+    },
+    {
+      "url": "https://link.springer.com/chapter/10.1007/978-3-030-33274-7_6",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 9
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://link.springer.com/chapter/10.1007/978-3-030-33274-7_6"
+    },
+    {
+      "url": "https://mathworld.wolfram.com/15Puzzle.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 40
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://mathworld.wolfram.com/15Puzzle.html"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/esrg4wASSRcowptRu3Ilfw",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 317
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HBVXy2qjTr0YrVkwNbqszaN3nSiCyzjHa33uYDu9&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2Fesrg4wASSRcowptRu3Ilfw",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HBVXy2qjTr0YrVkwNbqszaN3nSiCyzjHa33uYDu9&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2Fesrg4wASSRcowptRu3Ilfw"
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/m4KhLtzgwakYYi5ZG2MdRw",
+      "sources": [
+        {
+          "file": "docs/运筹优化/应用建模/FAP.md",
+          "line": 9
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HBVXy2qjXrLYOgCDG8SXUmOzITgFREg0PxnIti3F&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2Fm4KhLtzgwakYYi5ZG2MdRw",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HBVXy2qjXrLYOgCDG8SXUmOzITgFREg0PxnIti3F&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2Fm4KhLtzgwakYYi5ZG2MdRw"
+    },
+    {
+      "url": "https://njuwallspider.github.io/IECourseGuide/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 22
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://njuwallspider.github.io/IECourseGuide/"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/15-082j-network-optimization-fall-2010/87ee338a701dcd52784c86daef642113_MIT15_082JF10_lec15.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7.md",
+          "line": 167
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://ocw.mit.edu/courses/15-082j-network-optimization-fall-2010/87ee338a701dcd52784c86daef642113_MIT15_082JF10_lec15.pdf"
+    },
+    {
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=57B7EA48E05A06A89AD16501A67B9E08",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 202
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=57B7EA48E05A06A89AD16501A67B9E08"
+    },
+    {
+      "url": "https://people.cs.rutgers.edu/~kb572/pubs/push_and_swap_ijcai.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 31
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://people.cs.rutgers.edu/~kb572/pubs/push_and_swap_ijcai.pdf"
+    },
+    {
+      "url": "https://potassco.org/clingo/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/CPSAT_2.md",
+          "line": 423
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://potassco.org/clingo/"
+    },
+    {
+      "url": "https://ppbench.com/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Pencil_puzzle_bench.md",
+          "line": 13
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://ppbench.com/"
+    },
+    {
+      "url": "https://pyscipopt.readthedocs.io/en/latest/tutorials/logfile.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 180
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://pyscipopt.readthedocs.io/en/latest/tutorials/logfile.html"
+    },
+    {
+      "url": "https://pyvrp.org/api/pyvrp.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRPTW/研究方案.md",
+          "line": 16
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://pyvrp.org/api/pyvrp.html"
+    },
+    {
+      "url": "https://pzplus.tck.mn/db",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Pzprjs_ch1.md",
+          "line": 37
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://pzplus.tck.mn/db"
+    },
+    {
+      "url": "https://scholar.google.com/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 34
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://scholar.google.com/"
+    },
+    {
+      "url": "https://scispace.com/papers/rank-two-relaxation-heuristics-for-max-cut-and-other-binary-57f80t8031",
+      "sources": [
+        {
+          "file": "docs/运筹优化/应用建模/Max_k_cut.md",
+          "line": 86
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://scispace.com/papers/rank-two-relaxation-heuristics-for-max-cut-and-other-binary-57f80t8031"
+    },
+    {
+      "url": "https://smilingwayne.github.io/me/OROpt/",
+      "sources": [
+        {
+          "file": "docs/index/or_index.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://smilingwayne.github.io/me/OROpt/"
+    },
+    {
+      "url": "https://smilingwayne.github.io/me/Study/LLM/Prompt/Prompt2/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 116
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://smilingwayne.github.io/me/Study/LLM/Prompt/Prompt2/"
+    },
+    {
+      "url": "https://smilingwayne.github.io/puzzlekit-web/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/Slither_how1.md",
+          "line": 288
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://smilingwayne.github.io/puzzlekit-web/"
+    },
+    {
+      "url": "https://space.bilibili.com/1369507485/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 156
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/1369507485/"
+    },
+    {
+      "url": "https://space.bilibili.com/168828224/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 155
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/168828224/"
+    },
+    {
+      "url": "https://space.bilibili.com/1723179839/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 155
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/1723179839/"
+    },
+    {
+      "url": "https://space.bilibili.com/23852932/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 158
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/23852932/"
+    },
+    {
+      "url": "https://space.bilibili.com/324539730/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 157
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/324539730/"
+    },
+    {
+      "url": "https://space.bilibili.com/480968966/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 155
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/480968966/"
+    },
+    {
+      "url": "https://space.bilibili.com/507570322/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 160
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/507570322/"
+    },
+    {
+      "url": "https://space.bilibili.com/88461692/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 154
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://space.bilibili.com/88461692/"
+    },
+    {
+      "url": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解器与工程实现/公式与代码写作规范.md",
+          "line": 101
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/"
+    },
+    {
+      "url": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解器与工程实现/公式与代码写作规范.md",
+          "line": 101
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/"
+    },
+    {
+      "url": "https://squidfunk.github.io/mkdocs-material/reference/math/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解器与工程实现/公式与代码写作规范.md",
+          "line": 101
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://squidfunk.github.io/mkdocs-material/reference/math/"
+    },
+    {
+      "url": "https://t0nyx1ang.github.io/noqx/penpa-edit/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/解谜/CPSAT_2.md",
+          "line": 422
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://t0nyx1ang.github.io/noqx/penpa-edit/"
+    },
+    {
+      "url": "https://theory.stanford.edu/~trevisan/cs261/lecture15.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7_2.md",
+          "line": 340
+        },
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7_2.md",
+          "line": 352
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://theory.stanford.edu/~trevisan/cs261/lecture15.pdf"
+    },
+    {
+      "url": "https://w1.cirrelt.ca/~vidalt/en/VRP-resources.html",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 301
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://w1.cirrelt.ca/~vidalt/en/VRP-resources.html"
+    },
+    {
+      "url": "https://web.endnote.com/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 114
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://web.endnote.com/"
+    },
+    {
+      "url": "https://web.stanford.edu/~ashishg/cs261/win21/notes/l9_note.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7.md",
+          "line": 167
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://web.stanford.edu/~ashishg/cs261/win21/notes/l9_note.pdf"
+    },
+    {
+      "url": "https://websites.umich.edu/~josilber/SECM_clean.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/应用建模/Max_k_cut.md",
+          "line": 96
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://websites.umich.edu/~josilber/SECM_clean.pdf"
+    },
+    {
+      "url": "https://www.acge.org.cn/encyclopediaFront/enterEncyclopediaIndex",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 203
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.acge.org.cn/encyclopediaFront/enterEncyclopediaIndex"
+    },
+    {
+      "url": "https://www.bilibili.com/video/BV15E411H7it/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter1.md",
+          "line": 186
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.bilibili.com/video/BV15E411H7it/"
+    },
+    {
+      "url": "https://www.bilibili.com/video/BV1Pb421H7Sj/?p=10",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter7_4.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.bilibili.com/video/BV1Pb421H7Sj/?p=10"
+    },
+    {
+      "url": "https://www.coin-or.org/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 178
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.coin-or.org/"
+    },
+    {
+      "url": "https://www.gurobi.com/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 182
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.gurobi.com/"
+    },
+    {
+      "url": "https://www.ibm.com/docs/en/icos/22.1.1?topic=optimizers-users-manual-cplex",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 183
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.ibm.com/docs/en/icos/22.1.1?topic=optimizers-users-manual-cplex"
+    },
+    {
+      "url": "https://www.icourse163.org/course/NJU-1465971171",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 160
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.icourse163.org/course/NJU-1465971171"
+    },
+    {
+      "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202512/P020251226697703940105.pdf",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 201
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "GET",
+      "final_url": "https://www.ndrc.gov.cn/xwdt/tzgg/202512/P020251226697703940105.pdf"
+    },
+    {
+      "url": "https://www.nowcoder.com/discuss/353155218969927680",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库.md",
+          "line": 293
+        },
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库.md",
+          "line": 193
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.nowcoder.com/discuss/353155218969927680"
+    },
+    {
+      "url": "https://www.nowcoder.com/feed/main/detail/134ccf1d27884423899a48dea597b7ba?sourceSSR=users",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库.md",
+          "line": 293
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.nowcoder.com/feed/main/detail/134ccf1d27884423899a48dea597b7ba?sourceSSR=users"
+    },
+    {
+      "url": "https://www.nowcoder.com/feed/main/detail/f63f92428bd948cbbc2836ad88a2b477?sourceSSR=subject",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库.md",
+          "line": 193
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.nowcoder.com/feed/main/detail/f63f92428bd948cbbc2836ad88a2b477?sourceSSR=subject"
+    },
+    {
+      "url": "https://www.overleaf.com/project",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 121
+        }
+      ],
+      "status": "redirected",
+      "detail": "final URL: https://www.overleaf.com/login",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.overleaf.com/login"
+    },
+    {
+      "url": "https://www.polyu.edu.hk/aae/people/academic-staff/dr-huang-hailong/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/MAPF.md",
+          "line": 50
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.polyu.edu.hk/aae/people/academic-staff/dr-huang-hailong/"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S030505482100349X",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 325
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://www.sciencedirect.com/science/article/pii/S030505482100349X"
+    },
+    {
+      "url": "https://www.scipopt.org/doc/html/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/运筹优化算法岗面试题库_参考答案.md",
+          "line": 827
+        }
+      ],
+      "status": "tls_error",
+      "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)",
+      "http_status": null,
+      "method": "HEAD",
+      "final_url": null
+    },
+    {
+      "url": "https://www.sintef.no/projectweb/top/pdptw/documentation/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 299
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.sintef.no/projectweb/top/pdptw/documentation/"
+    },
+    {
+      "url": "https://www.sintef.no/projectweb/top/vrptw/solomon-benchmark/",
+      "sources": [
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 43
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 385
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 505
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 525
+        },
+        {
+          "file": "docs/运筹优化/面试题库/路径规划算法岗面试题库_参考答案.md",
+          "line": 1325
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.sintef.no/projectweb/top/vrptw/solomon-benchmark/"
+    },
+    {
+      "url": "https://www.youtube.com/@cpaior7838",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 170
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@cpaior7838"
+    },
+    {
+      "url": "https://www.youtube.com/@mixedintegerprogramming",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 168
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@mixedintegerprogramming"
+    },
+    {
+      "url": "https://www.youtube.com/@numberphile",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 167
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@numberphile"
+    },
+    {
+      "url": "https://www.youtube.com/@schedulingseminar",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 171
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@schedulingseminar"
+    },
+    {
+      "url": "https://www.youtube.com/@sergiybutenko",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 172
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@sergiybutenko"
+    },
+    {
+      "url": "https://www.youtube.com/@umarjamilai",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 169
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/@umarjamilai"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=DPBb9tQOrg4",
+      "sources": [
+        {
+          "file": "docs/运筹优化/路径规划/VRP.md",
+          "line": 335
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/watch?v=DPBb9tQOrg4"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IposxYVBUnY",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法/DWDcmp.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/watch?v=IposxYVBUnY"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wxz0NJvKZNM",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法/DWDcmp.md",
+          "line": 11
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://www.youtube.com/watch?v=wxz0NJvKZNM"
+    },
+    {
+      "url": "https://www.zhihu.com/question/487630483",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/DualityLagrangian.md",
+          "line": 48
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://www.zhihu.com/question/487630483"
+    },
+    {
+      "url": "https://zh.wikipedia.org/zh-cn/%E5%A4%9A%E5%BC%8F%E8%81%94%E8%BF%90%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 202
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://zh.wikipedia.org/zh-cn/%E5%A4%9A%E5%BC%8F%E8%81%94%E8%BF%90%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/103961917",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/DualityLagrangian.md",
+          "line": 50
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://zhuanlan.zhihu.com/p/103961917"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/446152634",
+      "sources": [
+        {
+          "file": "docs/运筹优化/求解算法/GraphPartition.md",
+          "line": 396
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://zhuanlan.zhihu.com/p/446152634"
+    },
+    {
+      "url": "https://zhuanlan.zhihu.com/p/597492395",
+      "sources": [
+        {
+          "file": "docs/运筹优化/运筹学基础/Chapter3_ext1.md",
+          "line": 226
+        },
+        {
+          "file": "docs/运筹优化/运筹学基础/DualityLagrangian.md",
+          "line": 46
+        }
+      ],
+      "status": "restricted",
+      "detail": "",
+      "http_status": 403,
+      "method": "HEAD",
+      "final_url": "https://zhuanlan.zhihu.com/p/597492395"
+    },
+    {
+      "url": "https://zotero-chinese.com/user-guide/quick-start",
+      "sources": [
+        {
+          "file": "docs/运筹优化/其他专题/Intro.md",
+          "line": 114
+        }
+      ],
+      "status": "success",
+      "detail": "",
+      "http_status": 200,
+      "method": "HEAD",
+      "final_url": "https://zotero-chinese.com/user-guide/quick-start"
+    }
+  ],
+  "initial_scan_completed_at": "2026-10-11T09:30:09.078772+00:00",
+  "followup_note": "Only the corrected JSP DOI was rechecked after the initial full scan; other results retained."
+}

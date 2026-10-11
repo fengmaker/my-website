@@ -1,3 +1,9 @@
+---
+tags:
+  - MAPF
+  - 建模
+---
+
 # Multi-Agent Path Finding Problem
 
 - [Book](https://link.springer.com/chapter/10.1007/978-3-030-33274-7_6): Application and review (2019)

@@ -1,3 +1,9 @@
+---
+tags:
+  - TOP
+  - 建模
+---
+
 # 定向问题(Orienteering Problem)
 
 !!! quote "说在前面"
