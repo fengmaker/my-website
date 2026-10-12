@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="324pt" viewBox="0 0 864 324" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-07T16:21:49.552947</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 324
+L 864 324
+L 864 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 73.44 249.48
+L 799.2 249.48
+L 799.2 77.76
+L 73.44 77.76
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 73.44 125.2692
+L 687.544615 125.2692
+L 687.544615 87.4908
+L 73.44 87.4908
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #f3f4f6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 73.44 182.5092
+L 687.544615 182.5092
+L 687.544615 144.7308
+L 73.44 144.7308
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #f3f4f6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 73.44 239.7492
+L 687.544615 239.7492
+L 687.544615 201.9708
+L 73.44 201.9708
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #f3f4f6"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 73.44 244.9008
+L 73.44 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 129.267692 244.9008
+L 129.267692 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 185.095385 244.9008
+L 185.095385 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 240.923077 244.9008
+L 240.923077 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 296.750769 244.9008
+L 296.750769 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 352.578462 244.9008
+L 352.578462 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 408.406154 244.9008
+L 408.406154 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 464.233846 244.9008
+L 464.233846 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 520.061538 244.9008
+L 520.061538 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 575.889231 244.9008
+L 575.889231 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 631.716923 244.9008
+L 631.716923 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 687.544615 244.9008
+L 687.544615 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke: #d1d5db; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_13"/>
+     <g id="text_1">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="73.44" y="71.276875" transform="rotate(-0 73.44 71.276875)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_14"/>
+     <g id="text_2">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="129.267692" y="71.276875" transform="rotate(-0 129.267692 71.276875)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_15"/>
+     <g id="text_3">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="185.095385" y="71.276875" transform="rotate(-0 185.095385 71.276875)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_16"/>
+     <g id="text_4">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="240.923077" y="71.276875" transform="rotate(-0 240.923077 71.276875)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_17"/>
+     <g id="text_5">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="296.750769" y="71.276875" transform="rotate(-0 296.750769 71.276875)">4</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_18"/>
+     <g id="text_6">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="352.578462" y="71.276875" transform="rotate(-0 352.578462 71.276875)">5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_19"/>
+     <g id="text_7">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="408.406154" y="71.276875" transform="rotate(-0 408.406154 71.276875)">6</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_20"/>
+     <g id="text_8">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="464.233846" y="71.276875" transform="rotate(-0 464.233846 71.276875)">7</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_21"/>
+     <g id="text_9">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="520.061538" y="71.276875" transform="rotate(-0 520.061538 71.276875)">8</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_22"/>
+     <g id="text_10">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="575.889231" y="71.276875" transform="rotate(-0 575.889231 71.276875)">9</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_23"/>
+     <g id="text_11">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="631.716923" y="71.276875" transform="rotate(-0 631.716923 71.276875)">10</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_24"/>
+     <g id="text_12">
+      <text style="font: 12px 'Microsoft YaHei'; text-anchor: middle" x="687.544615" y="71.276875" transform="rotate(-0 687.544615 71.276875)">11</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_25"/>
+     <g id="text_13">
+      <!-- $M_1$ -->
+      <g transform="translate(49.03 113.174688)">
+       <text>
+        <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.90625">M</tspan>
+        <tspan style="font: 11.9px 'STIXGeneral'" x="14.16098" y="1.34375">1</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_26"/>
+     <g id="text_14">
+      <!-- $M_2$ -->
+      <g transform="translate(49.03 170.414688)">
+       <text>
+        <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.90625">M</tspan>
+        <tspan style="font: 11.9px 'STIXGeneral'" x="14.16098" y="1.34375">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_27"/>
+     <g id="text_15">
+      <!-- $M_3$ -->
+      <g transform="translate(49.03 227.654687)">
+       <text>
+        <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.90625">M</tspan>
+        <tspan style="font: 11.9px 'STIXGeneral'" x="14.16098" y="1.34375">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 73.44 125.2692
+L 240.923077 125.2692
+L 240.923077 87.4908
+L 73.44 87.4908
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #2563eb; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 296.750769 125.2692
+L 464.233846 125.2692
+L 464.233846 87.4908
+L 296.750769 87.4908
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #047857; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 464.233846 125.2692
+L 687.544615 125.2692
+L 687.544615 87.4908
+L 464.233846 87.4908
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #b45309; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 73.44 182.5092
+L 185.095385 182.5092
+L 185.095385 144.7308
+L 73.44 144.7308
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #b45309; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 240.923077 182.5092
+L 352.578462 182.5092
+L 352.578462 144.7308
+L 240.923077 144.7308
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #2563eb; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 464.233846 182.5092
+L 520.061538 182.5092
+L 520.061538 144.7308
+L 464.233846 144.7308
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #047857; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 73.44 239.7492
+L 296.750769 239.7492
+L 296.750769 201.9708
+L 73.44 201.9708
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #047857; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 296.750769 239.7492
+L 352.578462 239.7492
+L 352.578462 201.9708
+L 296.750769 201.9708
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #b45309; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 352.578462 239.7492
+L 464.233846 239.7492
+L 464.233846 201.9708
+L 352.578462 201.9708
+z
+" clip-path="url(#pca0d3cea9c)" style="fill: #2563eb; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_16">
+    <!-- $O_{1,1}$ -->
+    <g style="fill: #ffffff" transform="translate(142.306538 111.061641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">1,1</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_17">
+    <!-- $O_{3,2}$ -->
+    <g style="fill: #ffffff" transform="translate(365.617308 111.061641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">3,2</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_18">
+    <!-- $O_{2,3}$ -->
+    <g style="fill: #ffffff" transform="translate(561.014231 111.061641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">2,3</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_19">
+    <!-- $O_{2,1}$ -->
+    <g style="fill: #ffffff" transform="translate(114.392692 168.301641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">2,1</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_20">
+    <!-- $O_{1,2}$ -->
+    <g style="fill: #ffffff" transform="translate(281.875769 168.301641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">1,2</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_21">
+    <!-- $O_{3,3}$ -->
+    <g style="fill: #ffffff" transform="translate(477.272692 168.301641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">3,3</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_22">
+    <!-- $O_{3,1}$ -->
+    <g style="fill: #ffffff" transform="translate(170.220385 225.541641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">3,1</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_23">
+    <!-- $O_{2,2}$ -->
+    <g style="fill: #ffffff" transform="translate(309.789615 225.541641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">2,2</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_24">
+    <!-- $O_{1,3}$ -->
+    <g style="fill: #ffffff" transform="translate(393.531154 225.541641)">
+     <text>
+      <tspan style="font: italic 17px 'STIXGeneral'" x="0" y="-0.65625">O</tspan>
+      <tspan style="font: 11.9px 'STIXGeneral'" x="12.273987 18.223976 22.917324" y="1.59375">1,3</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_25">
+    <!-- $C_{\max}=11$ -->
+    <g style="fill: #b91c1c" transform="translate(703.176369 107.330231)">
+     <text>
+      <tspan style="font: italic 18px 'STIXGeneral'" x="0" y="-0.828125">C</tspan>
+      <tspan style="font: 12.6px 'STIXGeneral'" x="12.005997 21.808795 27.403188" y="1.5531249999999996">max</tspan>
+      <tspan style="font: 18px 'STIXGeneral'" x="37.096138 52.02534 61.02534" y="-0.828125">=11</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_26">
+    <text style="fill: #4b5563; font: 12px 'Microsoft YaHei'; text-anchor: start" x="703.176369" y="126.856687" transform="rotate(-0 703.176369 126.856687)">全部完成</text>
+   </g>
+   <g id="line2d_28">
+    <path d="M 687.544615 244.9008
+L 687.544615 82.3392
+" clip-path="url(#pca0d3cea9c)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b91c1c; stroke-width: 1.5"/>
+   </g>
+  </g>
+  <g id="text_27">
+   <text style="fill: #111827; font: 700 20px 'Microsoft YaHei'; text-anchor: start" x="38.88" y="25.92" transform="rotate(-0 38.88 25.92)">3×3 JSSP：一个可行排程</text>
+  </g>
+  <g id="text_28">
+   <text style="fill: #4b5563; font: 12px 'Microsoft YaHei'; text-anchor: start" x="38.88" y="49.572" transform="rotate(-0 38.88 49.572)">横轴是时间；每个矩形是一道工序；灰色背景表示空闲。</text>
+  </g>
+  <g id="text_29">
+   <!-- 各工件完工时间：$C_1=7$，$C_2=11$，$C_3=8$。该图展示可行性，不是最优性证明。 -->
+   <g style="fill: #4b5563" transform="translate(38.88 309.42)">
+    <text>
+     <tspan style="font: 12px 'Microsoft YaHei'" x="0 12 24 36 48 60 72 84 126.419225 174.838434 217.257658 229.257658 241.257658 253.257658 265.257658 277.257658 289.257658 301.257658 313.257658 325.257658 337.257658 349.257658 361.257658 373.257658 385.257658 397.257658 409.257658" y="-0.9375">各工件完工时间：，，。该图展示可行性，不是最优性证明。</tspan>
+     <tspan style="font: italic 12px 'STIXGeneral'" x="96 138.419225 186.838434" y="-0.9375">CCC</tspan>
+     <tspan style="font: 8.4px 'STIXGeneral'" x="104.003983 146.423207 194.842416" y="0.6515625000000007">123</tspan>
+     <tspan style="font: 12px 'STIXGeneral'" x="110.466457 120.41924 152.885681 162.838464 168.838449 201.30489 211.257674" y="-0.9375">=7=11=8</tspan>
+    </text>
+   </g>
+  </g>
+  <g id="legend_1">
+   <g id="patch_15">
+    <path d="M 89.46 278.288281
+L 115.46 278.288281
+L 115.46 269.188281
+L 89.46 269.188281
+z
+" style="fill: #2563eb"/>
+   </g>
+   <g id="text_30">
+    <!-- 工件 $J_1$ -->
+    <g transform="translate(125.86 278.288281)">
+     <text>
+      <tspan style="font: 13px 'Microsoft YaHei'" x="0 13 26" y="-0.265625">工件 </tspan>
+      <tspan style="font: italic 13px 'STIXGeneral'" x="29.84668" y="-0.265625">J</tspan>
+      <tspan style="font: 9.1px 'STIXGeneral'" x="35.618683" y="1.4546875000000004">1</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="patch_16">
+    <path d="M 192.68 278.288281
+L 218.68 278.288281
+L 218.68 269.188281
+L 192.68 269.188281
+z
+" style="fill: #b45309"/>
+   </g>
+   <g id="text_31">
+    <!-- 工件 $J_2$ -->
+    <g transform="translate(229.08 278.288281)">
+     <text>
+      <tspan style="font: 13px 'Microsoft YaHei'" x="0 13 26" y="-0.265625">工件 </tspan>
+      <tspan style="font: italic 13px 'STIXGeneral'" x="29.84668" y="-0.265625">J</tspan>
+      <tspan style="font: 9.1px 'STIXGeneral'" x="35.618683" y="1.4546875000000004">2</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="patch_17">
+    <path d="M 295.9 278.288281
+L 321.9 278.288281
+L 321.9 269.188281
+L 295.9 269.188281
+z
+" style="fill: #047857"/>
+   </g>
+   <g id="text_32">
+    <!-- 工件 $J_3$ -->
+    <g transform="translate(332.3 278.288281)">
+     <text>
+      <tspan style="font: 13px 'Microsoft YaHei'" x="0 13 26" y="-0.265625">工件 </tspan>
+      <tspan style="font: italic 13px 'STIXGeneral'" x="29.84668" y="-0.265625">J</tspan>
+      <tspan style="font: 9.1px 'STIXGeneral'" x="35.618683" y="1.4546875000000004">3</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pca0d3cea9c">
+   <rect x="73.44" y="77.76" width="725.76" height="171.72"/>
+  </clipPath>
+ </defs>
+</svg>

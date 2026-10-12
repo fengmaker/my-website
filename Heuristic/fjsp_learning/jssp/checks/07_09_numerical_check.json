@@ -1,0 +1,409 @@
+{
+  "queue_combinations": 216,
+  "feasible_queues": 64,
+  "critical_paths_checked": 88,
+  "n5_candidates_checked": 179,
+  "n5_examples": {
+    "SPT": {
+      "path": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "blocks": [
+        [
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "moves": [
+        [
+          3,
+          2
+        ]
+      ],
+      "values": [
+        11
+      ]
+    },
+    "GOOD": {
+      "path": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "blocks": [
+        [
+          [
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "moves": [
+        [
+          1,
+          2
+        ]
+      ],
+      "values": [
+        13
+      ]
+    }
+  },
+  "sa_trace": [
+    {
+      "step": 0,
+      "current": 12,
+      "best": 12
+    },
+    {
+      "step": 1,
+      "move": [
+        2,
+        1
+      ],
+      "candidate": 12,
+      "delta": 0,
+      "probability": 1.0,
+      "draw": null,
+      "accepted": true,
+      "current": 12,
+      "best": 12
+    },
+    {
+      "step": 2,
+      "move": [
+        3,
+        2
+      ],
+      "candidate": 11,
+      "delta": -1,
+      "probability": 1.0,
+      "draw": null,
+      "accepted": true,
+      "current": 11,
+      "best": 11
+    },
+    {
+      "step": 3,
+      "move": [
+        1,
+        2
+      ],
+      "candidate": 13,
+      "delta": 2,
+      "probability": 0.36787944117144233,
+      "draw": 0.2,
+      "accepted": true,
+      "current": 13,
+      "best": 11
+    },
+    {
+      "step": 4,
+      "move": [
+        1,
+        2
+      ],
+      "candidate": 11,
+      "delta": -2,
+      "probability": 1.0,
+      "draw": null,
+      "accepted": true,
+      "current": 11,
+      "best": 11
+    },
+    {
+      "step": 5,
+      "move": [
+        2,
+        1
+      ],
+      "candidate": 12,
+      "delta": 1,
+      "probability": 0.6065306597126334,
+      "draw": 0.8,
+      "accepted": false,
+      "current": 11,
+      "best": 11
+    }
+  ],
+  "ts_trace": [
+    {
+      "iteration": 1,
+      "candidates": [
+        {
+          "machine": 1,
+          "left": 1,
+          "value": 19,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 1,
+          "left": 2,
+          "value": 16,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 2,
+          "left": 1,
+          "value": 12,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 2,
+          "left": 2,
+          "value": 15,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 1,
+          "value": 18,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 2,
+          "value": 12,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        }
+      ],
+      "chosen": [
+        2,
+        1
+      ],
+      "current": 12,
+      "best": 12,
+      "expiry": 3
+    },
+    {
+      "iteration": 2,
+      "candidates": [
+        {
+          "machine": 1,
+          "left": 1,
+          "value": 19,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 1,
+          "left": 2,
+          "value": 16,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 2,
+          "left": 1,
+          "value": 12,
+          "tabu": true,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": false
+        },
+        {
+          "machine": 2,
+          "left": 2,
+          "value": 17,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 1,
+          "value": 18,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 2,
+          "value": 11,
+          "tabu": false,
+          "beats_best": true,
+          "aspiration_used": false,
+          "admissible": true
+        }
+      ],
+      "chosen": [
+        3,
+        2
+      ],
+      "current": 11,
+      "best": 11,
+      "expiry": 4
+    },
+    {
+      "iteration": 3,
+      "candidates": [
+        {
+          "machine": 1,
+          "left": 1,
+          "value": 14,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 1,
+          "left": 2,
+          "value": 13,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 2,
+          "left": 1,
+          "value": 12,
+          "tabu": true,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": false
+        },
+        {
+          "machine": 2,
+          "left": 2,
+          "value": 12,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 1,
+          "value": 14,
+          "tabu": false,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": true
+        },
+        {
+          "machine": 3,
+          "left": 2,
+          "value": 12,
+          "tabu": true,
+          "beats_best": false,
+          "aspiration_used": false,
+          "admissible": false
+        }
+      ],
+      "chosen": [
+        2,
+        2
+      ],
+      "current": 12,
+      "best": 11,
+      "expiry": 5
+    }
+  ],
+  "probability_delta2": {
+    "0.5": 0.01831563888873418,
+    "1": 0.1353352832366127,
+    "2": 0.36787944117144233,
+    "5": 0.6703200460356393,
+    "10": 0.8187307530779818
+  },
+  "calibration_T0": 8.962840235449102
+}

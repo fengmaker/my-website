@@ -7,6 +7,9 @@ tags:
 
 # Job Shop Problem (JSP)
 
+!!! tip "JSSP 系统学习笔记"
+    从[问题定义与 3×3 手算排程](JSSP/01_JSSP的问题定义与手算排程.md)开始，沿着[11 节专题目录](JSSP/index.md)学习析取图、最长路解码、关键块、构造启发式、局部搜索、SA、TS、Shifting Bottleneck 与下界。各节保留待 review 状态；本页继续保留原有 JSP / FJSP 模型，便于对照。
+
 !!! note "Reference"
     **Paper 1**: Wen-Yang Ku and J. Christopher Beck, Mixed Integer Programming Models for Job Shop Scheduling: A Computational Analysis, Computers and Operation Research, http://dx.doi.org/10.1016/j.cor.2016.04.006
 

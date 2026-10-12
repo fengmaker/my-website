@@ -11,7 +11,7 @@ tags:
 | 问题族 | 已有内容 |
 | --- | --- |
 | 路径与物流 | [问题谱系](../路径规划/问题谱系.md)、[TSP](../路径规划/TSP/总笔记.md)、[CVRP](../路径规划/CVRP/总笔记.md)、[VRPTW](../路径规划/VRPTW/总笔记.md)、[TOP](../路径规划/TOP.md)、[PDP](../路径规划/PDP.md)、[IRP](../路径规划/IRP.md)、[MAPF](../路径规划/MAPF.md) |
-| 调度与生产 | [JSP / FJSP](../调度与生产/JSP.md)、[批量生产](../调度与生产/LotSizingProblem.md) |
+| 调度与生产 | [JSP / FJSP 建模](../调度与生产/JSP.md)、[JSSP 系统学习笔记（11 节）](../调度与生产/JSSP/index.md)、[批量生产](../调度与生产/LotSizingProblem.md) |
 | 航空分配与排班 | [航班分配](../应用建模/FAP.md)、[机组排班](../应用建模/CrewSch.md) |
 | 图与网络 | [最大割](../应用建模/Max_k_cut.md)、[图划分](../求解算法/GraphPartition.md)、[图同构](../离散优化/Isomorphism.md) |
 | 能源 | [发电机组调度](../调度与生产/UnitCommitmentProblem.md) |
