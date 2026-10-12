@@ -1,0 +1,4599 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="运筹优化、算法练习与个人成长记录">
+      
+      
+        <meta name="author" content="cjs">
+      
+      
+        <link rel="canonical" href="https://fengmaker.github.io/my-website/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96/%E8%B0%83%E5%BA%A6%E4%B8%8E%E7%94%9F%E4%BA%A7/JSSP/03_%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F_%E6%9C%80%E9%95%BF%E8%B7%AF%E4%B8%8EDecoder/">
+      
+      
+        <link rel="prev" href="../02_%E6%9C%BA%E5%99%A8%E9%A1%BA%E5%BA%8F%E4%B8%8E%E6%9E%90%E5%8F%96%E5%9B%BE/">
+      
+      
+        <link rel="next" href="../04_%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84_head_tail_%E6%9D%BE%E5%BC%9B%E9%87%8F%E4%B8%8E%E5%85%B3%E9%94%AE%E5%9D%97/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>03 · 拓扑排序、最长路与 Decoder - cjs 的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-decoder" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="cjs 的学习笔记" class="md-header__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cjs 的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03 · 拓扑排序、最长路与 Decoder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="跟随系统配色"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="跟随系统配色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  个人成长
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../index/or_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运筹优化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../index/algorithm_introduction/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  LeetCode笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="cjs 的学习笔记" class="md-nav__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    cjs 的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人成长
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    运筹优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../index/or_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识体系总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E9%97%AE%E9%A2%98%E7%AE%97%E6%B3%95%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题—算法索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基础理论与建模
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · 基础理论与建模
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%AF%B9%E5%81%B6/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学优化基础
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与离散数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/0-1%E5%8F%98%E9%87%8F%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学建模技巧
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/Chapter3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经典运筹学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 求解算法体系
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 · 求解算法体系
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%85%83%E5%90%AF%E5%8F%91%E5%BC%8F/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式与元启发式
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%92/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    约束规划与 CP-SAT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/SAA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机优化方法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E7%BB%8F%E5%85%B8%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 经典优化问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 · 经典优化问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/%E9%97%AE%E9%A2%98%E8%B0%B1%E7%B3%BB/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径与物流优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    调度与生产优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    调度与生产优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    作业车间与柔性作业车间（JSP / FJSP）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JSSP 学习笔记
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4_3_2" id="__nav_3_4_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_4_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JSSP 学习笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_JSSP%E7%9A%84%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%89%8B%E7%AE%97%E6%8E%92%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 问题定义与手算排程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_%E6%9C%BA%E5%99%A8%E9%A1%BA%E5%BA%8F%E4%B8%8E%E6%9E%90%E5%8F%96%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 机器顺序与析取图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 拓扑排序、最长路与 Decoder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 拓扑排序、最长路与 Decoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 机器顺序已知，时间怎样重新算出来？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 固定图与直接前序：哪些时间必须先知道？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 先理解递推：为什么一定要取最大值？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 拓扑顺序是计算顺序，不是全车间串行加工顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 用入度队列逐步得到拓扑顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 沿拓扑顺序，完整手算最早排程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 为什么这个递推就是“最长路”？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 为什么算出的时间既可行，又是分量意义上最早的？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 为什么算出的时间既可行，又是分量意义上最早的？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 递推结果满足全部约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 任何可行开始时间都不小于递推结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 把判环与最长路合成一个 Decoder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 复杂度与使用边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 六个容易混淆的地方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.12 自检题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 自检题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考答案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.13 复习速记卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84_head_tail_%E6%9D%BE%E5%BC%9B%E9%87%8F%E4%B8%8E%E5%85%B3%E9%94%AE%E5%9D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 关键路径、head/tail 与关键块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_%E6%9E%84%E9%80%A0%E5%90%AF%E5%8F%91%E5%BC%8F_SPT_LPT_MWKR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 构造启发式：SPT、LPT、MWKR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2_%E7%A7%BB%E5%8A%A8%E4%B8%8E%E5%8F%AF%E8%A1%8C%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 局部搜索、移动与可行性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_%E5%85%B3%E9%94%AE%E5%9D%97%E9%82%BB%E5%9F%9F%E4%B8%8EN5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · 关键块邻域与 N5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB_SA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · 模拟退火（SA）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_%E7%A6%81%E5%BF%8C%E6%90%9C%E7%B4%A2_TS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · 禁忌搜索（TS）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Shifting_Bottleneck%E4%B8%8E%E5%8D%95%E6%9C%BA%E5%AD%90%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Shifting Bottleneck 与单机子问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_%E4%B8%8B%E7%95%8C%E4%B8%8E%E7%B2%BE%E7%A1%AE%E6%B1%82%E8%A7%A3_BB_MILP_CP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 · 下界与精确求解：B&B、MILP、CP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%94%E8%AE%B0%E5%86%99%E4%BD%9C%E5%87%86%E5%88%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写作准则
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%AA%8C%E6%94%B6%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 7–11 节验收记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LotSizingProblem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    批量生产（LSP）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/FAP/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    航空分配与排班
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/Max_k_cut/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图与网络优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../UnitCommitmentProblem/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    能源优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 求解器与工程实现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 · 求解器与工程实现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%85%AC%E5%BC%8F%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公式、伪代码与代码写作规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%AE%9E%E9%AA%8C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据集与实验规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95/Bucket_opt_SPP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dijkstra 桶优化：Dial 与 Radix Heap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 项目与实验复现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 · 项目与实验复现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/GMRP-ALNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GMRP-ALNS：机器重分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/VRPTW-Solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRPTW Solver：实现与四方实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/VRPTW/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纯 Python VRPTW 求解器开发方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/%E4%B8%93%E9%A2%98%E4%B8%8E%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    专题与实验记录模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 资料库与面试
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 · 资料库与面试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标签索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E4%B8%8E%E8%AE%B8%E5%8F%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料与许可
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E5%B2%97%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面试题库
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/Works/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习与课程资料
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%85%B6%E4%BB%96%E4%B8%93%E9%A2%98/VRPmeetsNeurIPS/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交叉研究与趣味优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E8%A7%A3%E8%B0%9C/CPSAT_1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CP-SAT 解谜
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../index/algorithm_introduction/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LeetCode笔记
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 机器顺序已知，时间怎样重新算出来？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 固定图与直接前序：哪些时间必须先知道？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 先理解递推：为什么一定要取最大值？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 拓扑顺序是计算顺序，不是全车间串行加工顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 用入度队列逐步得到拓扑顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 沿拓扑顺序，完整手算最早排程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 为什么这个递推就是“最长路”？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 为什么算出的时间既可行，又是分量意义上最早的？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 为什么算出的时间既可行，又是分量意义上最早的？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 递推结果满足全部约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. 任何可行开始时间都不小于递推结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-decoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 把判环与最长路合成一个 Decoder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 复杂度与使用边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 六个容易混淆的地方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.12 自检题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 自检题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考答案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.13 复习速记卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../index/or_index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    运筹优化
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../%E7%BB%8F%E5%85%B8%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    03 · 经典优化问题
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../JSP/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    调度与生产优化
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JSSP 学习笔记
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:jsp" class="md-tag">JSP</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:图算法" class="md-tag">图算法</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:工程实现" class="md-tag">工程实现</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/fengmaker/my-website/edit/main/docs/运筹优化/调度与生产/JSSP/03_拓扑排序_最长路与Decoder.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/fengmaker/my-website/raw/main/docs/运筹优化/调度与生产/JSSP/03_拓扑排序_最长路与Decoder.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="3-decoder">第 3 节：拓扑排序、最长路与 Decoder<a class="headerlink" href="#3-decoder" title="Permanent link">&para;</a></h1>
+<p>状态：第一版，待 review。<br>
+本节目标：给定每台机器的完整工序顺序，能检查可行性，逐步算出最早排程与最大完工时间，并说明这个计算为什么是有向无环图上的最长路。</p>
+<p>前置：<a href="../02_%E6%9C%BA%E5%99%A8%E9%A1%BA%E5%BA%8F%E4%B8%8E%E6%9E%90%E5%8F%96%E5%9B%BE/">第 2 节：机器顺序与析取图</a>。继续使用同一基础模型：所有 job 在时间 0 可投入，真实工序加工时间为正，机器始终可用，工序不可抢占，工序间允许等待。</p>
+<h2 id="31">3.1 机器顺序已知，时间怎样重新算出来？<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>上一节把排程转换成了图，也证明了：完整机器顺序与工艺路线合并后，没有有向环，就存在可行排程。</p>
+<p>现在我们采用第 1 节的机器顺序：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+M_1&amp;:\quad O_{1,1}\longrightarrow O_{3,2}\longrightarrow O_{2,3},\\
+M_2&amp;:\quad O_{2,1}\longrightarrow O_{1,2}\longrightarrow O_{3,3},\\
+M_3&amp;:\quad O_{3,1}\longrightarrow O_{2,2}\longrightarrow O_{1,3}.
+\end{aligned}
+\]</div>
+<p>加工数据也保持不变：</p>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>第一道工序</th>
+<th>第二道工序</th>
+<th>第三道工序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(J_1\)</span></td>
+<td><span class="arithmatex">\(O_{1,1}\)</span>：<span class="arithmatex">\(M_1\)</span>，3</td>
+<td><span class="arithmatex">\(O_{1,2}\)</span>：<span class="arithmatex">\(M_2\)</span>，2</td>
+<td><span class="arithmatex">\(O_{1,3}\)</span>：<span class="arithmatex">\(M_3\)</span>，2</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(J_2\)</span></td>
+<td><span class="arithmatex">\(O_{2,1}\)</span>：<span class="arithmatex">\(M_2\)</span>，2</td>
+<td><span class="arithmatex">\(O_{2,2}\)</span>：<span class="arithmatex">\(M_3\)</span>，1</td>
+<td><span class="arithmatex">\(O_{2,3}\)</span>：<span class="arithmatex">\(M_1\)</span>，4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(J_3\)</span></td>
+<td><span class="arithmatex">\(O_{3,1}\)</span>：<span class="arithmatex">\(M_3\)</span>，4</td>
+<td><span class="arithmatex">\(O_{3,2}\)</span>：<span class="arithmatex">\(M_1\)</span>，3</td>
+<td><span class="arithmatex">\(O_{3,3}\)</span>：<span class="arithmatex">\(M_2\)</span>，1</td>
+</tr>
+</tbody>
+</table>
+<p>这一节要从这些输入重新算出开始时间，不直接照抄第 1 节的甘特图。</p>
+<p>以 <span class="arithmatex">\(O_{2,3}\)</span> 为例，它使用 <span class="arithmatex">\(M_1\)</span>，要等两件事：<span class="arithmatex">\(J_2\)</span> 的前一道工序 <span class="arithmatex">\(O_{2,2}\)</span> 完成，以及机器队列中排在它前面的 <span class="arithmatex">\(O_{3,2}\)</span> 完成。只知道其中一项完成，还不能开工。</p>
+<p><strong>Decoder（解码器）把机器顺序这样的解表示，转换成具体时间排程和目标值</strong>。本节的 decoder 输入的是已经确定的完整机器队列；它负责实现这些顺序，并报告不可行的输入。后面若换成优先级编码，解码规则也需要另行说明。</p>
+<h2 id="32">3.2 固定图与直接前序：哪些时间必须先知道？<a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p>沿用第 2 节的稀疏图：</p>
+<div class="arithmatex">\[
+G_{\mathrm{adj}}=(V,E),\qquad E=A\cup B_{\mathrm{adj}}.
+\]</div>
+<p><span class="arithmatex">\(V\)</span> 包含九道真实工序、虚拟起点 <span class="arithmatex">\(\alpha\)</span> 和终点 <span class="arithmatex">\(\omega\)</span>。<span class="arithmatex">\(A\)</span> 包含工艺弧及起终点连接弧；<span class="arithmatex">\(B_{\mathrm{adj}}\)</span> 包含每条机器队列中的相邻弧。这里 <span class="arithmatex">\(E\)</span> 是两类已定向弧的总集合，本例有十八条弧。</p>
+<p>用 <span class="arithmatex">\(u,v\)</span> 泛指节点，<span class="arithmatex">\(p_u\)</span> 表示节点加工时间；<span class="arithmatex">\(p_\alpha=p_\omega=0\)</span>。每条弧仍表示：</p>
+<div class="arithmatex">\[
+s_v\ge s_u+p_u.
+\]</div>
+<p>把直接指向 <span class="arithmatex">\(v\)</span> 的节点集合记为 <span class="arithmatex">\(\operatorname{Pred}(v)\)</span>，叫 <strong>直接前序集合</strong>。只列直接前序就足够，因为更早的依赖会沿路径逐步传递。</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>工艺方向的直接前序</th>
+<th>机器方向的直接前序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(O_{1,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td>无</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td>无</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td>无</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+<td><span class="arithmatex">\(O_{1,1}\)</span></td>
+<td><span class="arithmatex">\(O_{2,1}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,2}\)</span></td>
+<td><span class="arithmatex">\(O_{2,1}\)</span></td>
+<td><span class="arithmatex">\(O_{3,1}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,2}\)</span></td>
+<td><span class="arithmatex">\(O_{3,1}\)</span></td>
+<td><span class="arithmatex">\(O_{1,1}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,3}\)</span></td>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+<td><span class="arithmatex">\(O_{2,2}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,3}\)</span></td>
+<td><span class="arithmatex">\(O_{2,2}\)</span></td>
+<td><span class="arithmatex">\(O_{3,2}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,3}\)</span></td>
+<td><span class="arithmatex">\(O_{3,2}\)</span></td>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\omega\)</span></td>
+<td><span class="arithmatex">\(O_{1,3}\)</span>、<span class="arithmatex">\(O_{2,3}\)</span>、<span class="arithmatex">\(O_{3,3}\)</span></td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p><span class="arithmatex">\(\alpha\)</span> 没有前序。其他节点的最早时刻，需要先得到表中直接前序的完成时刻。</p>
+<h2 id="33">3.3 先理解递推：为什么一定要取最大值？<a class="headerlink" href="#33" title="Permanent link">&para;</a></h2>
+<p>用 <span class="arithmatex">\(d_v\)</span> 表示 <strong>固定机器顺序下，节点 <span class="arithmatex">\(v\)</span> 最早可行的开始时刻</strong>。对具体工序简写为 <span class="arithmatex">\(d_{j,k}=d_{O_{j,k}}\)</span>，与实际排程的 <span class="arithmatex">\(s_{j,k}\)</span> 区分：可行排程允许 <span class="arithmatex">\(s_{j,k}\)</span> 更晚，而最早排程取 <span class="arithmatex">\(s_{j,k}=d_{j,k}\)</span>。</p>
+<p>如果 <span class="arithmatex">\(O_{2,2}\)</span> 最早在 5 完成，<span class="arithmatex">\(O_{3,2}\)</span> 最早在 7 完成，那么 <span class="arithmatex">\(O_{2,3}\)</span> 必须同时满足：</p>
+<div class="arithmatex">\[
+s_{2,3}\ge 5,\qquad s_{2,3}\ge 7.
+\]</div>
+<p>最早满足两项要求的时刻是：</p>
+<div class="arithmatex">\[
+d_{2,3}=\max(5,7)=7.
+\]</div>
+<p>取较小值 5，会与 <span class="arithmatex">\(M_1\)</span> 上仍在加工的 <span class="arithmatex">\(O_{3,2}\)</span> 重叠。把两项相加得到 12 也没有必要：这两道前序可以在不同机器上并行，它们的等待要求不是两段必须串行累加的时间。</p>
+<p>因此，先把起点固定为：</p>
+<div class="arithmatex">\[
+d_\alpha=0.
+\]</div>
+<p>对于其他节点，最早时刻的递推为：</p>
+<div class="arithmatex">\[
+d_v=\max_{u\in\operatorname{Pred}(v)}(d_u+p_u).
+\]</div>
+<p>每一项 <span class="arithmatex">\(d_u+p_u\)</span> 是直接前序 <span class="arithmatex">\(u\)</span> 的最早完成时刻；最大值表示等到所有前序都完成。起终点连接弧确保本图中除了 <span class="arithmatex">\(\alpha\)</span>，每个节点都有前序，不需要对空集合取最大值。<a href="https://arxiv.org/html/2402.17606v3#S4.SS1">最早开始时刻的前向递推参见 Zhang 等论文第 4.1 节，式 (1)</a></p>
+<p>但还有一个实际问题：计算 <span class="arithmatex">\(d_v\)</span> 时，怎样保证每个 <span class="arithmatex">\(d_u\)</span> 已经算好？这就是拓扑排序的作用。</p>
+<h2 id="34">3.4 拓扑顺序是计算顺序，不是全车间串行加工顺序<a class="headerlink" href="#34" title="Permanent link">&para;</a></h2>
+<p><strong>拓扑顺序</strong> 是把图中所有节点列成一个列表，使每条弧 <span class="arithmatex">\(u\to v\)</span> 都满足：<span class="arithmatex">\(u\)</span> 在列表中先于 <span class="arithmatex">\(v\)</span>。</p>
+<p>这样按列表计算 <span class="arithmatex">\(d_v\)</span>，它的全部直接前序就已经计算完成。没有直接或间接依赖的节点，往往可以交换在列表中的位置，所以拓扑顺序一般不唯一。</p>
+<p>例如，本图的 <span class="arithmatex">\(O_{1,1}\)</span>、<span class="arithmatex">\(O_{2,1}\)</span>、<span class="arithmatex">\(O_{3,1}\)</span> 都只有起点 <span class="arithmatex">\(\alpha\)</span> 作为前序。计算程序可以先算 <span class="arithmatex">\(O_{1,1}\)</span> 再算 <span class="arithmatex">\(O_{2,1}\)</span>，也可以反过来；它们的最早开始时间仍然都是 0。</p>
+<p><strong>程序逐个计算节点，不代表工序逐个串行加工</strong>。程序是在算时间，不是在让机器随循环一台一台工作。</p>
+<p><img alt="贯穿实例的拓扑分层：每层中的节点可以按任意次序计算，层号不是开始时刻" src="../assets/03_topological_layers.png" /></p>
+<p>图按“每轮移除当前全部无前序节点”的方式分层。层号表示计算上的依赖深度；同一层的 <span class="arithmatex">\(O_{1,2}\)</span> 最早在 3 开始，<span class="arithmatex">\(O_{2,2}\)</span> 和 <span class="arithmatex">\(O_{3,2}\)</span> 最早在 4 开始，并不同时开工。本例中同一道次恰好位于同层；一般应按图中的依赖分层，不能直接按工序下标分组。图中层间箭头只表示计算阶段推进，不表示新增的调度约束。具体逐节点的队列实现如下。</p>
+<h2 id="35">3.5 用入度队列逐步得到拓扑顺序<a class="headerlink" href="#35" title="Permanent link">&para;</a></h2>
+<p>节点的 <strong>入度</strong>（in-degree）是直接指向它的弧的数量。处理过前序后，相当于移除对应的入弧；我们维护的是剩余图中的入度。</p>
+<p>队列式拓扑排序通常称为 <strong>Kahn 算法</strong>，步骤如下：</p>
+<ol>
+<li>统计每个节点的初始入度，把所有入度为 0 的节点放入队列。</li>
+<li>取出队首节点 <span class="arithmatex">\(u\)</span>，将它加入拓扑列表。</li>
+<li>对每条出弧 <span class="arithmatex">\(u\to v\)</span>，把 <span class="arithmatex">\(v\)</span> 的剩余入度减 1；降到 0 时，把 <span class="arithmatex">\(v\)</span> 加入队尾。</li>
+<li>重复，直到队列为空。</li>
+<li>如果处理的节点数少于 <span class="arithmatex">\(\lvert V\rvert\)</span>，说明图中存在有向环。</li>
+</ol>
+<p>这是一种在移除前序的过程中建立拓扑顺序的算法；入度变为 0，表示它的所有直接前序都已经处理，不表示它在车间当前时刻能开工。<a href="https://raw.githubusercontent.com/kevin-wayne/algs4/master/src/main/java/edu/princeton/cs/algs4/TopologicalX.java">可对照 Sedgewick 与 Wayne 的队列式拓扑排序参考实现</a></p>
+<p>本例的初始入度为：</p>
+<table>
+<thead>
+<tr>
+<th>节点组</th>
+<th style="text-align: right;">初始入度</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td style="text-align: right;">0</td>
+<td>没有前序</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,1}\)</span>、<span class="arithmatex">\(O_{2,1}\)</span>、<span class="arithmatex">\(O_{3,1}\)</span></td>
+<td style="text-align: right;">各 1</td>
+<td>只有起点连接弧</td>
+</tr>
+<tr>
+<td>六道非首道工序</td>
+<td style="text-align: right;">各 2</td>
+<td>一个工艺前序、一个机器前序</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\omega\)</span></td>
+<td style="text-align: right;">3</td>
+<td>等待三个 job 的最后工序</td>
+</tr>
+</tbody>
+</table>
+<p>为把队列过程固定下来，我们让 <span class="arithmatex">\(\alpha\)</span> 的出弧按 job 编号访问；每个真实工序先访问工艺方向的出弧，再访问机器方向的出弧。队列从左向右表示从队首到队尾：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">步骤</th>
+<th>本次取出的节点</th>
+<th>本次新入队的节点</th>
+<th>处理后的队列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">初始</td>
+<td>—</td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td><span class="arithmatex">\(O_{1,1}\)</span>、<span class="arithmatex">\(O_{2,1}\)</span>、<span class="arithmatex">\(O_{3,1}\)</span></td>
+<td><span class="arithmatex">\(O_{1,1},O_{2,1},O_{3,1}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><span class="arithmatex">\(O_{1,1}\)</span></td>
+<td>无</td>
+<td><span class="arithmatex">\(O_{2,1},O_{3,1}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><span class="arithmatex">\(O_{2,1}\)</span></td>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+<td><span class="arithmatex">\(O_{3,1},O_{1,2}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><span class="arithmatex">\(O_{3,1}\)</span></td>
+<td><span class="arithmatex">\(O_{3,2}\)</span>、<span class="arithmatex">\(O_{2,2}\)</span></td>
+<td><span class="arithmatex">\(O_{1,2},O_{3,2},O_{2,2}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+<td>无</td>
+<td><span class="arithmatex">\(O_{3,2},O_{2,2}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><span class="arithmatex">\(O_{3,2}\)</span></td>
+<td><span class="arithmatex">\(O_{3,3}\)</span></td>
+<td><span class="arithmatex">\(O_{2,2},O_{3,3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><span class="arithmatex">\(O_{2,2}\)</span></td>
+<td><span class="arithmatex">\(O_{2,3}\)</span>、<span class="arithmatex">\(O_{1,3}\)</span></td>
+<td><span class="arithmatex">\(O_{3,3},O_{2,3},O_{1,3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><span class="arithmatex">\(O_{3,3}\)</span></td>
+<td>无</td>
+<td><span class="arithmatex">\(O_{2,3},O_{1,3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td><span class="arithmatex">\(O_{2,3}\)</span></td>
+<td>无</td>
+<td><span class="arithmatex">\(O_{1,3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td><span class="arithmatex">\(O_{1,3}\)</span></td>
+<td><span class="arithmatex">\(\omega\)</span></td>
+<td><span class="arithmatex">\(\omega\)</span></td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td><span class="arithmatex">\(\omega\)</span></td>
+<td>无</td>
+<td>空</td>
+</tr>
+</tbody>
+</table>
+<p>例如步骤 2 处理了 <span class="arithmatex">\(O_{1,1}\)</span>，但 <span class="arithmatex">\(O_{1,2}\)</span> 还有来自 <span class="arithmatex">\(O_{2,1}\)</span> 的入弧，不能立即入队。到步骤 3，这项依赖也处理完，才把 <span class="arithmatex">\(O_{1,2}\)</span> 加入队列。</p>
+<p>如果图有环，算法为什么会停？环上每个节点都有一个尚未移除的环内前序，没有任何一个能率先降到入度 0。反过来，有限的非空 DAG 一定有入度为 0 的节点，否则沿入弧不断往前追，最终会重复节点并形成环。</p>
+<p>因此，处理节点数就是可靠的判环依据。<strong>未处理的节点不一定都在环上</strong>：环后面的节点也可能被阻塞。例如虚拟终点 <span class="arithmatex">\(\omega\)</span> 可以无法入队，却不会参与有向环。</p>
+<h2 id="36">3.6 沿拓扑顺序，完整手算最早排程<a class="headerlink" href="#36" title="Permanent link">&para;</a></h2>
+<p>现在沿上面得到的列表递推。表中“前序完成候选值”就是各个 <span class="arithmatex">\(d_u+p_u\)</span>，取最大值得到当前节点的 <span class="arithmatex">\(d_v\)</span>。</p>
+<table>
+<thead>
+<tr>
+<th>计算节点</th>
+<th>前序完成候选值</th>
+<th style="text-align: right;">最早开始 <span class="arithmatex">\(d_v\)</span></th>
+<th style="text-align: right;">最早结束 <span class="arithmatex">\(d_v+p_v\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha\)</span></td>
+<td>时间原点</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span>：0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span>：0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,1}\)</span></td>
+<td><span class="arithmatex">\(\alpha\)</span>：0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,2}\)</span></td>
+<td><span class="arithmatex">\(O_{1,1}\)</span>：3；<span class="arithmatex">\(O_{2,1}\)</span>：2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,2}\)</span></td>
+<td><span class="arithmatex">\(O_{3,1}\)</span>：4；<span class="arithmatex">\(O_{1,1}\)</span>：3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,2}\)</span></td>
+<td><span class="arithmatex">\(O_{2,1}\)</span>：2；<span class="arithmatex">\(O_{3,1}\)</span>：4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,3}\)</span></td>
+<td><span class="arithmatex">\(O_{3,2}\)</span>：7；<span class="arithmatex">\(O_{1,2}\)</span>：5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,3}\)</span></td>
+<td><span class="arithmatex">\(O_{2,2}\)</span>：5；<span class="arithmatex">\(O_{3,2}\)</span>：7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{1,3}\)</span></td>
+<td><span class="arithmatex">\(O_{1,2}\)</span>：5；<span class="arithmatex">\(O_{2,2}\)</span>：5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\omega\)</span></td>
+<td><span class="arithmatex">\(O_{1,3}\)</span>：7；<span class="arithmatex">\(O_{2,3}\)</span>：11；<span class="arithmatex">\(O_{3,3}\)</span>：8</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+</tr>
+</tbody>
+</table>
+<p>从这张表可看出三个细节：</p>
+<ul>
+<li><span class="arithmatex">\(O_{1,2}\)</span> 受工艺前序限制：机器前序在 2 完成，仍要等自己的前一道工序到 3 完成。</li>
+<li><span class="arithmatex">\(O_{2,3}\)</span> 受机器前序限制：自己的前一道工序在 5 完成，仍要等 <span class="arithmatex">\(M_1\)</span> 上的 <span class="arithmatex">\(O_{3,2}\)</span> 到 7 完成。</li>
+<li><span class="arithmatex">\(O_{1,3}\)</span> 的两项前序恰好都在 5 完成，取最大值时可以出现并列。</li>
+</ul>
+<p>虽然计算程序先处理 <span class="arithmatex">\(O_{3,3}\)</span>、<span class="arithmatex">\(O_{2,3}\)</span>，最后才处理 <span class="arithmatex">\(O_{1,3}\)</span>，计算结果却允许 <span class="arithmatex">\(O_{1,3}\)</span> 在时间 5 开始，另外两道在 7 开始。计算顺序与时间顺序的区别在这里非常直观。</p>
+<p>把真实工序的开始时间设为 <span class="arithmatex">\(s_{j,k}=d_{j,k}\)</span>，结束时间设为 <span class="arithmatex">\(c_{j,k}=d_{j,k}+p_{j,k}\)</span>，就得到第 1 节的排程：</p>
+<p><img alt="由固定机器顺序解码得到的最早可行排程，最大完工时间为 11" src="../assets/01_gantt.png" /></p>
+<p>三个 job 的完工时间以及目标值为：</p>
+<div class="arithmatex">\[
+C_1=7,\qquad C_2=11,\qquad C_3=8,
+\]</div>
+<div class="arithmatex">\[
+C_{\max}=\max(C_1,C_2,C_3)=d_\omega=11.
+\]</div>
+<p>注意 <span class="arithmatex">\(\omega\)</span> 的加工时间是 0；它的最早开始与最早结束相同，都表示整个车间最早能全部完成的时刻。</p>
+<h2 id="37">3.7 为什么这个递推就是“最长路”？<a class="headerlink" href="#37" title="Permanent link">&para;</a></h2>
+<p>目前加工时间挂在节点上。为了使用常见的带权图表述，给每条弧 <span class="arithmatex">\(u\to v\)</span> 定义权重：</p>
+<div class="arithmatex">\[
+w(u,v)=p_u.
+\]</div>
+<p>也就是 <strong>一条弧携带它出发节点的加工时间</strong>。同一节点的不同出弧使用相同的权重；沿一条路径走过它时，加一次它的加工时间。</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>弧</th>
+<th style="text-align: right;">权重</th>
+<th>表示什么等待？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha\to O_{3,1}\)</span></td>
+<td style="text-align: right;">0</td>
+<td>起点自身不需要加工</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,1}\to O_{3,2}\)</span></td>
+<td style="text-align: right;">4</td>
+<td>等 <span class="arithmatex">\(O_{3,1}\)</span> 的加工完成</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{3,2}\to O_{2,3}\)</span></td>
+<td style="text-align: right;">3</td>
+<td>等 <span class="arithmatex">\(O_{3,2}\)</span> 释放 <span class="arithmatex">\(M_1\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(O_{2,3}\to\omega\)</span></td>
+<td style="text-align: right;">4</td>
+<td>等 <span class="arithmatex">\(J_2\)</span> 的最后工序完成</td>
+</tr>
+</tbody>
+</table>
+<p>一条从 <span class="arithmatex">\(\alpha\)</span> 到某个工序 <span class="arithmatex">\(v\)</span> 的路径，其弧权和计算的是到达 <span class="arithmatex">\(v\)</span> 前必须经过的加工，<strong>不包含终点工序 <span class="arithmatex">\(v\)</span> 自身的时长</strong>。所以它对应 <span class="arithmatex">\(v\)</span> 的开始时刻。再加 <span class="arithmatex">\(p_v\)</span>，才得到该工序的结束时刻。</p>
+<p>对于终点 <span class="arithmatex">\(\omega\)</span>，最后一道真实工序的时长已经通过进入 <span class="arithmatex">\(\omega\)</span> 的弧计入，因此从 <span class="arithmatex">\(\alpha\)</span> 到 <span class="arithmatex">\(\omega\)</span> 的路径长度包含路径上全部真实工序的加工时间。</p>
+<p>现在看本例中的一条路径：</p>
+<div class="arithmatex">\[
+\alpha\longrightarrow O_{3,1}\longrightarrow O_{3,2}\longrightarrow O_{2,3}\longrightarrow\omega.
+\]</div>
+<p>其长度为：</p>
+<div class="arithmatex">\[
+0+4+3+4=11.
+\]</div>
+<p>沿路径串起不等式，就要求终点不能早于 11。其他路径也会给出各自的时间下限；排程必须同时满足全部路径的要求，所以最终取 <strong>最长路径给出的最强下限</strong>。</p>
+<p><img alt="固定机器顺序下的最早时刻标注图，红色路径长度为 11" src="../assets/03_longest_path.png" /></p>
+<p>图中 <span class="arithmatex">\(d_{j,k}\)</span> 是工序最早开始时刻，节点内下方标出加工区间。红色路径混合了工艺弧和机器弧，不一定属于同一个 job。它证明的是这组机器顺序下无法早于 11 完成；机器顺序改变后，这条路径可能消失，因此它本身不构成整个 JSSP 的最优性证明。</p>
+<p>任何到 <span class="arithmatex">\(v\)</span> 的路径，最后一定经过某个直接前序 <span class="arithmatex">\(u\)</span>。把“到 <span class="arithmatex">\(u\)</span> 的最长路”接上弧 <span class="arithmatex">\(u\to v\)</span>，就得到同一个递推：</p>
+<div class="arithmatex">\[
+d_v=\max_{u\in\operatorname{Pred}(v)}\bigl(d_u+w(u,v)\bigr)
+=\max_{u\in\operatorname{Pred}(v)}(d_u+p_u).
+\]</div>
+<p>因此，本图的最早开始时刻就是从 <span class="arithmatex">\(\alpha\)</span> 出发的最长路长度，<span class="arithmatex">\(d_\omega\)</span> 就是最早排程的 <span class="arithmatex">\(C_{\max}\)</span>。这里路径的“长”指 <strong>权重和</strong>，不是图上画线的长度，也不是经过的边数。</p>
+<h2 id="38">3.8 为什么算出的时间既可行，又是分量意义上最早的？<a class="headerlink" href="#38" title="Permanent link">&para;</a></h2>
+<p>这个结论要同时证明“没有违反约束”和“任何其他可行安排都不能在某个工序上更早”。</p>
+<h3 id="a">A. 递推结果满足全部约束<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<p>对任何弧 <span class="arithmatex">\(u\to v\)</span>，递推取了所有前序候选值的最大值，必然有：</p>
+<div class="arithmatex">\[
+d_v\ge d_u+p_u.
+\]</div>
+<p>把实际开始时间设为 <span class="arithmatex">\(s_v=d_v\)</span>，所有工艺弧与机器弧就都满足。起点在 0，全部真实工序都可以从起点沿工艺路线到达，所以开始时间非负。完整机器队列的相邻弧也保证同机所有工序互不重叠。</p>
+<h3 id="b">B. 任何可行开始时间都不小于递推结果<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<p>考虑遵守同样机器顺序的任意可行安排 <span class="arithmatex">\(s\)</span>。沿拓扑顺序归纳：起点 <span class="arithmatex">\(s_\alpha=d_\alpha=0\)</span>；假设当前节点的所有前序都已有 <span class="arithmatex">\(s_u\ge d_u\)</span>，则：</p>
+<div class="arithmatex">\[
+s_v\ge\max_{u\in\operatorname{Pred}(v)}(s_u+p_u)
+\ge\max_{u\in\operatorname{Pred}(v)}(d_u+p_u)=d_v.
+\]</div>
+<p>每道工序都满足 <span class="arithmatex">\(s_v\ge d_v\)</span>。这就是 <strong>分量意义上最早</strong>：它们各自的开始时刻，均不能在保持同样顺序时进一步提前。</p>
+<p>所以，在固定机器顺序下，递推结果的每道工序结束时间也最早，<span class="arithmatex">\(C_{\max}\)</span> 自然最小。</p>
+<p>这个证明还说明：换一个合法拓扑顺序，得到的 <span class="arithmatex">\(d_v\)</span> 不会变，因为每个节点仍然取同一组已经确定的前序候选值。不同的合法计算顺序只是不同的计算过程。</p>
+<p><strong>最长路长度等于 <span class="arithmatex">\(C_{\max}\)</span>，这里指固定顺序下的最早排程</strong>。若把全部加工整体延后一个单位，图和最长路仍然不变，但实际排程的 <span class="arithmatex">\(C_{\max}\)</span> 变成 12；这时最长路给出的是该顺序下可以达到的最早值 11。</p>
+<h2 id="39-decoder">3.9 把判环与最长路合成一个 Decoder<a class="headerlink" href="#39-decoder" title="Permanent link">&para;</a></h2>
+<p>手算时我们先找拓扑顺序，再计算时间。实现时，可以在处理入度队列的同时，把时间下限传给后继。</p>
+<p>对弧 <span class="arithmatex">\(u\to v\)</span>，当 <span class="arithmatex">\(u\)</span> 已计算完成时，用候选值 <span class="arithmatex">\(d_u+p_u\)</span> 更新 <span class="arithmatex">\(v\)</span>：</p>
+<div class="arithmatex">\[
+d_v\leftarrow\max(d_v,d_u+p_u).
+\]</div>
+<p>这是 <strong>松弛操作</strong>（relaxation）：用一条弧检查并更新当前保存的路径长度。最长路保留较大值；这里的名字不表示把排程约束放宽。</p>
+<p>此时 <span class="arithmatex">\(v\)</span> 可能还有别的前序未处理，所以保存的是暂时下限。只有它的剩余入度降到 0，才说明全部候选值都已经收到，<span class="arithmatex">\(d_v\)</span> 可以最终确定。</p>
+<p>下面是伪代码。<code>p[v]</code> 对应 <span class="arithmatex">\(p_v\)</span>，<code>d[v]</code> 对应 <span class="arithmatex">\(d_v\)</span>，<code>indegree[v]</code> 是剩余入度，<code>succ[u]</code> 是 <span class="arithmatex">\(u\)</span> 的直接后继列表。<code>alpha</code>、<code>omega</code> 对应两个虚拟节点。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>decode(instance, machine_orders):
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>    if machine_orders 不是指定机器上全部工序的完整排列:
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>        return INVALID_INPUT
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    建立 V 和 E：工艺弧、起终点连接弧、相邻机器弧
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    对相同的 (u, v) 去重，建立 succ 和 indegree
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>    p[alpha] = p[omega] = 0
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    for v in V:
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>        d[v] = -infinity
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    d[alpha] = 0
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>    Q = 所有 indegree 为 0 的节点组成的队列
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>    processed = 0
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>    while Q 非空:
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>        u = Q.pop_front()
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>        processed += 1
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>        for v in succ[u]:
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>            d[v] = max(d[v], d[u] + p[u])
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>            indegree[v] -= 1
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>            if indegree[v] == 0:
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>                Q.push_back(v)
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>    if processed != 节点总数:
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>        return CYCLIC
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a>    for 每道真实工序 v:
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>        start[v] = d[v]
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a>        end[v] = d[v] + p[v]
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>    return FEASIBLE, start, end, d[omega]
+</span></code></pre></div></td></tr></table></div>
+<p>这里采用常见的最长路初始化：除起点外，先设为负无穷，表示尚未收到任何从起点传来的路径。对本节正确构造的图，每个节点都从 <span class="arithmatex">\(\alpha\)</span> 可达；被出队的节点已经得到有限的 <span class="arithmatex">\(d_u\)</span>，不会对负无穷做实际时间加法。用整数哨兵表示负无穷时，仍要避免对哨兵相加造成溢出。</p>
+<p>这个 decoder 有三种不同结果：</p>
+<table>
+<thead>
+<tr>
+<th>结果</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INVALID_INPUT</code></td>
+<td>工序遗漏、重复，或被放进不属于它的机器队列</td>
+<td><span class="arithmatex">\(O_{2,3}\)</span> 被列在 <span class="arithmatex">\(M_2\)</span> 上</td>
+</tr>
+<tr>
+<td><code>CYCLIC</code></td>
+<td>队列各自完整，但合并图有环</td>
+<td>第 2 节的跨机器循环反例</td>
+</tr>
+<tr>
+<td><code>FEASIBLE</code></td>
+<td>全部节点处理完成，输出最早排程和 <span class="arithmatex">\(C_{\max}\)</span></td>
+<td>本节的机器顺序得到 11</td>
+</tr>
+</tbody>
+</table>
+<p><strong>发现有环后，不能把已经算出的少量时间当作完整可行解返回</strong>。搜索算法可以拒绝这组顺序，或者按另行定义的规则修复它；修复会改变原顺序，不属于这段 decoder 的计算。</p>
+<p>实现时，邻接表和入度必须描述同一组弧。若某条弧同时来自工艺与机器关系，按有序节点对去重可以简化表示；不能在入度里计两次、邻接表里却只保留一次。</p>
+<h2 id="310">3.10 复杂度与使用边界<a class="headerlink" href="#310" title="Permanent link">&para;</a></h2>
+<p>队列算法中，每个节点最多出队一次，每条弧恰好用于一次更新和一次入度递减，因此建好邻接表后的时间复杂度是：</p>
+<div class="arithmatex">\[
+O(\lvert V\rvert+\lvert E\rvert).
+\]</div>
+<p>存储整张图、入度、时间与队列也需要 <span class="arithmatex">\(O(\lvert V\rvert+\lvert E\rvert)\)</span> 空间。本例只有十一个节点、十八条弧。采用相邻机器弧，可以避免完整同机团带来的大量冗余弧。<a href="https://raw.githubusercontent.com/kevin-wayne/algs4/master/src/main/java/edu/princeton/cs/algs4/AcyclicLP.java">有向无环图最长路的拓扑递推及线性复杂度，可对照教材作者的参考实现</a></p>
+<p>本节不需要枚举全部路径，也不需要使用最短路算法。虽然图可能有很多条路径，但拓扑递推把每个节点之前的最强限制汇总成一个数 <span class="arithmatex">\(d_v\)</span>。</p>
+<p>对于这里的整数加工时间，可以用 64 位整数存储时间，并依据实例的加工时间总和检查累加范围。每次解码一组新机器顺序时，重建或重置剩余入度和时间数组；上一次解码已经递减过的入度不能直接复用。</p>
+<p>最后区分两个容易混用的概念：</p>
+<ul>
+<li><strong>固定队列的图解码</strong>：机器先后关系已经确定，在这些约束下计算最早时间。本节讲的是这一种。</li>
+<li><strong>优先级序列的构造解码</strong>：输入表示待调度工序的选择优先级，decoder 还会选择加工位置，可能在机器空档中插入工序。它最终形成的机器队列未必等于输入序列在该机器上的投影。</li>
+</ul>
+<p>它们都可以称为 decoder，但输入语义和决策范围不同。后面讲构造启发式、搜索编码或 FJSP 时，再说明采用哪一种。</p>
+<h2 id="311">3.11 六个容易混淆的地方<a class="headerlink" href="#311" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>容易形成的误解</th>
+<th>正确理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拓扑列表前面的工序必须先加工完，才轮到后面的</td>
+<td>列表规定计算先后；无依赖的加工仍可并行</td>
+</tr>
+<tr>
+<td>入度变为 0，说明工序在时间 0 可以开工</td>
+<td>它表示计算所需的前序都已处理；实际时刻由 <span class="arithmatex">\(d_v\)</span> 决定</td>
+</tr>
+<tr>
+<td>前序完成时刻取最小值或相加</td>
+<td>要同时满足全部前序约束，所以取最大值</td>
+</tr>
+<tr>
+<td>到工序节点的路径长度就是它的结束时间</td>
+<td>按 <span class="arithmatex">\(w(u,v)=p_u\)</span> 的约定，它是最早开始时间；结束时间还要加自己的时长</td>
+</tr>
+<tr>
+<td>有环时，剩下的节点全都属于这个环</td>
+<td>环后的节点也会被阻塞；处理不完证明存在环，不直接定位全部环节点</td>
+</tr>
+<tr>
+<td>解码得到了最早排程，就证明 JSSP 全局最优</td>
+<td>它只对固定机器顺序最优；还要比较其他可行顺序</td>
+</tr>
+</tbody>
+</table>
+<h2 id="312">3.12 自检题<a class="headerlink" href="#312" title="Permanent link">&para;</a></h2>
+<p>先自己回答，再看下面的参考答案。</p>
+<ol>
+<li><span class="arithmatex">\(O_{3,2}\)</span> 的两个直接前序分别最早在 4 和 3 完成。它的最早开始、结束时刻各是多少？若取较小的候选值，会违反什么约束？</li>
+<li>从 <span class="arithmatex">\(\alpha\)</span> 到 <span class="arithmatex">\(O_{2,3}\)</span> 的最长路长度是多少？为什么不是 11？进入 <span class="arithmatex">\(\omega\)</span> 的最后一条弧又加上了什么？</li>
+<li>调换 <span class="arithmatex">\(O_{1,1}\)</span>、<span class="arithmatex">\(O_{2,1}\)</span> 在合法拓扑列表中的计算先后，会改变本例的最早排程吗？是否意味着改变了机器队列？</li>
+<li>如果暂时只收到 <span class="arithmatex">\(O_{2,2}\)</span> 传给 <span class="arithmatex">\(O_{2,3}\)</span> 的候选值 5，可以立即让 <span class="arithmatex">\(O_{2,3}\)</span> 入队并把时间定为 5 吗？</li>
+<li>采用第 2 节第 2.8 小节的不可行机器顺序，队列算法能否处理完十一个节点？若 <span class="arithmatex">\(\omega\)</span> 未被处理，是否意味着它在环上？</li>
+<li>只把 <span class="arithmatex">\(p_{3,2}\)</span> 从 3 改为 4，机器顺序与其他数据都保持不变。重新解码后，<span class="arithmatex">\(O_{2,3}\)</span>、<span class="arithmatex">\(O_{3,3}\)</span> 的开始时刻和 <span class="arithmatex">\(C_{\max}\)</span> 各变成多少？</li>
+<li>将本节排程整体延后一个时间单位，图的最长路长度与实际 <span class="arithmatex">\(C_{\max}\)</span> 分别是多少？为什么二者不再相等？</li>
+</ol>
+<h3 id="_1">参考答案<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>最早开始为 <span class="arithmatex">\(\max(4,3)=4\)</span>，结束为 <span class="arithmatex">\(4+3=7\)</span>。若在 3 开始，<span class="arithmatex">\(J_3\)</span> 的前一道工序 <span class="arithmatex">\(O_{3,1}\)</span> 尚未完成，违反工艺先后约束。</li>
+<li>长度是 <span class="arithmatex">\(d_{2,3}=7\)</span>，例如路径 <span class="arithmatex">\(\alpha\to O_{3,1}\to O_{3,2}\to O_{2,3}\)</span> 的权重和为 <span class="arithmatex">\(0+4+3\)</span>。它还没有计入 <span class="arithmatex">\(O_{2,3}\)</span> 自身的加工；弧 <span class="arithmatex">\(O_{2,3}\to\omega\)</span> 再加 <span class="arithmatex">\(p_{2,3}=4\)</span>，到终点的长度变为 11。</li>
+<li>不会改变最早排程。这两道工序没有彼此依赖，使用不同机器；改变计算先后不会添加机器弧，也没有改变任何机器队列。</li>
+<li>不可以。它还要等待机器前序 <span class="arithmatex">\(O_{3,2}\)</span> 的候选值 7。只有全部直接前序都处理完，剩余入度降为 0，才能入队；最终取 <span class="arithmatex">\(\max(5,7)=7\)</span>。</li>
+<li>不能。按本节建图，只能处理 <span class="arithmatex">\(\alpha\)</span> 与 <span class="arithmatex">\(O_{2,1}\)</span> 两个节点，之后队列为空，剩下九个节点未处理。<span class="arithmatex">\(\omega\)</span> 没有出弧，不会在环上；它是被环及其后续依赖阻塞的节点。</li>
+<li><span class="arithmatex">\(O_{3,2}\)</span> 仍在 4 开始，但改为在 8 完成。<span class="arithmatex">\(O_{2,3}\)</span> 从 8 开始、到 12 完成；<span class="arithmatex">\(O_{3,3}\)</span> 从 8 开始、到 9 完成。<span class="arithmatex">\(J_1\)</span> 仍在 7 完成，所以新的 <span class="arithmatex">\(C_{\max}=12\)</span>。</li>
+<li>图和加工时间不变，最长路仍为 11；实际 <span class="arithmatex">\(C_{\max}=12\)</span>。等于最长路的结论对应最早排程，而延后的排程没有取最早开始时刻。</li>
+</ol>
+<h2 id="313">3.13 复习速记卡<a class="headerlink" href="#313" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>以后复习时要立即想起的点</th>
+<th>本节对应的要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decoder 的输入与输出？</td>
+<td>完整机器队列输入；可行性状态、最早时间表和 <span class="arithmatex">\(C_{\max}\)</span> 输出</td>
+</tr>
+<tr>
+<td>为什么先拓扑排序？</td>
+<td>保证计算当前节点时，全部直接前序都已算好</td>
+</tr>
+<tr>
+<td>最早时刻的递推？</td>
+<td><span class="arithmatex">\(d_\alpha=0\)</span>；<span class="arithmatex">\(d_v=\max_{u\in\operatorname{Pred}(v)}(d_u+p_u)\)</span></td>
+</tr>
+<tr>
+<td>弧权怎样定义？</td>
+<td><span class="arithmatex">\(w(u,v)=p_u\)</span>，携带出发节点时长</td>
+</tr>
+<tr>
+<td>为什么是最长路？</td>
+<td>所有依赖路径都给出时间下限，必须满足其中最强的一项</td>
+</tr>
+<tr>
+<td>到工序和到终点有什么区别？</td>
+<td>到工序得到开始时间；到 <span class="arithmatex">\(\omega\)</span> 已计入最后一道真实工序的时长</td>
+</tr>
+<tr>
+<td>怎样判环？</td>
+<td>队列为空后，处理节点数仍少于节点总数</td>
+</tr>
+<tr>
+<td>换一个合法拓扑顺序会怎样？</td>
+<td>计算过程可以变，最早时刻不变</td>
+</tr>
+<tr>
+<td>这组顺序的最早 <span class="arithmatex">\(C_{\max}\)</span>？</td>
+<td>11，由长度为 11 的路径限制</td>
+</tr>
+<tr>
+<td>为何仍需搜索？</td>
+<td>不同机器顺序会改变依赖路径和最早完工时间</td>
+</tr>
+</tbody>
+</table>
+<p>下一节：<a href="../04_%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84_head_tail_%E6%9D%BE%E5%BC%9B%E9%87%8F%E4%B8%8E%E5%85%B3%E9%94%AE%E5%9D%97/">关键路径、head/tail、松弛量与关键块</a>。我们会继续追问：哪些工序和机器先后关系正在限制完工时间？怎样找到它们，而不只凭甘特图猜测？</p>
+<p>参考核验：2026-10-08。递推定义与算法结构已对照上文链接的论文和教材作者代码；贯穿实例、队列过程、图示与证明按本节模型自行展开。本节不讨论算法的历史贡献归属。</p>
+<p>提交前检查：已核算队列过程、最早时间与自检题答案，检查图文数据及相对链接；已用 CommonMark 与 MathJax 本地预览检查公式、表格、加粗、伪代码与图片。未直接检查 IDE 内置 Markdown 预览。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; cjs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.tracking", "content.code.copy", "content.code.select", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

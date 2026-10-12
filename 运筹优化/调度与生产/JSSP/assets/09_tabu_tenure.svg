@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="295.2pt" viewBox="0 0 864 295.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-11T16:28:20.123330</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 295.2
+L 864 295.2
+L 864 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 51.48 202.32
+L 220.68 202.32
+Q 223.3872 202.32 223.3872 199.728
+L 223.3872 121.968
+Q 223.3872 119.376 220.68 119.376
+L 51.48 119.376
+Q 48.7728 119.376 48.7728 121.968
+L 48.7728 199.728
+Q 48.7728 202.32 51.48 202.32
+z
+" clip-path="url(#p8c086b1259)" style="fill: #eff6ff; stroke: #2563eb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 254.52 202.32
+L 423.72 202.32
+Q 426.4272 202.32 426.4272 199.728
+L 426.4272 121.968
+Q 426.4272 119.376 423.72 119.376
+L 254.52 119.376
+Q 251.8128 119.376 251.8128 121.968
+L 251.8128 199.728
+Q 251.8128 202.32 254.52 202.32
+z
+" clip-path="url(#p8c086b1259)" style="fill: #fef2f2; stroke: #dc2626; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 457.56 202.32
+L 626.76 202.32
+Q 629.4672 202.32 629.4672 199.728
+L 629.4672 121.968
+Q 629.4672 119.376 626.76 119.376
+L 457.56 119.376
+Q 454.8528 119.376 454.8528 121.968
+L 454.8528 199.728
+Q 454.8528 202.32 457.56 202.32
+z
+" clip-path="url(#p8c086b1259)" style="fill: #fef2f2; stroke: #dc2626; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 660.6 202.32
+L 829.8 202.32
+Q 832.5072 202.32 832.5072 199.728
+L 832.5072 121.968
+Q 832.5072 119.376 829.8 119.376
+L 660.6 119.376
+Q 657.8928 119.376 657.8928 121.968
+L 657.8928 199.728
+Q 657.8928 202.32 660.6 202.32
+z
+" clip-path="url(#p8c086b1259)" style="fill: #ecfdf5; stroke: #059669; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 700 20px 'Microsoft YaHei'; text-anchor: start" x="41.328" y="34.488" transform="rotate(-0 41.328 34.488)">禁忌期限：记录工序身份，按迭代编号到期</text>
+   </g>
+   <g id="text_2">
+    <!-- 第 1 轮接受一次交换，$\tau=2$，记录 $e=1+2=3$；检查条件为 $t\leq e$。 -->
+    <g style="fill: #64748b" transform="translate(41.328 75.312)">
+     <text>
+      <tspan style="font: 12px 'Microsoft YaHei'" x="0 12 15.550781 22.587891 26.138672 38.138672 50.138672 62.138672 74.138672 86.138672 98.138672 110.138672 151.728516 163.728516 175.728516 187.728516 265.757812 277.757812 289.757812 301.757812 313.757812 325.757812 337.757812 368.126953" y="-0.96875">第 1 轮接受一次交换，，记录 ；检查条件为 。</tspan>
+      <tspan style="font: oblique 12px 'DejaVu Sans'" x="122.138672 191.279297 341.308594 360.744141" y="-0.96875">τete</tspan>
+      <tspan style="font: 12px 'DejaVu Sans'" x="131.701172 144.09375 201 213.392578 223.365234 235.757812 245.730469 258.123047 348.351562" y="-0.96875">=2=1+2=3≤</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_3">
+    <text style="fill: #2563eb; font: 17px 'Microsoft YaHei'; text-anchor: middle" x="136.08" y="145.944" transform="rotate(-0 136.08 145.944)">第 1 轮</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #2563eb; font: 10.5px 'Microsoft YaHei'; text-anchor: middle" x="136.08" y="178.992" transform="rotate(-0 136.08 178.992)">交换后登记</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #dc2626; font: 17px 'Microsoft YaHei'; text-anchor: middle" x="339.12" y="145.944" transform="rotate(-0 339.12 145.944)">第 2 轮</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #dc2626; font: 10.5px 'Microsoft YaHei'; text-anchor: middle" x="339.12" y="178.992" transform="rotate(-0 339.12 178.992)">禁止该工序对回退</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #dc2626; font: 17px 'Microsoft YaHei'; text-anchor: middle" x="542.16" y="145.944" transform="rotate(-0 542.16 145.944)">第 3 轮</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #dc2626; font: 10.5px 'Microsoft YaHei'; text-anchor: middle" x="542.16" y="178.992" transform="rotate(-0 542.16 178.992)">仍在禁忌期限内</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #059669; font: 17px 'Microsoft YaHei'; text-anchor: middle" x="745.2" y="145.944" transform="rotate(-0 745.2 145.944)">第 4 轮</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #059669; font: 10.5px 'Microsoft YaHei'; text-anchor: middle" x="745.2" y="178.992" transform="rotate(-0 745.2 178.992)">到期，可再次考虑</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #475569; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="440.64" y="245.088" transform="rotate(-0 440.64 245.088)">候选若严格刷新历史最好值，可按本章特赦规则解除禁忌；仍须先通过可行性检查。</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8c086b1259">
+   <rect x="34.56" y="11.808" width="812.16" height="265.68"/>
+  </clipPath>
+ </defs>
+</svg>

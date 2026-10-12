@@ -1,0 +1,3936 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="运筹优化、算法练习与个人成长记录">
+      
+      
+        <meta name="author" content="cjs">
+      
+      
+        <link rel="canonical" href="https://fengmaker.github.io/my-website/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/Chapter7_1/">
+      
+      
+        <link rel="prev" href="../Chapter7/">
+      
+      
+        <link rel="next" href="../Chapter7_2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>最小费用流 - cjs 的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="cjs 的学习笔记" class="md-header__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cjs 的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              最小费用流
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="跟随系统配色"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="跟随系统配色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  个人成长
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../index/or_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运筹优化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../index/algorithm_introduction/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  LeetCode笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="cjs 的学习笔记" class="md-nav__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    cjs 的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人成长
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    运筹优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index/or_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识体系总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E9%97%AE%E9%A2%98%E7%AE%97%E6%B3%95%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题—算法索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基础理论与建模
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · 基础理论与建模
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%AF%B9%E5%81%B6/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学优化基础
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与离散数学
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    图论与离散数学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复杂度理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7_0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图的搜索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E4%B8%8E%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/%E6%9C%80%E7%9F%AD%E8%B7%AF%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最短路与网络流入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最短路算法详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最小费用流
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最小费用流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到运输问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到指派问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到最短路问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到最大流问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小费用流问题的对偶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最小费用流问题的对偶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximum-weight-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大加权闭合子图 (Maximum Weight Closure)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimality-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优性条件 (Optimality Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互补松弛条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-canceling-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解算法：负圈算法 (Cycle Canceling Algorithm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-caterer-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用案例：The Caterer Problem (配餐员问题)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最大流与最小割
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    极大团与独立集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分图与匹配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态规划基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态规划进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/0-1%E5%8F%98%E9%87%8F%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学建模技巧
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../Chapter3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经典运筹学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 求解算法体系
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 · 求解算法体系
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%85%83%E5%90%AF%E5%8F%91%E5%BC%8F/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式与元启发式
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%92/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    约束规划与 CP-SAT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/SAA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机优化方法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E7%BB%8F%E5%85%B8%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 经典优化问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 · 经典优化问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/%E9%97%AE%E9%A2%98%E8%B0%B1%E7%B3%BB/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径与物流优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B0%83%E5%BA%A6%E4%B8%8E%E7%94%9F%E4%BA%A7/JSP/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    调度与生产优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/FAP/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    航空分配与排班
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/Max_k_cut/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图与网络优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B0%83%E5%BA%A6%E4%B8%8E%E7%94%9F%E4%BA%A7/UnitCommitmentProblem/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    能源优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 求解器与工程实现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 · 求解器与工程实现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%85%AC%E5%BC%8F%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公式、伪代码与代码写作规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%AE%9E%E9%AA%8C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据集与实验规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95/Bucket_opt_SPP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dijkstra 桶优化：Dial 与 Radix Heap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 项目与实验复现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 · 项目与实验复现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/GMRP-ALNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GMRP-ALNS：机器重分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/VRPTW-Solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRPTW Solver：实现与四方实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/VRPTW/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纯 Python VRPTW 求解器开发方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/%E4%B8%93%E9%A2%98%E4%B8%8E%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    专题与实验记录模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 资料库与面试
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 · 资料库与面试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标签索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E4%B8%8E%E8%AE%B8%E5%8F%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料与许可
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E5%B2%97%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面试题库
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../Works/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习与课程资料
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%85%B6%E4%BB%96%E4%B8%93%E9%A2%98/VRPmeetsNeurIPS/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交叉研究与趣味优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%A7%A3%E8%B0%9C/CPSAT_1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CP-SAT 解谜
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../index/algorithm_introduction/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LeetCode笔记
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到运输问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到指派问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到最短路问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从最小费用流到最大流问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最小费用流问题的对偶
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最小费用流问题的对偶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximum-weight-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大加权闭合子图 (Maximum Weight Closure)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimality-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最优性条件 (Optimality Conditions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互补松弛条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-canceling-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解算法：负圈算法 (Cycle Canceling Algorithm)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-caterer-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用案例：The Caterer Problem (配餐员问题)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../index/or_index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    运筹优化
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    01 · 基础理论与建模
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_01/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    图论与离散数学
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:图算法" class="md-tag">图算法</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:网络流" class="md-tag">网络流</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/fengmaker/my-website/edit/main/docs/运筹优化/运筹学基础/Chapter7_1.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/fengmaker/my-website/raw/main/docs/运筹优化/运筹学基础/Chapter7_1.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">最小费用流：建模，拓展<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>最小费用流问题（<code>Minimal Cost Flow Problem</code>）在网络最优化问题中占有核心地位。可以表述如下：</p>
+<blockquote>
+<p>给定图 <span class="arithmatex">\(G(V,E)\)</span>，对每个节点 <span class="arithmatex">\(v_i\)</span> 均给定实数 <span class="arithmatex">\(b_i\)</span>， 如果 <span class="arithmatex">\(b_i &gt; 0\)</span>，那么称 <span class="arithmatex">\(b_i\)</span> 为发点，可以供给资源，<span class="arithmatex">\(b_i\)</span> 的值为该点的供给量。如果 <span class="arithmatex">\(b_i &lt; 0\)</span>，那么称 <span class="arithmatex">\(b_i\)</span> 为收点，需要接收资源， <span class="arithmatex">\(-b_i\)</span> 为该点的需求量。若  <span class="arithmatex">\(b_i = 0\)</span>，那么称 <span class="arithmatex">\(b_i\)</span> 为转运点。</p>
+<p>对于每条边 <span class="arithmatex">\(e_j\)</span>，给定实数 <span class="arithmatex">\(c_j\)</span>，它是在边 <span class="arithmatex">\(e_j\)</span> 上每单位流量的费用，称为费用系数。再给定正数 <span class="arithmatex">\(u_j\)</span>，它是边 <span class="arithmatex">\(e_j\)</span> 上流量的上界。</p>
+</blockquote>
+<p>最小费用流的问题就是要确定每个边上的流量 <span class="arithmatex">\(x_j\)</span>，使得不超过上界限制，并满足各个节点的供需要求，同时又使得<strong>总费用最小</strong>。对于网络，我们引入一个 <span class="arithmatex">\(m \times n\)</span> 的矩阵 <span class="arithmatex">\(A\)</span>。其中每个元素按照如下标准取值：</p>
+<div class="arithmatex">\[\begin{aligned}\begin{equation*}
+a_{ij} = \begin{cases}
+1, \hspace{10pt} \text{if } e_j \quad \text{starts from} \quad v_i \\
+-1, \hspace{10pt} \text{if } e_j \quad \text{ends at} \quad v_i \\
+0, \hspace{10pt} \text{Otherwise}
+\end{cases}
+\end{equation*}\end{aligned}\]</div>
+<p>写成矩阵形式，如下：</p>
+<div class="arithmatex">\[\begin{bmatrix} 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp;  0 &amp; 0 &amp; 0 \\  0 &amp; -1 &amp; -1 &amp; 0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 &amp; -1 &amp; 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 1 \end{bmatrix}\]</div>
+<p>即可表示如图的网络。</p>
+<pre class="mermaid"><code>flowchart LR
+    1-- (1,2) ---&gt;2
+    1-- (1,3) ---&gt;3
+    1-- (1,5) ---&gt;5
+    2-- (2,3) ---&gt;3
+    2-- (2,4) ---&gt;4
+    3-- (3,4) ---&gt;4
+    5-- (5,3) ---&gt;3
+    5-- (5,4) ---&gt;4</code></pre>
+<p>在前面介绍最短路问题的时候，我们也出现了这个矩阵，<strong>一般称之为节点-边关联矩阵（Node-edge incidence matrix）。</strong> </p>
+<p>事实上，最小费用流模型可以视为一种基于边的建模方式。由于上述矩阵的列数 = 边数，所以假设我们的决策变量是针对每一条边而言的，那么关联矩阵乘决策向量，正好构成了约束条件的左端项，同时约束条件的个数也就对应了节点个数，可以用此刻画节点中的流量关系。以矩阵乘法形式给出就是：</p>
+<div class="arithmatex">\[\begin{bmatrix} 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp;  0 &amp; 0 &amp; 0 \\  0 &amp; -1 &amp; -1 &amp; 0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 &amp; -1 &amp; 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 \\ x_7 \\ x_8 \end{bmatrix}= \begin{bmatrix} b_1 \\ b_2 \\ b_3 \\ b_4 \\ b_5 \end{bmatrix}\]</div>
+<div class="admonition note">
+<p class="admonition-title">节点-边关系矩阵</p>
+<p><span class="arithmatex">\(m \times n\)</span> 的矩阵，行表示节点，列表示边。</p>
+<p>对每一列而言，有且仅有一个1和一个-1，1表示从该节点出发，-1表示到该节点。0表示与该节点无关。</p>
+<p>对每一行而言，可能有多个1和多个-1，因为一个节点可能有多条边出发/到达，1的个数，表示从该节点出发的边数（出度）；-1的个数，表示到达该节点的边数（入度）。</p>
+</div>
+<p>于是，我们给出最小费用流的数学模型：</p>
+<div class="arithmatex">\[\min \mathbf{cx}\]</div>
+<div class="arithmatex">\[\begin{aligned}
+\begin{cases}
+\begin{align}
+\mathbf{Ax} = \mathbf{b} \quad\\
+\mathbf{0} \leq \mathbf{x} \leq \mathbf{u} \quad
+\end{align}
+\end{cases}
+\end{aligned}\]</div>
+<p>其中，<span class="arithmatex">\(\mathbf{A}\)</span> 就是节点-边关系矩阵，<span class="arithmatex">\(\mathbf{x}\)</span> 是边的流量向量，长度等于边的数量； <span class="arithmatex">\(\mathbf{b}\)</span> 是每个节点的供求向量，长度等于节点的数量。<span class="arithmatex">\(\mathbf{u}\)</span> 是边的流量限制向量，限制每条边的流量大小。</p>
+<p>对于约束 (1) 中的每一个约束，可以表示为：</p>
+<div class="arithmatex">\[\sum \limits_{j \in E} a_{ij} x_j = b_i , \forall i \in V\]</div>
+<p>实际上，左边就是：</p>
+<div class="arithmatex">\[\sum \limits_{j \in E} a_{ij} x_j = \sum \limits_{a_{ij} = 1} x_{j} - \sum \limits_{a_{ij} = -1} x_j  , \forall i \in V\]</div>
+<blockquote>
+<p>（因为如果 <span class="arithmatex">\(a_{ij} = 0\)</span>，就不会出现 <span class="arithmatex">\(x_j\)</span> ）。</p>
+</blockquote>
+<p>等式右边的第一个和式，对应的是所有从 <span class="arithmatex">\(v_j\)</span> 离开的流量；第二个和式，对应所有汇入 <span class="arithmatex">\(v_j\)</span> 的流量。 </p>
+<p>不失一般性，我们可以假设供求总是平衡的，也就是 <span class="arithmatex">\(\sum_{i \in V} b_i = 0\)</span>，对于供大于求的图 (<span class="arithmatex">\(\sum_{i \in V} b_i &gt; 0\)</span>)，可以设置一个虚拟节点，吸收全部的过剩供给量，从每个发点添加一个虚拟边到这个虚拟节点，这个虚拟边的费用是0。这样就转化为一个供求平衡的最小费用流问题。</p>
+<p>最小费用流问题是网络流问题的<strong>重要基础</strong>，事实上，许多问题均可以被转化为这类问题，或者是最小费用流问题的一个特例。下面展开几个例子。</p>
+<hr />
+<p><br><br></p>
+<h2 id="_2">从最小费用流到运输问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>运输问题，具体的问题描述同样可以参考<a href="../Chapter3/">第三章</a>。这里简要复习一下。</p>
+<div class="admonition note">
+<p class="admonition-title">运输问题</p>
+<p>给定一张图<span class="arithmatex">\(G(V,E)\)</span>，所有节点分为供给节点和需求节点两类。各个供给节点之间没有边相连，各个需求节点之间也没有边相连，但是供给和需求节点之间可以相互抵达。以图论的概念表示，网络图就是一个Bipartite Graph（二分图，概念的具体解释见本笔记最后）。</p>
+<ul>
+<li>问题:我们需要在事先给定运费和供给量的情况下，规划从不同供给节点到不同需求节点运送的货物量，使得总运输成本最小，同时还能满足所有需求节点的需求。</li>
+</ul>
+</div>
+<p>在<a href="../Chapter3/">第三章</a>，我们已经给出了运输问题在供需平衡下的建模， 由于我们考虑的是不带转运的运输问题，因此建模如下：</p>
+<div class="arithmatex">\[\mathop{\min} \hspace{4pt} z = \sum \limits^{m}_{i = 1} \sum \limits^{n}_{j = 1} c_{ij}x_{ij}\]</div>
+<div class="arithmatex">\[s.t \hspace{4pt} \left\{ \begin{aligned} \sum \limits^{n}_{j=1} x_{ij} = a_i , i = 1,2,..,m \\ \sum \limits^{n}_{i=1} x_{ij} = b_j , j = 1,2,..,n   \\  x_{ij} \geq 0, i = 1,2,...m, j = 1,2...n  \end{aligned}  \right.\]</div>
+<p>这里的决策变量 <span class="arithmatex">\(x_{ij}\)</span> 是基于节点的，表示从 <span class="arithmatex">\(i\)</span> 地到 <span class="arithmatex">\(j\)</span> 地的流量。我们同样可以基于最小费用流模型框架给出模型，差异在于，基于最小费用流模型的决策变量是基于边的。 <span class="arithmatex">\(y_{ij}\)</span> 表示边 <span class="arithmatex">\((i,j) \in E\)</span> 从 <span class="arithmatex">\(i\)</span> 流到 <span class="arithmatex">\(j\)</span>的流量。我们保持节点-边关系矩阵 (incidence-matrices)不变，作为系数矩阵， <span class="arithmatex">\(c_{ij}\)</span> 表示边 <span class="arithmatex">\((i,j)\)</span> 上的运输成本。所以可以给出等价模型：</p>
+<div class="arithmatex">\[\mathop{\min} \hspace{4pt} z = \sum \limits_{(i,j) \in E} c_{ij} y_{ij} \]</div>
+<div class="arithmatex">\[\begin{aligned}
+\begin{cases}
+\begin{align}
+\sum \limits_{ (i, j) \in E} y_{ij} - \sum \limits_{(j, i) \in E} y_{ji} = d_i, \quad \forall i \in V \\
+y_{ij} \geq 0, \quad \forall (i,j) \in E
+\end{align}
+\end{cases}
+\end{aligned}\]</div>
+<p>这里的右端项 <span class="arithmatex">\(d_i\)</span> 表示：运输问题下，节点 <span class="arithmatex">\(i\)</span> 的需求情况。由于节点区分供给点和需求点，因此，有如下情形：</p>
+<ol>
+<li>如果 <span class="arithmatex">\(i\)</span> 是供给点，记该点的供给量为  <span class="arithmatex">\(a_i\)</span>，则 <span class="arithmatex">\(d_i = a_i\)</span>；</li>
+<li>如果 <span class="arithmatex">\(i\)</span> 是需求点，记该点的需求量为 <span class="arithmatex">\(b_i\)</span>，则 <span class="arithmatex">\(d_i = -b_i\)</span>。</li>
+</ol>
+<p>事实上，基于此，我们也可以很容易地写出基于边的建模框架下，带转运的运输问题的模型。</p>
+<div class="admonition info">
+<p class="admonition-title">解答</p>
+<p>实际上，你只需要更改一下  <span class="arithmatex">\(d_i\)</span> 的定义即可，除了收地、发地外，还要考虑中转地，中转地不存储货物，因此中转点的 <span class="arithmatex">\(d_i = 0\)</span>，也就是流平衡约束。</p>
+</div>
+<h2 id="_3">从最小费用流到指派问题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>指派问题可以视为运输问题的一个特例，实际背景是把 n 个活分配给 n 个人去做，每个人做不同工作有不同的时间，每个人都做一个工作，使得总时间最少。</p>
+<p>上面已经写了最小费用流 -&gt; 运输问题，只需要稍微修改就可以得到分配问题的建模。</p>
+<blockquote>
+<p>限制每个节点的供给/需求量都是1，每个边上的流量只能为0或者1.</p>
+</blockquote>
+<p><br>
+<br></p>
+<hr />
+<h2 id="_4">从最小费用流到最短路问题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>从最小费用流模型也可以推导出最短路问题的建模。一句话概括一下最短路：</p>
+<blockquote>
+<p>已知一个网络上各边长度，要求出从图上给定的节点 <span class="arithmatex">\(v_s\)</span> 到 节点 <span class="arithmatex">\(v_t\)</span> 的最短路径。</p>
+</blockquote>
+<p>事实上，只需要把最小费用流的系数 <span class="arithmatex">\(c_{ij}\)</span> 换成边 <span class="arithmatex">\((i,j)\)</span> 的长度。令右端项中 <span class="arithmatex">\(b_s = 1, b_t = -1\)</span>，其他 <span class="arithmatex">\(b_i = 0\)</span>，就得到了最短路问题的模型。<mark>这其实就是限制了除了起点和终点外其他节点都视为转运点</mark>。各个边上的流量上界 <span class="arithmatex">\(u_{ij}\)</span> 取 1。这样就得到了最短路问题的建模。这个建模可以参考<a href="../Chapter7/">第七章：最短路问题</a> .</p>
+<p><br><br><br></p>
+<hr />
+<h2 id="_5">从最小费用流到最大流问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>从最小费用流模型也可以推导出最大流问题的建模。一句话概括一下最大流：</p>
+<blockquote>
+<p>已知一个网络上各边的流量上界，每个边的流量不得超过这个界限。要求出从图上给定的节点 <span class="arithmatex">\(v_s\)</span> 到 节点 <span class="arithmatex">\(v_t\)</span> 的最大流量。</p>
+</blockquote>
+<p>看起来不怎么相关的问题，也可以转化为最小费用流进行计算。</p>
+<pre class="mermaid"><code>flowchart LR
+    1-- (1,2,5) ---&gt;2
+    1-- (1,3,4) ---&gt;3
+    1-- (1,5,9) ---&gt;5
+    2-- (2,3,7) ---&gt;3
+    2-- (2,4,3) ---&gt;4
+    3-- (3,4,8) ---&gt;4
+    5-- (5,3,3) ---&gt;3
+    5-- (5,4,1) ---&gt;4
+    4-. (4,1) -.-&gt;1</code></pre>
+<p>我们先令<strong>原来网络</strong>中所有边的费用系数向量 <span class="arithmatex">\(\mathbf{c} = \mathbf{0}\)</span>，令供求向量 <span class="arithmatex">\(\mathbf{b} = \mathbf{0}\)</span>。此时，我们<strong>添加一条虚拟边</strong> <span class="arithmatex">\(e_{n+1}\)</span>，从终止节点 <span class="arithmatex">\(v_t\)</span> 通往 <span class="arithmatex">\(v_s\)</span>。这条边上的流量没有上界限制，其费用系数为负数，设为 <span class="arithmatex">\(-1\)</span>。</p>
+<p>此时，求解包括这个虚拟边的新图的最小费用流问题。因为虚拟弧的边权（费用系数）是负数，所以当目标函数最小的时候，这条边上的流量也就达到最大了。同时，由于 <span class="arithmatex">\(\mathbf{b} = \mathbf{0}\)</span>,意味着所有节点的流入和流出的流量是相等的（包括起点和终点，与之不同的，最小费用流问题的起终点的流量不为0）。</p>
+<p>上述建模方式，实际上是，虚拟边流入节点 <span class="arithmatex">\(v_s\)</span> 的流量就要在原来的网络上以零费用返回节点 <span class="arithmatex">\(v_t\)</span>，也就是说只要不超过各边的流通能力，从 <span class="arithmatex">\(v_s\)</span> 到 <span class="arithmatex">\(v_t\)</span> 的流量越大。</p>
+<hr />
+<h2 id="_6">最小费用流问题的对偶<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>考虑最小费用流问题的原始线性规划形式：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min \quad &amp; \sum_{(i,j)\in E} c_{ij} x_{ij} \\
+\text{s.t.} \quad &amp; \sum_{(i,j)\in E} x_{ij} - \sum_{(j,i)\in E} x_{ji} = b_i, \quad \forall i \in V \\
+&amp; 0 \le x_{ij} \le u_{ij}, \quad \forall (i,j) \in E
+\end{aligned}
+\]</div>
+<p>其中节点‑边关联矩阵 <span class="arithmatex">\(A\)</span> 隐含在第一个约束中。这是一个典型的线性规划：等式约束对应每个节点，变量有上界。</p>
+<p>引入对偶变量：</p>
+<ul>
+<li>对每个节点 <span class="arithmatex">\(i\)</span> 的等式约束，引入<strong>节点势</strong> <span class="arithmatex">\(\pi_i\)</span>（无符号限制，因为等式约束对应自由变量）。</li>
+<li>对每条边的上界约束 <span class="arithmatex">\(x_{ij} \le u_{ij}\)</span>，引入<strong>非负对偶变量</strong> <span class="arithmatex">\(w_{ij} \ge 0\)</span>。</li>
+</ul>
+<p>则对偶问题可写为：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\max \quad &amp; \sum_{i\in V} b_i \pi_i - \sum_{(i,j)\in E} u_{ij} w_{ij} \\
+\text{s.t.} \quad &amp; \pi_i - \pi_j - w_{ij} \le c_{ij}, \quad \forall (i,j)\in E \\
+&amp; w_{ij} \ge 0, \quad \forall (i,j)\in E
+\end{aligned}
+\]</div>
+<ul>
+<li>第一个约束来自原始变量 <span class="arithmatex">\(x_{ij}\)</span> 的系数。若边 <span class="arithmatex">\((i,j)\)</span> 从 <span class="arithmatex">\(i\)</span> 指向 <span class="arithmatex">\(j\)</span>，则它在节点 <span class="arithmatex">\(i\)</span> 的约束中系数为 <span class="arithmatex">\(+1\)</span>，在节点 <span class="arithmatex">\(j\)</span> 的约束中系数为 <span class="arithmatex">\(-1\)</span>，因此对应对偶变量贡献为 <span class="arithmatex">\(\pi_i - \pi_j\)</span>，再减去 <span class="arithmatex">\(w_{ij}\)</span></li>
+</ul>
+<blockquote>
+<p>因为 <span class="arithmatex">\(x_{ij} \le u_{ij}\)</span> 的约束方向是 <span class="arithmatex">\(\le\)</span>，对偶变量取非负，在拉格朗日函数中会产生 <span class="arithmatex">\(-w_{ij}\)</span> 项），最终形成 <span class="arithmatex">\(\pi_i - \pi_j - w_{ij} \le c_{ij}\)</span>。</p>
+</blockquote>
+<ul>
+<li>目标函数中，<span class="arithmatex">\(\sum b_i \pi_i\)</span> 来自原始等式右端项，<span class="arithmatex">\(-\sum u_{ij} w_{ij}\)</span> 来自上界约束的右端项（因为不等式方向是 <span class="arithmatex">\(x_{ij} \le u_{ij}\)</span>，对偶后取负号）。</li>
+</ul>
+<h3 id="maximum-weight-closure">最大加权闭合子图 (Maximum Weight Closure)<a class="headerlink" href="#maximum-weight-closure" title="Permanent link">&para;</a></h3>
+<p>给定有向图 <span class="arithmatex">\(G = (N, A)\)</span>，其中每个节点 <span class="arithmatex">\(i \in N\)</span> 有权重 <span class="arithmatex">\(w_i\)</span>。</p>
+<p><strong>闭合子图（Closure）</strong>：子集 <span class="arithmatex">\(S \subseteq N\)</span> 称为闭合子图，当且仅当：</p>
+<div class="arithmatex">\[\text{若 } i \in S \text{ 且 } (i,j) \in A, \text{ 则 } j \in S\]</div>
+<p>即：没有弧从 <span class="arithmatex">\(S\)</span> 指向 <span class="arithmatex">\(N \setminus S\)</span>。</p>
+<p><strong>决策变量</strong>：</p>
+<div class="arithmatex">\[y_i = \begin{cases} 1, &amp; \text{节点 } i \text{ 被选入闭合子图} \\ 0, &amp; \text{否则} \end{cases}\]</div>
+<p><strong>完整模型</strong>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\max \quad &amp; \sum_{i \in N} w_i y_i \\
+\text{s.t.} \quad &amp; y_i - y_j \leq 0, &amp; \forall (i,j) \in A \\
+&amp; 0 \leq y_i \leq 1, &amp; \forall i \in N \\
+&amp; y_i \in \mathbb{Z}, &amp; \forall i \in N
+\end{aligned}
+\]</div>
+<p><strong>约束解释</strong>：</p>
+<ul>
+<li><span class="arithmatex">\(y_i - y_j \leq 0\)</span> 等价于 <span class="arithmatex">\(y_i \leq y_j\)</span>，即：若选 <span class="arithmatex">\(i\)</span>（<span class="arithmatex">\(y_i=1\)</span>），则必选 <span class="arithmatex">\(j\)</span>（<span class="arithmatex">\(y_j=1\)</span>）</li>
+<li>这恰好刻画了闭合子图的定义</li>
+</ul>
+<hr />
+<p>最大权闭合子图问题可以转换为<strong>最小割问题</strong>（最大流问题的对偶）：</p>
+<ol>
+<li><strong>构造网络</strong>：</li>
+<li>添加源点 <span class="arithmatex">\(s\)</span> 和汇点 <span class="arithmatex">\(t\)</span></li>
+<li>若 <span class="arithmatex">\(w_i &gt; 0\)</span>：添加弧 <span class="arithmatex">\((s, i)\)</span>，容量为 <span class="arithmatex">\(w_i\)</span></li>
+<li>若 <span class="arithmatex">\(w_i &lt; 0\)</span>：添加弧 <span class="arithmatex">\((i, t)\)</span>，容量为 <span class="arithmatex">\(-w_i\)</span></li>
+<li>
+<p>原图弧 <span class="arithmatex">\((i,j) \in A\)</span>：容量设为 <span class="arithmatex">\(+\infty\)</span></p>
+</li>
+<li>
+<p><strong>求解最小 <span class="arithmatex">\(s\)</span>-<span class="arithmatex">\(t\)</span> 割</strong> <span class="arithmatex">\((S^*, T^*)\)</span></p>
+</li>
+<li>
+<p><strong>最大权闭合子图</strong>：<span class="arithmatex">\(S^* \setminus \{s\}\)</span></p>
+</li>
+</ol>
+<p>对着标准的最小费用流问题做一些特殊的设置：</p>
+<ul>
+<li>所有费用 <span class="arithmatex">\(c_{ij} = 0\)</span>（零费用）</li>
+<li>源点 <span class="arithmatex">\(s\)</span> 的供应 <span class="arithmatex">\(b_s = \sum_{w_i &gt; 0} w_i\)</span></li>
+<li>汇点 <span class="arithmatex">\(t\)</span> 的需求 <span class="arithmatex">\(b_t = -\sum_{w_i &gt; 0} w_i\)</span></li>
+<li>其他节点 <span class="arithmatex">\(b_i = 0\)</span></li>
+<li>弧容量按上述规则设置</li>
+</ul>
+<p>此时，<strong>最小割的对偶问题</strong>恰好给出：</p>
+<div class="arithmatex">\[\pi_i - \pi_j \leq 0 \quad \forall (i,j) \in A\]</div>
+<p>这与闭合子图约束 <span class="arithmatex">\(y_i - y_j \leq 0\)</span> 形式一致（令 <span class="arithmatex">\(y_i = \pi_i\)</span>）。</p>
+<p>因此，<strong>最大权闭合子图 = 最小割 = 最大流的对偶</strong>，是最小费用流在零费用、特定供需下的特例。</p>
+<hr />
+<h3 id="optimality-conditions">最优性条件 (Optimality Conditions)<a class="headerlink" href="#optimality-conditions" title="Permanent link">&para;</a></h3>
+<p>（作为一年后的更新，）这一章节补充<strong>如何求解</strong>（算法）、<strong>如何判断最优</strong>（最优性条件）以及<strong>经典建模案例</strong>（Caterer Problem）。注意，下面会用到一些常见术语比如 Residual Network. 它在实际含义上与神经网络的略有区别。</p>
+<p>在最大流问题中，我们只关心残差网络中的<strong>容量</strong>；而在最小费用流中，我们必须同时关心残差网络中的<strong>费用</strong>。</p>
+<p>对于当前的可行流 <span class="arithmatex">\(x\)</span>，残差网络 <span class="arithmatex">\(G(x)\)</span> 的定义如下：</p>
+<ul>
+<li><strong>前向弧</strong> <span class="arithmatex">\((i, j)\)</span>：若 <span class="arithmatex">\(x_{ij} &lt; u_{ij}\)</span>，则存在弧 <span class="arithmatex">\((i, j)\)</span>。<ul>
+<li>残差容量：<span class="arithmatex">\(r_{ij} = u_{ij} - x_{ij}\)</span></li>
+<li>费用：<span class="arithmatex">\(c_{ij}\)</span></li>
+</ul>
+</li>
+<li><strong>后向弧</strong> <span class="arithmatex">\((j, i)\)</span>：若 <span class="arithmatex">\(x_{ij} &gt; 0\)</span>，则存在弧 <span class="arithmatex">\((j, i)\)</span>。<ul>
+<li>残差容量：<span class="arithmatex">\(r_{ji} = x_{ij}\)</span></li>
+<li>费用：<span class="arithmatex">\(-c_{ij}\)</span> （<strong>注意</strong>：退回流量相当于减少成本，故费用为负）</li>
+</ul>
+</li>
+</ul>
+<p>定义弧 <span class="arithmatex">\((i, j)\)</span> 的<strong>既约费用 (Reduced Cost)</strong> <span class="arithmatex">\(c_{ij}^\pi\)</span> 为：</p>
+<div class="arithmatex">\[ c_{ij}^\pi = c_{ij} - \pi_i + \pi_j \]</div>
+<p><strong>物理含义</strong>：
+*   <span class="arithmatex">\(\pi_i\)</span> 可以理解为节点 <span class="arithmatex">\(i\)</span> 的“势能”或“标高”。
+*   <span class="arithmatex">\(c_{ij}^\pi\)</span> 表示考虑了节点势能变化后的相对成本。
+*   <strong>重要性质</strong>：任意有向圈 <span class="arithmatex">\(W\)</span> 的既约费用之和等于原始费用之和。</p>
+<div class="arithmatex">\[ \sum_{(i,j) \in W} c_{ij}^\pi = \sum_{(i,j) \in W} c_{ij} \]</div>
+<hr />
+<p><strong>定理 (最优性条件)</strong>：</p>
+<p>可行流 <span class="arithmatex">\(x^*\)</span> 是最优解，<strong>当且仅当</strong> 存在节点势向量 <span class="arithmatex">\(\pi^*\)</span>，使得在残差网络 <span class="arithmatex">\(G(x^*)\)</span> 中所有弧的既约费用非负：</p>
+<div class="arithmatex">\[ c_{ij}^{\pi^*} \geq 0, \quad \forall (i, j) \in G(x^*) \]</div>
+<p><strong>与负圈的关系</strong>：</p>
+<ul>
+<li>残差网络中存在<strong>负费用圈 (Negative Cost Cycle)</strong> <span class="arithmatex">\(\iff\)</span> 当前流不是最优解。</li>
+<li>消除负圈的过程，本质上就是调整流 <span class="arithmatex">\(x\)</span> 和势 <span class="arithmatex">\(\pi\)</span> 直到满足上述最优性条件。</li>
+</ul>
+<p>通俗讲，最优性条件说的就是，要想最优，那么 <strong>残差网络里所有路的“相对成本”都不能为负</strong>。</p>
+<blockquote>
+<p>为什么？<strong>如果有条路相对成本是负的，说明顺着走能“省钱”</strong>（就像发现了一个套利漏洞），那你肯定要继续运货来降低成本，直到这个漏洞被填满（容量耗尽）或消失。这对应算法中的“负圈消除”。</p>
+<p>假设你消除了所有的套利漏洞，说明再也找不到更省钱的方案了，这就是最优解。简单来说，“无负圈”等价于“无路可走（指省钱的路）”。此时流量分配已达经济平衡，任何调整只会增加或不改变总费用，<strong>就像水已经流到了最低势能面，无法再自发流动</strong>。</p>
+</blockquote>
+<h3 id="_7">互补松弛条件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>设原始可行解 <span class="arithmatex">\(x^*\)</span> 和对偶可行解 <span class="arithmatex">\((\pi^*, w^*)\)</span> 分别为最优解，则它们满足：</p>
+<p>我们这里用上述“既约成本”对互补松弛条件进行描述。</p>
+<p><strong>最优性条件（节点势形式）</strong>：<br />
+存在一组节点势 <span class="arithmatex">\(\pi_i\)</span>，使得对于所有边 <span class="arithmatex">\((i,j) \in E\)</span>，有：</p>
+<ul>
+<li>若 <span class="arithmatex">\(0 &lt; x_{ij}^* &lt; u_{ij}\)</span>，则 <span class="arithmatex">\(c_{ij}^\pi = 0\)</span>；</li>
+<li>若 <span class="arithmatex">\(x_{ij}^* = 0\)</span>，则 <span class="arithmatex">\(c_{ij}^\pi \ge 0\)</span>；</li>
+<li>若 <span class="arithmatex">\(x_{ij}^* = u_{ij}\)</span>，则 <span class="arithmatex">\(c_{ij}^\pi \le 0\)</span>。</li>
+</ul>
+<p>这个条件等价于在残差网络 <span class="arithmatex">\(G(x^*)\)</span> 中所有弧的既约费用非负，也是负圈消除算法的理论基础。</p>
+<div class="admonition quote">
+<p class="admonition-title">对偶变量的直观理解</p>
+<ul>
+<li><span class="arithmatex">\(\pi_i\)</span> 可以理解为节点 <span class="arithmatex">\(i\)</span> 的“势”或“影子价格”。若增加节点 <span class="arithmatex">\(i\)</span> 的供给量（增大 <span class="arithmatex">\(b_i\)</span>），目标函数值的增加率（边际成本）就是 <span class="arithmatex">\(\pi_i\)</span>。</li>
+<li><span class="arithmatex">\(w_{ij}\)</span> 反映了边容量约束的松紧程度。若某边未达上限（<span class="arithmatex">\(x_{ij} &lt; u_{ij}\)</span>），由互补松弛知 <span class="arithmatex">\(w_{ij}=0\)</span>；若边满载（<span class="arithmatex">\(x_{ij}=u_{ij}\)</span>），则 <span class="arithmatex">\(w_{ij}\ge 0\)</span> 可能为正，表示每增加一单位容量所能节省的费用。</li>
+</ul>
+</div>
+<hr />
+<h3 id="cycle-canceling-algorithm">求解算法：负圈算法 (Cycle Canceling Algorithm)<a class="headerlink" href="#cycle-canceling-algorithm" title="Permanent link">&para;</a></h3>
+<p><mark>算法流程</mark></p>
+<ol>
+<li><strong>寻找初始可行流</strong>：<ul>
+<li>忽略费用，仅满足容量和供需约束 <span class="arithmatex">\(Ax=b\)</span>。</li>
+<li>可通过构造辅助最大流问题求解（见下文）。</li>
+</ul>
+</li>
+<li><strong>构建残差网络</strong> <span class="arithmatex">\(G(x)\)</span>。</li>
+<li><strong>检测负圈</strong>：<ul>
+<li>在 <span class="arithmatex">\(G(x)\)</span> 中寻找总费用 <span class="arithmatex">\(&lt; 0\)</span> 的有向圈 <span class="arithmatex">\(W\)</span>。</li>
+<li>可使用 Bellman-Ford 或 SPFA 算法检测。</li>
+</ul>
+</li>
+<li><strong>增广 (Augment)</strong>：<ul>
+<li>若找到负圈 <span class="arithmatex">\(W\)</span>，计算瓶颈容量 <span class="arithmatex">\(\delta = \min \{r_{ij} : (i, j) \in W\}\)</span>。</li>
+<li>沿圈 <span class="arithmatex">\(W\)</span> 推送 <span class="arithmatex">\(\delta\)</span> 单位流量。</li>
+<li>总费用减少 <span class="arithmatex">\(\delta \times |cost(W)|\)</span>。</li>
+</ul>
+</li>
+<li><strong>更新与终止</strong>：<ul>
+<li>更新残差网络。</li>
+<li>若不存在负圈，则当前流为最优解。</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">最小费用流算法需要一个初始可行解。若直接寻找困难，可构造辅助问题：</p>
+<ol>
+<li>添加超级源点 <span class="arithmatex">\(s^*\)</span> 和超级汇点 <span class="arithmatex">\(t^*\)</span>。</li>
+<li>若 <span class="arithmatex">\(b_i &gt; 0\)</span> (供给)，添加弧 <span class="arithmatex">\((s^*, i)\)</span>，容量 <span class="arithmatex">\(b_i\)</span>，费用 <span class="arithmatex">\(0\)</span>。</li>
+<li>若 <span class="arithmatex">\(b_i &lt; 0\)</span> (需求)，添加弧 <span class="arithmatex">\((i, t^*)\)</span>，容量 <span class="arithmatex">\(-b_i\)</span>，费用 <span class="arithmatex">\(0\)</span>。</li>
+<li>添加弧 <span class="arithmatex">\((t^*, s^*)\)</span>，容量 <span class="arithmatex">\(\infty\)</span>，费用 <span class="arithmatex">\(-M\)</span> (极大负值)。</li>
+<li>求解该网络的最小费用流。若最优解中 <span class="arithmatex">\((t^*, s^*)\)</span> 的流量等于总供给量，则原问题有可行解，且去掉辅助节点后的流即为初始可行流。</li>
+</ol>
+</div>
+<p><strong>定理</strong>：若最小费用流问题中的所有容量 <span class="arithmatex">\(u_{ij}\)</span> 和供需量 <span class="arithmatex">\(b_i\)</span> 均为整数，则必然存在一个<strong>整数最优解</strong>。这意味着我们不需要使用复杂的整数规划方法，网络流算法自然能保证整数解（前提是数据整数）。</p>
+<h2 id="the-caterer-problem">应用案例：The Caterer Problem (配餐员问题)<a class="headerlink" href="#the-caterer-problem" title="Permanent link">&para;</a></h2>
+<p><strong>时间展开网络 (Time-Expanded Network)</strong> 建模的经典案例。它将动态决策转化为静态网络流。</p>
+<p><strong>问题描述</strong></p>
+<ul>
+<li><strong>需求</strong>：连续 <span class="arithmatex">\(n\)</span> 天，第 <span class="arithmatex">\(j\)</span> 天需要 <span class="arithmatex">\(d_j\)</span> 块干净餐巾。</li>
+<li><strong>来源</strong>：<ol>
+<li><strong>购买新餐巾</strong>：费用 <span class="arithmatex">\(a\)</span>。</li>
+<li><strong>快洗 (1-day)</strong>：当天脏，隔天干净，费用 <span class="arithmatex">\(c\)</span>。</li>
+<li><strong>慢洗 (2-day)</strong>：当天脏，隔两天干净，费用 <span class="arithmatex">\(b\)</span>。</li>
+</ol>
+</li>
+<li><strong>目标</strong>：最小化总成本。</li>
+</ul>
+<p><strong>网络建模</strong></p>
+<p>为了用最小费用流求解，我们需要将“时间”和“状态”转化为节点。</p>
+<ul>
+<li><strong>节点设计</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">节点</th>
+<th style="text-align: left;">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>节点 <span class="arithmatex">\(j\)</span></strong></td>
+<td style="text-align: left;">代表第 <span class="arithmatex">\(j\)</span> 天<strong>可用</strong>的干净餐巾 (Clean napkins on day <span class="arithmatex">\(j\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>节点 <span class="arithmatex">\(j'\)</span></strong></td>
+<td style="text-align: left;">代表第 <span class="arithmatex">\(j\)</span> 天<strong>用完</strong>的脏餐巾 (Dirty napkins on day <span class="arithmatex">\(j\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>节点 <span class="arithmatex">\(0\)</span></strong></td>
+<td style="text-align: left;">餐巾来源 (购买新餐巾)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>节点 <span class="arithmatex">\(n+1\)</span></strong></td>
+<td style="text-align: left;">餐巾归宿 (不再清洗的脏餐巾)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>弧与费用设计</strong>：<ol>
+<li><strong>购买</strong>：弧 <span class="arithmatex">\((0, j)\)</span>，费用 <span class="arithmatex">\(a\)</span>，容量 <span class="arithmatex">\(\infty\)</span>。</li>
+<li><strong>使用 (满足需求)</strong>：弧 <span class="arithmatex">\((j, j')\)</span>，费用 <span class="arithmatex">\(0\)</span>，<strong>流量固定为 <span class="arithmatex">\(d_j\)</span></strong> (可通过设置上下界均为 <span class="arithmatex">\(d_j\)</span> 实现)。</li>
+<li><strong>清洗 (核心逻辑)</strong>：<ul>
+<li>弧 <span class="arithmatex">\((j', j+1)\)</span>：1 天快洗，费用 <span class="arithmatex">\(c\)</span>。</li>
+<li>弧 <span class="arithmatex">\((j', j+2)\)</span>：2 天慢洗，费用 <span class="arithmatex">\(b\)</span>。</li>
+</ul>
+</li>
+<li><strong>库存</strong>：弧 <span class="arithmatex">\((j, j+1)\)</span>，干净餐巾留到明天，费用 <span class="arithmatex">\(0\)</span> (或存储费)。</li>
+<li><strong>丢弃</strong>：弧 <span class="arithmatex">\((j', n+1)\)</span>，脏餐巾不再清洗，费用 <span class="arithmatex">\(0\)</span>。</li>
+<li><strong>循环流</strong>：添加弧 <span class="arithmatex">\((n+1, 0)\)</span>，费用 <span class="arithmatex">\(0\)</span>，使网络形成循环流 (Circulation)，便于求解。</li>
+</ol>
+</li>
+</ul>
+<p><img alt="" src="../../images/202603141827633.png" /></p>
+<p>这就能构成一个对应关系表，映射到最小费用流上：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">最小费用流要素</th>
+<th style="text-align: left;">在配餐员问题网络中的对应</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>节点</strong></td>
+<td style="text-align: left;">每一天的两种状态节点（<span class="arithmatex">\(j\)</span> 干净，<span class="arithmatex">\(j'\)</span> 脏），外加虚拟源点 <span class="arithmatex">\(0\)</span> 和汇点 <span class="arithmatex">\(n+1\)</span></td>
+<td style="text-align: left;">节点代表了“时间点”和“物品状态”的组合，这是时间展开网络的核心。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>边</strong></td>
+<td style="text-align: left;">购买、使用、清洗（快/慢）、库存、丢弃、循环边</td>
+<td style="text-align: left;">每一条边都代表一种可能的“操作”或“状态转移”，并带有相应的成本。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>流量 <span class="arithmatex">\(x_{ij}\)</span></strong></td>
+<td style="text-align: left;">每条边上的餐巾数量。例如，边 <span class="arithmatex">\((j, j')\)</span> 上的流量就是第 <span class="arithmatex">\(j\)</span> 天使用的餐巾数，必须等于 <span class="arithmatex">\(d_j\)</span>。</td>
+<td style="text-align: left;">流量是决策变量，代表了在各个操作间流转的餐巾数量。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>费用 <span class="arithmatex">\(c_{ij}\)</span></strong></td>
+<td style="text-align: left;">每条边对应的单位成本：购买费 <span class="arithmatex">\(a\)</span>，快洗费 <span class="arithmatex">\(c\)</span>，慢洗费 <span class="arithmatex">\(b\)</span>，其余为 <span class="arithmatex">\(0\)</span>。</td>
+<td style="text-align: left;">与最小费用流的目标——最小化总成本——完全一致。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>节点供需 <span class="arithmatex">\(b_i\)</span></strong></td>
+<td style="text-align: left;">此处体现为<strong>流量守恒</strong>。大部分节点是转运点（<span class="arithmatex">\(b_i=0\)</span>），整个网络通过循环弧形成一个<strong>循环流</strong>。</td>
+<td style="text-align: left;">这是最小费用流中“ Circulation ”问题的一个特例，即所有节点净流量为0。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>建模意义</strong>：
+    这个问题展示了如何将<strong>多阶段决策问题</strong>转化为<strong>静态网络流问题</strong>。通过增加节点维度（时间 + 状态），将复杂的决策（洗还是不洗？快洗还是慢洗？）转化为网络上的路径选择。</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; cjs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.tracking", "content.code.copy", "content.code.select", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

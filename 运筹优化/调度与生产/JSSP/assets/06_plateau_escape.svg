@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="979.2pt" height="360pt" viewBox="0 0 979.2 360" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-08T17:32:22.385246</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360
+L 979.2 360
+L 979.2 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 55.26 220.3848
+L 267.3 220.3848
+Q 276.192 220.3848 276.192 211.68
+L 276.192 138.024
+Q 276.192 129.3192 267.3 129.3192
+L 55.26 129.3192
+Q 46.368 129.3192 46.368 138.024
+L 46.368 211.68
+Q 46.368 220.3848 55.26 220.3848
+z
+" clip-path="url(#p4da7e96ff1)" style="fill: #fff7ed; stroke: #b45309; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 383.58 220.3848
+L 595.62 220.3848
+Q 604.512 220.3848 604.512 211.68
+L 604.512 138.024
+Q 604.512 129.3192 595.62 129.3192
+L 383.58 129.3192
+Q 374.688 129.3192 374.688 138.024
+L 374.688 211.68
+Q 374.688 220.3848 383.58 220.3848
+z
+" clip-path="url(#p4da7e96ff1)" style="fill: #f8fafc; stroke: #475569; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 711.9 220.3848
+L 923.94 220.3848
+Q 932.832 220.3848 932.832 211.68
+L 932.832 138.024
+Q 932.832 129.3192 923.94 129.3192
+L 711.9 129.3192
+Q 703.008 129.3192 703.008 138.024
+L 703.008 211.68
+Q 703.008 220.3848 711.9 220.3848
+z
+" clip-path="url(#p4da7e96ff1)" style="fill: #ecfdf5; stroke: #047857; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 285.194563 174.852
+Q 325.441122 174.852 363.451613 174.852
+" clip-path="url(#p4da7e96ff1)" style="fill: none; stroke: #475569; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 354.651613 170.452
+L 363.451613 174.852
+L 354.651613 179.252
+z
+" clip-path="url(#p4da7e96ff1)" style="fill: #475569; stroke: #475569; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 613.514563 174.852
+Q 653.761122 174.852 691.771613 174.852
+" clip-path="url(#p4da7e96ff1)" style="fill: none; stroke: #475569; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 682.971613 170.452
+L 691.771613 174.852
+L 682.971613 179.252
+z
+" clip-path="url(#p4da7e96ff1)" style="fill: #475569; stroke: #475569; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 700 21px 'Microsoft YaHei'; text-anchor: start" x="38.16" y="44.326875" transform="rotate(-0 38.16 44.326875)">没有一步严格改善，仍可沿平台走向更好解</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #6b7280; font: 12px 'Microsoft YaHei'; text-anchor: start" x="38.16" y="79.3173" transform="rotate(-0 38.16 79.3173)">三组队列都通过判环；箭头各表示一次相邻交换，不表示下降算法会接受每一步。</text>
+   </g>
+   <g id="text_3">
+    <!-- $\pi^{\mathrm{L}}$ -->
+    <g style="fill: #b45309" transform="translate(149.51 161.492194)">
+     <text>
+      <tspan style="font: oblique 22px 'DejaVu Sans'" x="0" y="-0.35625000000000284">π</tspan>
+      <tspan style="font: 15.4px 'DejaVu Sans'" x="14.227669" y="-8.778125000000003">L</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- $C_{\max}=12$ -->
+    <g style="fill: #b45309" transform="translate(113.68 197.769413)">
+     <text>
+      <tspan style="font: oblique 20px 'DejaVu Sans'" x="0" y="-0.15625">C</tspan>
+      <tspan style="font: 14px 'DejaVu Sans'" x="13.964844 27.602539 36.181641" y="3.125">max</tspan>
+      <tspan style="font: 20px 'DejaVu Sans'" x="48.910156 69.564453 82.289062" y="-0.15625">=12</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <text style="fill: #b45309; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="161.28" y="243.777488" transform="rotate(-0 161.28 243.777488)">相邻交换局部最优</text>
+   </g>
+   <g id="text_6">
+    <!-- $\pi^{\mathrm{B}}$ -->
+    <g style="fill: #475569" transform="translate(476.84 161.492194)">
+     <text>
+      <tspan style="font: oblique 22px 'DejaVu Sans'" x="0" y="-0.35625000000000284">π</tspan>
+      <tspan style="font: 15.4px 'DejaVu Sans'" x="14.227669" y="-8.778125000000003">B</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <!-- $C_{\max}=12$ -->
+    <g style="fill: #475569" transform="translate(442 197.769413)">
+     <text>
+      <tspan style="font: oblique 20px 'DejaVu Sans'" x="0" y="-0.15625">C</tspan>
+      <tspan style="font: 14px 'DejaVu Sans'" x="13.964844 27.602539 36.181641" y="3.125">max</tspan>
+      <tspan style="font: 20px 'DejaVu Sans'" x="48.910156 69.564453 82.289062" y="-0.15625">=12</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="fill: #475569; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="489.6" y="243.777488" transform="rotate(-0 489.6 243.777488)">等值邻居（上一节 LPT 解）</text>
+   </g>
+   <g id="text_9">
+    <!-- $\pi^0$ -->
+    <g style="fill: #047857" transform="translate(805.6 161.492194)">
+     <text>
+      <tspan style="font: oblique 22px 'DejaVu Sans'" x="0" y="-0.1484375">π</tspan>
+      <tspan style="font: 15.4px 'DejaVu Sans'" x="14.227669" y="-8.5703125">0</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- $C_{\max}=11$ -->
+    <g style="fill: #047857" transform="translate(770.32 197.769413)">
+     <text>
+      <tspan style="font: oblique 20px 'DejaVu Sans'" x="0" y="-0.15625">C</tspan>
+      <tspan style="font: 14px 'DejaVu Sans'" x="13.964844 27.602539 36.181641" y="3.125">max</tspan>
+      <tspan style="font: 20px 'DejaVu Sans'" x="48.910156 69.564453 82.289062" y="-0.15625">=11</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_11">
+    <text style="fill: #047857; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="817.92" y="243.777488" transform="rotate(-0 817.92 243.777488)">原来贯穿的排程</text>
+   </g>
+   <g id="text_12">
+    <!-- 交换 $M_2$ 上 $O_{1,2},\ O_{2,1}$ -->
+    <g transform="translate(264.3 112.5792)">
+     <text>
+      <tspan style="font: 12px 'Microsoft YaHei'" x="0 12 24 43.576758 47.127539 59.127539" y="-0.96875">交换  上 </tspan>
+      <tspan style="font: oblique 12px 'DejaVu Sans'" x="27.550781 62.67832 97.495859" y="-0.96875">MOO</tspan>
+      <tspan style="font: 8.4px 'DejaVu Sans'" x="37.904297 72.123633 77.467969 81.774609 106.941172 112.285508 116.592149" y="1.0">21,22,1</tspan>
+      <tspan style="font: 12px 'DejaVu Sans'" x="87.44707" y="-0.96875">,</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_13">
+    <!-- 交换 $M_3$ 上 $O_{1,3},\ O_{2,2}$ -->
+    <g transform="translate(592.62 112.5792)">
+     <text>
+      <tspan style="font: 12px 'Microsoft YaHei'" x="0 12 24 43.576758 47.127539 59.127539" y="-0.96875">交换  上 </tspan>
+      <tspan style="font: oblique 12px 'DejaVu Sans'" x="27.550781 62.67832 97.495859" y="-0.96875">MOO</tspan>
+      <tspan style="font: 8.4px 'DejaVu Sans'" x="37.904297 72.123633 77.467969 81.774609 106.941172 112.285508 116.592149" y="1.0">31,32,2</tspan>
+      <tspan style="font: 12px 'DejaVu Sans'" x="87.44707" y="-0.96875">,</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_14">
+    <!-- $\Delta=0$：平台步 -->
+    <g style="fill: #b45309" transform="translate(276.315 277.3008)">
+     <text>
+      <tspan style="font: 15px 'DejaVu Sans'" x="0 13.183594 28.674316" y="-0.359375">Δ=0</tspan>
+      <tspan style="font: 15px 'Microsoft YaHei'" x="38.217773 53.217773 68.217773 83.217773" y="-0.359375">：平台步</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_15">
+    <!-- $\Delta=-1$：改善步 -->
+    <g style="fill: #047857" transform="translate(595.41 277.3008)">
+     <text>
+      <tspan style="font: 15px 'DejaVu Sans'" x="0 13.183594 31.59668 47.087402" y="-0.4375">Δ=−1</tspan>
+      <tspan style="font: 15px 'Microsoft YaHei'" x="56.630859 71.630859 86.630859 101.630859" y="-0.4375">：改善步</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_16">
+    <text style="fill: #6b7280; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="489.6" y="325.512" transform="rotate(-0 489.6 325.512)">直接接受所有等值步可能来回循环；需要额外的步数、记忆或去重规则。</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4da7e96ff1">
+   <rect x="24.48" y="10.8" width="930.24" height="334.8"/>
+  </clipPath>
+ </defs>
+</svg>

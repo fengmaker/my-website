@@ -1,0 +1,4460 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="运筹优化、算法练习与个人成长记录">
+      
+      
+        <meta name="author" content="cjs">
+      
+      
+        <link rel="canonical" href="https://fengmaker.github.io/my-website/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/Chapter5_1/">
+      
+      
+        <link rel="prev" href="../Chapter5/">
+      
+      
+        <link rel="next" href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_01/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>最优化与锥基础 - cjs 的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="cjs 的学习笔记" class="md-header__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cjs 的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              最优化与锥基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="跟随系统配色"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="跟随系统配色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  个人成长
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../index/or_index/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运筹优化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../index/algorithm_introduction/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  LeetCode笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="cjs 的学习笔记" class="md-nav__button md-logo" aria-label="cjs 的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    cjs 的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fengmaker/my-website" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人成长
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    运筹优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index/or_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识体系总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统学习路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%AD%A6%E4%B9%A0%E5%9C%B0%E5%9B%BE/%E9%97%AE%E9%A2%98%E7%AE%97%E6%B3%95%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    问题—算法索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 基础理论与建模
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 · 基础理论与建模
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学优化基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数学优化基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%AF%B9%E5%81%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性规划与对偶入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95%E4%BB%8E%E6%95%B0%E5%80%BC%E4%BE%8B%E5%AD%90%E7%90%86%E8%A7%A3%E5%9F%BA%E4%B8%8E%E6%A3%80%E9%AA%8C%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单纯形法：基与检验数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性规划与单纯形法详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性规划进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    灵敏度分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    对偶理论与对偶单纯形法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3_ext1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性规划对偶的解题方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92%E4%B8%8E%E6%9D%BE%E5%BC%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整数规划与松弛入门
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整数规划、求解算法与指派
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整数多面体与全单模性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非线性规划与凸优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化与锥基础
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化与锥基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量与矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        范数 (Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标题：向量范数 (Vector Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-vector-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量范数的性质 (Properties of Vector Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        矩阵范数 (Matrix Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sherman-morrison-sherman-morrison-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sherman-Morrison公式 (Sherman-Morrison Formula)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-hessian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度(Gradient) 和Hessian矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-jacobian-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        雅可比矩阵 (The Jacobian Matrix)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-chain-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链式法则 (The Chain Rule)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directional-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方向导数 (Directional Derivatives)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taylor-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数 (Taylor Series)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remainder-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数的余项形式 (Remainder Form)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affine-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        仿射集合 (Affine Set)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        仿射集合的性质
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convex-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        凸集 (Convex Set)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convex-combination-and-convex-hull" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        凸组合与凸包 (Convex Combination and Convex Hull)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperplane-and-halfspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        超平面与半空间 (Hyperplane and Halfspace)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#norm-ball-and-norm-cone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        范数球与范数锥 (Norm Ball and Norm Cone)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cone-and-conic-combination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        锥与锥组合 (Cone and Conic Combination)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E7%A6%BB%E6%95%A3%E4%BC%98%E5%8C%96/Ch_01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论与离散数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/0-1%E5%8F%98%E9%87%8F%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学建模技巧
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../Chapter3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经典运筹学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 求解算法体系
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 · 求解算法体系
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精确算法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%85%83%E5%90%AF%E5%8F%91%E5%BC%8F/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式与元启发式
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95%E4%BD%93%E7%B3%BB/%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%92/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    约束规划与 CP-SAT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/SAA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随机优化方法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E7%BB%8F%E5%85%B8%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 经典优化问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 · 经典优化问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/%E9%97%AE%E9%A2%98%E8%B0%B1%E7%B3%BB/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路径与物流优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B0%83%E5%BA%A6%E4%B8%8E%E7%94%9F%E4%BA%A7/JSP/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    调度与生产优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/FAP/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    航空分配与排班
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%BA%94%E7%94%A8%E5%BB%BA%E6%A8%A1/Max_k_cut/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图与网络优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%B0%83%E5%BA%A6%E4%B8%8E%E7%94%9F%E4%BA%A7/UnitCommitmentProblem/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    能源优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 求解器与工程实现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 · 求解器与工程实现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%85%AC%E5%BC%8F%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公式、伪代码与代码写作规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E5%99%A8%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E7%8E%B0/%E5%AE%9E%E9%AA%8C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据集与实验规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B1%82%E8%A7%A3%E7%AE%97%E6%B3%95/Bucket_opt_SPP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dijkstra 桶优化：Dial 与 Radix Heap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 项目与实验复现
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 · 项目与实验复现
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/GMRP-ALNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GMRP-ALNS：机器重分配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/VRPTW-Solver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRPTW Solver：实现与四方实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/VRPTW/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%A1%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    纯 Python VRPTW 求解器开发方案
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C%E5%A4%8D%E7%8E%B0/%E4%B8%93%E9%A2%98%E4%B8%8E%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    专题与实验记录模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 资料库与面试
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 · 资料库与面试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标签索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E4%B8%8E%E8%AE%B8%E5%8F%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考资料与许可
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E5%B2%97%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面试题库
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../Works/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习与课程资料
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%85%B6%E4%BB%96%E4%B8%93%E9%A2%98/VRPmeetsNeurIPS/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交叉研究与趣味优化
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%A7%A3%E8%B0%9C/CPSAT_1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CP-SAT 解谜
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../index/algorithm_introduction/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LeetCode笔记
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量与矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        范数 (Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标题：向量范数 (Vector Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-of-vector-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量范数的性质 (Properties of Vector Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        矩阵范数 (Matrix Norms)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sherman-morrison-sherman-morrison-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sherman-Morrison公式 (Sherman-Morrison Formula)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-hessian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度(Gradient) 和Hessian矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-jacobian-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        雅可比矩阵 (The Jacobian Matrix)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-chain-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链式法则 (The Chain Rule)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directional-derivatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方向导数 (Directional Derivatives)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taylor-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数 (Taylor Series)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remainder-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        泰勒级数的余项形式 (Remainder Form)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affine-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        仿射集合 (Affine Set)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        仿射集合的性质
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convex-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        凸集 (Convex Set)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convex-combination-and-convex-hull" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        凸组合与凸包 (Convex Combination and Convex Hull)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperplane-and-halfspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        超平面与半空间 (Hyperplane and Halfspace)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#norm-ball-and-norm-cone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        范数球与范数锥 (Norm Ball and Norm Cone)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cone-and-conic-combination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        锥与锥组合 (Cone and Conic Combination)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../index/or_index/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    运筹优化
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    01 · 基础理论与建模
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../%E5%9F%BA%E7%A1%80%E5%BB%BA%E6%A8%A1/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%AF%B9%E5%81%B6/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    数学优化基础
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:凸优化" class="md-tag">凸优化</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%8E%E9%9D%A2%E8%AF%95/%E6%A0%87%E7%AD%BE%E7%B4%A2%E5%BC%95/#tag:基础理论" class="md-tag">基础理论</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/fengmaker/my-website/edit/main/docs/运筹优化/运筹学基础/Chapter5_1.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/fengmaker/my-website/raw/main/docs/运筹优化/运筹学基础/Chapter5_1.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">最优化基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">本部分内容由GPT-4o以及Claude-3.5负责整理。</p>
+<p>注意了GPT默认输出的Markdown格式在我的mkdocs配置下是稍有不同的，有的公式渲染不出来。需要自行Prompt Engineering 一下。</p>
+</div>
+<h3 id="_2"><strong>向量与矩阵</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>向量与矩阵的表示：</strong></p>
+<ul>
+<li>向量通常用<strong>小写字母</strong>表示。</li>
+<li>矩阵通常用<strong>大写字母</strong>表示。  </li>
+</ul>
+</li>
+<li>
+<p><strong>向量和矩阵的空间：</strong></p>
+<ul>
+<li>长度为 <span class="arithmatex">\(n\)</span> 的实向量的空间表示为 <span class="arithmatex">\(\mathbb{R}^n\)</span>。</li>
+<li><span class="arithmatex">\(m \times n\)</span> 的实矩阵的空间表示为 <span class="arithmatex">\(\mathbb{R}^{m \times n}\)</span>。</li>
+</ul>
+</li>
+<li>
+<p><strong>对称矩阵的定义：</strong></p>
+<ul>
+<li>如果矩阵 <span class="arithmatex">\(A \in \mathbb{R}^{n \times n}\)</span> 满足 <span class="arithmatex">\(A = A^T\)</span>，则 <span class="arithmatex">\(A\)</span> 是<strong>对称矩阵</strong> (symmetric matrix)。</li>
+</ul>
+</li>
+<li>
+<p><strong>正定矩阵的定义：</strong></p>
+<ul>
+<li>如果对称矩阵 <span class="arithmatex">\(A\)</span> 满足 <span class="arithmatex">\(x^T A x &gt; 0, \forall x \neq 0 \in \mathbb{R}^n\)</span>，则 <span class="arithmatex">\(A\)</span> 是<strong>正定矩阵</strong>（<span class="arithmatex">\(A &gt; 0\)</span>） (positive definite)。</li>
+</ul>
+</li>
+<li>
+<p><strong>半正定矩阵的定义：</strong></p>
+<ul>
+<li>如果对称矩阵 <span class="arithmatex">\(A\)</span> 满足 <span class="arithmatex">\(x^T A x \geq 0, \forall x \in \mathbb{R}^n\)</span>，则 <span class="arithmatex">\(A\)</span> 是<strong>半正定矩阵</strong>（<span class="arithmatex">\(A \geq 0\)</span>） (positive semidefinite)。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="norms"><strong>范数 (Norms)</strong><a class="headerlink" href="#norms" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>范数的定义：</strong></li>
+<li>
+<p>范数 <span class="arithmatex">\(\|\cdot\|\)</span> 是一个实值函数，满足以下性质：</p>
+<ul>
+<li><span class="arithmatex">\(\|x\| \geq 0\)</span>，对所有 <span class="arithmatex">\(x\)</span>（非负性 Non-negativity）。</li>
+<li><span class="arithmatex">\(\|x\| = 0\)</span> 当且仅当 <span class="arithmatex">\(x = 0\)</span>（确定性 Definiteness）。</li>
+<li><span class="arithmatex">\(\|\alpha x\| = |\alpha| \|x\|\)</span>，对所有实数 <span class="arithmatex">\(\alpha\)</span>（齐次性 Homogeneity）。</li>
+<li><span class="arithmatex">\(\|x + y\| \leq \|x\| + \|y\|\)</span>，对所有 <span class="arithmatex">\(x, y\)</span>（三角不等式 Triangle inequality）。</li>
+</ul>
+</li>
+<li>
+<p><strong>矩阵范数的扩展：</strong></p>
+</li>
+<li>对于矩阵范数，有用但非必要的性质：<ul>
+<li><span class="arithmatex">\(\|XY\| \leq \|X\| \|Y\|\)</span>，适用于所有 <span class="arithmatex">\(X, Y\)</span> 且 <span class="arithmatex">\(XY\)</span> 存在的情况。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="vector-norms">标题：<strong>向量范数 (Vector Norms)</strong><a class="headerlink" href="#vector-norms" title="Permanent link">&para;</a></h3>
+<dl>
+<dt><strong>常见向量范数：</strong></dt>
+<dd>
+<p><strong><span class="arithmatex">\(l_1\)</span>-范数 (L1-norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_1 = \sum_{i=1}^n |x_i|\)</span><br />
+ （所有分量绝对值之和）。</p>
+</dd>
+<dd>
+<p><strong>欧几里得范数 (Euclidean-norm, <span class="arithmatex">\(l_2\)</span>-norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_2 = \sqrt{x^T x} = \sqrt{\sum_{i=1}^n x_i^2}\)</span>  （平方和的平方根）。</p>
+</dd>
+<dd>
+<p><strong><span class="arithmatex">\(l_\infty\)</span>-范数 (L∞-norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_\infty = \max_{1 \leq i \leq n} |x_i|\)</span><br />
+ （所有分量绝对值的最大值）。</p>
+</dd>
+<dd>
+<p><strong><span class="arithmatex">\(l_p\)</span>-范数 (Lp-norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_p = \left( \sum_{i=1}^n |x_i|^p \right)^{1/p}, \forall p \geq 1\)</span><br />
+ （分量绝对值的 <span class="arithmatex">\(p\)</span> 次方和的 <span class="arithmatex">\(1/p\)</span> 次方根）。</p>
+</dd>
+<dd>
+<p><strong>加权范数 (Weighted norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_G = \sqrt{x^T G x}\)</span>，其中 <span class="arithmatex">\(G\)</span> 是一个对称正定矩阵 (Symmetric positive definite matrix)。</p>
+</dd>
+<dt><strong>特殊向量范数：</strong></dt>
+<dd>
+<p><strong><span class="arithmatex">\(l_0\)</span>-范数 (L0-norm)</strong>:  </p>
+<p><span class="arithmatex">\(\|x\|_0\)</span> 是向量中非零元素的总数量。  </p>
+</dd>
+</dl>
+<hr />
+<h3 id="properties-of-vector-norms">向量范数的性质 (Properties of Vector Norms)<a class="headerlink" href="#properties-of-vector-norms" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Holder不等式 (Hölder Inequality):</strong></p>
+<ul>
+<li><span class="arithmatex">\(|x^T y| \leq \|x\|_p \|y\|_q\)</span>，其中 <span class="arithmatex">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>。</li>
+<li>内积 (Inner product): <span class="arithmatex">\(x \cdot y \equiv x^T y = \sum_{i=1}^n x_i y_i\)</span>。</li>
+</ul>
+</li>
+<li>
+<p><strong>范数的最大值公式：</strong></p>
+<ul>
+<li><span class="arithmatex">\(\|x\|_p = \max_{\|y\|_q \leq 1} x^T y\)</span>。</li>
+<li>当 <span class="arithmatex">\(p = q = 2\)</span>: <span class="arithmatex">\(|x^T y| \leq \|x\|_2 \|y\|_2\)</span> 且 <span class="arithmatex">\(\|x\|_2 = \max_{\|y\|_2 \leq 1} x^T y\)</span>。</li>
+<li>当 <span class="arithmatex">\(p = 1, q = \infty\)</span>: <span class="arithmatex">\(|x^T y| \leq \|x\|_1 \|y\|_\infty\)</span> 且 <span class="arithmatex">\(\|x\|_1 = \max_{\|y\|_\infty \leq 1} x^T y\)</span>，<span class="arithmatex">\(\|x\|_\infty = \max_{\|y\|_1 \leq 1} x^T y\)</span>。</li>
+</ul>
+</li>
+<li>
+<p><strong>向量范数的平方关系：</strong></p>
+<ul>
+<li><span class="arithmatex">\(\|x\|_2^2 + \|y\|_2^2 = \|x + y\|_2^2 - 2x^T y\)</span>。</li>
+<li>等价形式：<span class="arithmatex">\(\|x\|_2^2 + \|y\|_2^2 = \|x - y\|_2^2 + 2x^T y\)</span>。</li>
+<li>平均形式：<span class="arithmatex">\(= \frac{1}{2}(\|x + y\|_2^2 + \|x - y\|_2^2) \geq 2|x^T y|\)</span>。</li>
+</ul>
+</li>
+<li>
+<p><strong>向量范数的等价性 (Equivalence of vector norms):</strong></p>
+<ul>
+<li><span class="arithmatex">\(c_1 \|x\|_+ \leq \|x\|_* \leq c_2 \|x\|_+\)</span>。</li>
+<li><span class="arithmatex">\(\|x\|_2 \leq \|x\|_1 \leq \sqrt{n}\|x\|_2\)</span>。</li>
+<li><span class="arithmatex">\(\|x\|_\infty \leq \|x\|_2 \leq \sqrt{n}\|x\|_\infty\)</span>。</li>
+<li><span class="arithmatex">\(\|x\|_\infty \leq \|x\|_1 \leq n\|x\|_\infty\)</span>。</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="matrix-norms">矩阵范数 (Matrix Norms)<a class="headerlink" href="#matrix-norms" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>矩阵范数的定义：</strong></li>
+<li>矩阵范数通常基于向量范数定义：</li>
+</ol>
+<div class="arithmatex">\[\|A\|_p = \max_{x \neq 0} \frac{\|Ax\|_p}{\|x\|_p}\]</div>
+<ol>
+<li><strong>常见的矩阵范数：</strong></li>
+<li><strong><span class="arithmatex">\(l_1\)</span>-范数 (L1-norm)</strong>:  </li>
+</ol>
+<div class="arithmatex">\[\|A\|_1 = \max_{1 \leq j \leq n} \sum_{i=1}^m |a_{ij}|\]</div>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code> （每列元素绝对值之和的最大值）。
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><span class="arithmatex">\(l_2\)</span>-范数 (L2-norm)</strong>:  </li>
+</ul>
+<div class="arithmatex">\[\|A\|_2 = \sqrt{\lambda_{\max}(A^T A)}\]</div>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code> （矩阵 $A^T A$ 的最大特征值的平方根）。
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><span class="arithmatex">\(l_\infty\)</span>-范数 (L∞-norm)</strong>:  </li>
+</ul>
+<div class="arithmatex">\[\|A\|_\infty = \max_{1 \leq i \leq m} \sum_{j=1}^n |a_{ij}|\]</div>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code> （每行元素绝对值之和的最大值）。
+</code></pre></div></td></tr></table></div>
+<ol>
+<li><strong>Frobenius范数 (Frobenius Norm):</strong></li>
+</ol>
+<div class="arithmatex">\[\|A\|_F = \sqrt{\text{tr}(A^T A)} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n a_{ij}^2}\]</div>
+<ul>
+<li><strong>迹 (Trace)</strong>:  </li>
+</ul>
+<div class="arithmatex">\[\text{tr}(A^T B) = \sum_{j=1}^n \left( \sum_{i=1}^m a_{ij} b_{ij} \right)\]</div>
+<ul>
+<li>矩阵加法性质：  </li>
+</ul>
+<div class="arithmatex">\[\|A + B\|_F^2 = \|A\|_F^2 + \|B\|_F^2 + 2 \text{tr}(A^T B)\]</div>
+<ol>
+<li><strong>正交矩阵 (Orthogonal Matrix):</strong></li>
+<li>如果矩阵 <span class="arithmatex">\(Q\)</span> 是正交矩阵，则满足：</li>
+</ol>
+<div class="arithmatex">\[Q Q^T = Q^T Q = I\]</div>
+<blockquote>
+<p>(单位矩阵 Identity matrix)</p>
+</blockquote>
+<p>因此：<span class="arithmatex">\(Q^T = Q^{-1}\)</span>。
+   - 性质：</p>
+<div class="arithmatex">\[\|A\|_F = \|QA\|_F = \|A\|_2 = \|QA\|_2, \|Qx\|_2 = \|x\|_2\]</div>
+<h3 id="sherman-morrison-sherman-morrison-formula">Sherman-Morrison公式 (Sherman-Morrison Formula)<a class="headerlink" href="#sherman-morrison-sherman-morrison-formula" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>问题描述</strong>  </p>
+<ul>
+<li>初始矩阵 <span class="arithmatex">\(A \in \mathbb{R}^{n \times n}\)</span>，扰动矩阵 <span class="arithmatex">\(B = A + u v^T\)</span>，其中 <span class="arithmatex">\(u, v \in \mathbb{R}^n\)</span>。  </li>
+<li>已知 <span class="arithmatex">\(A^{-1}\)</span>，如何高效地计算扰动矩阵 <span class="arithmatex">\(B\)</span> 的逆？</li>
+</ul>
+</li>
+<li>
+<p><strong>矩阵 <span class="arithmatex">\((I + uv^T)^{-1}\)</span> 的推导</strong>  </p>
+<ul>
+<li>假设 <span class="arithmatex">\((I + uv^T)^{-1} = (I + \rho uv^T)\)</span>，则：</li>
+</ul>
+<div class="arithmatex">\[
+(I + uv^T)(I + \rho uv^T) = I + [1 + \rho(1 + v^T u)] uv^T
+\]</div>
+<ul>
+<li>由此可得：</li>
+</ul>
+<div class="arithmatex">\[
+\rho = -\frac{1}{1 + v^T u}
+\]</div>
+<ul>
+<li>所以：</li>
+</ul>
+<div class="arithmatex">\[
+(I + uv^T)^{-1} = I - \frac{uv^T}{1 + v^T u}
+\]</div>
+</li>
+<li>
+<p><strong>使用上述关系计算 <span class="arithmatex">\((A + uv^T)^{-1}\)</span></strong>  </p>
+<ul>
+<li>根据关系：</li>
+</ul>
+<div class="arithmatex">\[
+(A + uv^T)^{-1} = \left(A (I + A^{-1} uv^T) \right)^{-1}
+\]</div>
+<ul>
+<li>推导步骤：</li>
+</ul>
+<div class="arithmatex">\[
+(A + uv^T)^{-1} = (I + A^{-1} uv^T)^{-1} A^{-1}
+\]</div>
+<div class="arithmatex">\[= \left(I - \frac{A^{-1} uv^T}{1 + v^T A^{-1} u}\right) A^{-1}\]</div>
+<div class="arithmatex">\[= A^{-1} - \frac{A^{-1} uv^T A^{-1}}{1 + v^T A^{-1} u}\]</div>
+</li>
+<li>
+<p><strong>使用条件</strong>  </p>
+<ul>
+<li>当 <span class="arithmatex">\(1 + v^T A^{-1} u \neq 0\)</span> 时，公式成立。</li>
+</ul>
+</li>
+</ul>
+<h3 id="gradient-hessian">梯度(Gradient) 和Hessian矩阵<a class="headerlink" href="#gradient-hessian" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>函数与梯度</strong>  </p>
+<ul>
+<li>设 <span class="arithmatex">\(f\)</span> 是一个关于 <span class="arithmatex">\(n\)</span> 个变量的实值函数：</li>
+</ul>
+<div class="arithmatex">\[
+f(x) = f(x_1, x_2, \cdots, x_n)
+\]</div>
+<ul>
+<li><span class="arithmatex">\(f\)</span> 的一阶偏导数组成的向量称为 <strong>梯度 (Gradient)</strong>，表示为：</li>
+</ul>
+<div class="arithmatex">\[
+\nabla f(x) = \left(\frac{\partial f(x)}{\partial x_1}, \frac{\partial f(x)}{\partial x_2}, \cdots, \frac{\partial f(x)}{\partial x_n}\right)^T
+\]</div>
+</li>
+<li>
+<p><strong>Hessian矩阵</strong>  </p>
+<ul>
+<li><span class="arithmatex">\(f\)</span> 的二阶偏导数构成的矩阵称为 <strong>Hessian矩阵 (Hessian matrix)</strong> 或简称为 <strong>Hessian</strong>，表示为：</li>
+</ul>
+<div class="arithmatex">\[
+\nabla^2 f(x)
+\]</div>
+<ul>
+<li>其元素的定义为：</li>
+</ul>
+<div class="arithmatex">\[
+[\nabla^2 f(x)]_{ij} \equiv \frac{\partial^2 f(x)}{\partial x_i \partial x_j}
+\]</div>
+</li>
+<li>
+<p><strong>Hessian矩阵的性质</strong>  </p>
+<ul>
+<li>对于具有连续二阶导数的函数，Hessian矩阵是一个 <strong>对称矩阵 (Symmetric matrix)</strong>，因为：</li>
+</ul>
+<div class="arithmatex">\[
+\frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \frac{\partial^2 f(x)}{\partial x_j \partial x_i}
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="the-jacobian-matrix">雅可比矩阵 (The Jacobian Matrix)<a class="headerlink" href="#the-jacobian-matrix" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>  </p>
+<ul>
+<li>设 <span class="arithmatex">\(f\)</span> 是从 <span class="arithmatex">\(\mathbb{R}^n\)</span> 到 <span class="arithmatex">\(\mathbb{R}^m\)</span> 的向量值函数：</li>
+</ul>
+<div class="arithmatex">\[
+f(x) = f(x_1, x_2, \cdots, x_n) = 
+\begin{pmatrix}
+f_1(x_1, x_2, \cdots, x_n) \\
+f_2(x_1, x_2, \cdots, x_n) \\
+\vdots \\
+f_m(x_1, x_2, \cdots, x_n)
+\end{pmatrix}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(f\)</span> 在点 <span class="arithmatex">\(x\)</span> 的 <strong>雅可比矩阵 (Jacobian Matrix)</strong> 定义为 <span class="arithmatex">\(\nabla f(x)^T\)</span>，其中：</li>
+</ul>
+<div class="arithmatex">\[
+\nabla f(x) = (\nabla f_1(x), \nabla f_2(x), \cdots, \nabla f_m(x))
+\]</div>
+<ul>
+<li>其元素的定义为：</li>
+</ul>
+<div class="arithmatex">\[
+[\nabla f(x)^T]_{ij} = \frac{\partial f_i(x)}{\partial x_j}
+\]</div>
+</li>
+<li>
+<p><strong>练习</strong>  </p>
+<ul>
+<li>计算下列函数的 Jacobian：</li>
+</ul>
+<div class="arithmatex">\[
+f(x) = 
+\begin{pmatrix}
+\sin x_1 + \cos x_2 \\
+e^{3x_1 + x_2^2} \\
+4x_1^3 + 7x_1 x_2^2
+\end{pmatrix}
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="the-chain-rule">链式法则 (The Chain Rule)<a class="headerlink" href="#the-chain-rule" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>  </p>
+<ul>
+<li>函数求导中的链式法则用于计算复合函数的导数。</li>
+</ul>
+</li>
+<li>
+<p><strong>复合函数的形式</strong>  </p>
+<ul>
+<li>考虑函数 <span class="arithmatex">\(g(x) = g(x_1, \cdots, x_n)\)</span>，且假设每个 <span class="arithmatex">\(x_i\)</span> 都是变量 <span class="arithmatex">\(t_1, \cdots, t_m\)</span> 的函数，即 <span class="arithmatex">\(x_i = x_i(t_1, \cdots, t_m)\)</span>。</li>
+<li>对于复合函数 <span class="arithmatex">\(h(t) = g(x(t))\)</span>，链式法则表示为：</li>
+</ul>
+<div class="arithmatex">\[
+\nabla h(t) = \nabla x(t)^T \nabla g(x(t))
+\]</div>
+</li>
+<li>
+<p><strong>应用</strong>  </p>
+<ul>
+<li>若 <span class="arithmatex">\(f : \mathbb{R}^n \to \mathbb{R}\)</span> 是连续可微的，令 <span class="arithmatex">\(g(x) = f(Ax - b)\)</span>，则：</li>
+</ul>
+<div class="arithmatex">\[
+\nabla g(x) = A^T \nabla f(Ax - b)
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="directional-derivatives">方向导数 (Directional Derivatives)<a class="headerlink" href="#directional-derivatives" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>  </p>
+<ul>
+<li>如果 <span class="arithmatex">\(f\)</span> 是连续可微的，且 <span class="arithmatex">\(p \in \mathbb{R}^n\)</span>，则 <span class="arithmatex">\(f\)</span> 在方向 <span class="arithmatex">\(p\)</span> 上的方向导数定义为：</li>
+</ul>
+<div class="arithmatex">\[
+\frac{\partial f(x)}{\partial p} \equiv \lim_{\epsilon \to 0} \frac{f(x + \epsilon p) - f(x)}{\epsilon} = p^T \nabla f(x)
+\]</div>
+</li>
+<li>
+<p><strong>验证公式的步骤</strong>  </p>
+<ul>
+<li>定义函数 <span class="arithmatex">\(\phi(\alpha)\)</span> 为：</li>
+</ul>
+<div class="arithmatex">\[
+\phi(\alpha) = f(x + \alpha p) = f(y(\alpha))
+\]</div>
+<ul>
+<li>注意到以下关系：</li>
+</ul>
+<div class="arithmatex">\[
+\lim_{\epsilon \to 0} \frac{f(x + \epsilon p) - f(x)}{\epsilon} = \lim_{\epsilon \to 0} \frac{\phi(\epsilon) - \phi(0)}{\epsilon} = \phi'(0)
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\phi'(\alpha)\)</span> 的计算为：</li>
+</ul>
+<div class="arithmatex">\[
+\phi'(\alpha) = \sum_{i=1}^n \frac{\partial f(y(\alpha))}{\partial y_i} p_i = p^T \nabla f(y(\alpha))
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="taylor-series">泰勒级数 (Taylor Series)<a class="headerlink" href="#taylor-series" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>  </p>
+<ul>
+<li>泰勒级数是一种在指定点 <span class="arithmatex">\(x_0\)</span> 附近对函数 <span class="arithmatex">\(f\)</span> 进行近似的方法。</li>
+<li>通过泰勒级数得到的近似是一种 <strong>多项式 (Polynomial)</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>应用场景</strong>  </p>
+<ul>
+<li>当函数具有导数时，可以使用泰勒级数，其应用包括：<ul>
+<li>用于估计函数在给定点附近的值（当函数难以直接计算时）。</li>
+<li>近似的导数和积分可用于估计原函数的导数和积分。</li>
+<li>用于推导多种算法，如寻找函数零点和优化函数的算法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>一维函数的泰勒级数</strong>  </p>
+<ul>
+<li>对于具有 <span class="arithmatex">\(n\)</span> 阶连续导数的一维函数 <span class="arithmatex">\(f\)</span>，在指定点 <span class="arithmatex">\(x_0\)</span> 的 <span class="arithmatex">\(n\)</span> 阶泰勒级数近似为：</li>
+</ul>
+<div class="arithmatex">\[
+f(x_0 + p) \approx f(x_0) + p f'(x_0) + \frac{1}{2!} p^2 f''(x_0) + \cdots + \frac{p^n}{n!} f^{(n)}(x_0)
+\]</div>
+<ul>
+<li>泰勒级数的前两项给出了 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\(x_0\)</span> 点的切线方程：</li>
+</ul>
+<div class="arithmatex">\[
+y = f(x_0) + (x - x_0) f'(x_0)
+\]</div>
+<ul>
+<li>泰勒级数的前三项提供了 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\(x_0\)</span> 点的二次近似。</li>
+</ul>
+</li>
+<li>
+<p><strong>多变量函数的泰勒级数</strong>  </p>
+<ul>
+<li>对于多变量函数的泰勒级数，表示为：</li>
+</ul>
+<div class="arithmatex">\[
+f(x_0 + p) = f(x_0) + p^T \nabla f(x_0) + \frac{1}{2} p^T \nabla^2 f(x_0) p + \cdots
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="remainder-form">泰勒级数的余项形式 (Remainder Form)<a class="headerlink" href="#remainder-form" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>  </p>
+<ul>
+<li>泰勒级数的另一种形式是 <strong>余项形式 (Remainder Form)</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>余项形式的公式</strong>  </p>
+<ul>
+<li>
+<p>若仅使用前三项，其形式如下：</p>
+<ul>
+<li>对于一维函数：</li>
+</ul>
+<div class="arithmatex">\[
+f(x_0 + p) = f(x_0) + p f'(x_0) + \frac{1}{2!} p^2 f''(\xi)
+\]</div>
+<ul>
+<li>对于多变量函数：</li>
+</ul>
+<div class="arithmatex">\[
+f(x_0 + p) = f(x_0) + p^T \nabla f(x_0) + \frac{1}{2!} p^T \nabla^2 f(\xi) p
+\]</div>
+<ul>
+<li>其中 <span class="arithmatex">\(\xi\)</span> 是位于 <span class="arithmatex">\(x_0\)</span> 和 <span class="arithmatex">\(x_0 + p\)</span> 之间的未知点。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>精度分析</strong>  </p>
+<ul>
+<li>泰勒级数的精度可通过对最后的 <strong>余项 (Remainder)</strong> 项进行界定分析。</li>
+<li>泰勒级数的高阶项可以写出，但符号更复杂，并不需要在本课程中使用。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="affine-set">仿射集合 (Affine Set)<a class="headerlink" href="#affine-set" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>仿射集合的定义</strong>  </p>
+<ul>
+<li>若集合 <span class="arithmatex">\(C\)</span> 满足，对于任意 <span class="arithmatex">\(x, y \in C\)</span> 和 <span class="arithmatex">\(\alpha \in \mathbb{R}\)</span>，都有：</li>
+</ul>
+<div class="arithmatex">\[
+\alpha x + (1 - \alpha)y \in C
+\]</div>
+<ul>
+<li>当 <span class="arithmatex">\(x, y\)</span> 是 <span class="arithmatex">\(\mathbb{R}^n\)</span> 中的两个不同点，<span class="arithmatex">\(\alpha \in \mathbb{R}\)</span> 时，由 <span class="arithmatex">\(z = \alpha x + (1 - \alpha)y\)</span> 表示的点集合是由 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 决定的 <strong>直线 (Line)</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>仿射组合 (Affine Combination)</strong>  </p>
+<ul>
+<li>对于 <span class="arithmatex">\(x_1, x_2, \cdots, x_k \in C\)</span>，若系数 <span class="arithmatex">\(\alpha_1, \alpha_2, \cdots, \alpha_k\)</span> 满足：</li>
+</ul>
+<div class="arithmatex">\[
+\sum_{i=1}^k \alpha_i = 1
+\]</div>
+<p>则：</p>
+<div class="arithmatex">\[
+y = \sum_{i=1}^k \alpha_i x_i
+\]</div>
+<p>是 <span class="arithmatex">\(x_1, x_2, \cdots, x_k\)</span> 的仿射组合。</p>
+</li>
+</ul>
+<hr />
+<h3 id="_3">仿射集合的性质<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>性质 1</strong>  </p>
+<ul>
+<li>根据仿射集合的定义，可以证明：若 <span class="arithmatex">\(C\)</span> 是一个仿射集合，且 <span class="arithmatex">\(x_1, \cdots, x_k \in C\)</span>，<span class="arithmatex">\(\alpha_1, \cdots, \alpha_k\)</span> 满足：</li>
+</ul>
+<div class="arithmatex">\[
+\alpha_1 + \cdots + \alpha_k = 1
+\]</div>
+<p>则点：</p>
+<div class="arithmatex">\[
+\alpha_1 x_1 + \cdots + \alpha_k x_k \in C
+\]</div>
+</li>
+<li>
+<p><strong>性质 2</strong>  </p>
+<ul>
+<li>仿射集合包含了它所有点的仿射组合。</li>
+</ul>
+</li>
+<li>
+<p><strong>性质 3</strong>  </p>
+<ul>
+<li>例如，集合 <span class="arithmatex">\(\{x \mid Ax = b\}\)</span> 是一个仿射集合。</li>
+</ul>
+</li>
+<li>
+<p><strong>仿射包 (Affine Hull)</strong>  </p>
+<ul>
+<li>集合 <span class="arithmatex">\(C\)</span> 中所有点的仿射组合构成的集合称为 <span class="arithmatex">\(C\)</span> 的 <strong>仿射包 (Affine Hull)</strong>，表示为：</li>
+</ul>
+<div class="arithmatex">\[
+\text{aff } C = \{\alpha_1 x_1 + \cdots + \alpha_k x_k \mid x_1, \cdots, x_k \in C, \alpha_1 + \cdots + \alpha_k = 1\}
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="convex-set">凸集 (Convex Set)<a class="headerlink" href="#convex-set" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>凸集的定义</strong>  </p>
+<ul>
+<li>若集合 <span class="arithmatex">\(C\)</span> 满足，对于任意 <span class="arithmatex">\(x, y \in C\)</span> 和 <span class="arithmatex">\(\alpha \in [0, 1]\)</span>，都有：</li>
+</ul>
+<div class="arithmatex">\[
+\alpha x + (1 - \alpha)y \in C
+\]</div>
+<ul>
+<li>换句话说，若 <span class="arithmatex">\(x, y \in C\)</span>，则连接 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的线段也属于集合 <span class="arithmatex">\(C\)</span>。</li>
+</ul>
+</li>
+<li>
+<p><strong>凸集的性质</strong>  </p>
+<ul>
+<li>若 <span class="arithmatex">\(C_1\)</span> 和 <span class="arithmatex">\(C_2\)</span> 是凸集，则以下操作仍然是凸集吗？<ul>
+<li><span class="arithmatex">\(\beta C_1\)</span></li>
+<li><span class="arithmatex">\(C_1 + C_2\)</span></li>
+<li><span class="arithmatex">\(C_1 - C_2\)</span></li>
+<li><span class="arithmatex">\(C_1 \cap C_2\)</span></li>
+</ul>
+</li>
+<li>按约定，空集 <span class="arithmatex">\(\emptyset\)</span> 是凸集。</li>
+<li>表达式 <span class="arithmatex">\(\alpha x + (1 - \alpha)y \in C\)</span> 被称为 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 的 <strong>凸组合 (Convex Combination)</strong>。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="convex-combination-and-convex-hull">凸组合与凸包 (Convex Combination and Convex Hull)<a class="headerlink" href="#convex-combination-and-convex-hull" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>凸组合 (Convex Combination)</strong>  </p>
+<ul>
+<li>对于 <span class="arithmatex">\(x_1, x_2, \cdots, x_k \in C\)</span>，若系数 <span class="arithmatex">\(\alpha_1, \alpha_2, \cdots, \alpha_k\)</span> 满足：</li>
+</ul>
+<div class="arithmatex">\[
+\sum_{i=1}^k \alpha_i = 1 \quad \text{且} \quad \alpha_i \geq 0, \; i = 1, \cdots, k
+\]</div>
+<p>则：</p>
+<div class="arithmatex">\[
+y = \sum_{i=1}^k \alpha_i x_i
+\]</div>
+<p>是 <span class="arithmatex">\(x_1, x_2, \cdots, x_k\)</span> 的凸组合。</p>
+</li>
+<li>
+<p><strong>凸集的判定</strong>  </p>
+<ul>
+<li>一个集合是凸集，当且仅当它包含所有点的凸组合。</li>
+</ul>
+</li>
+<li>
+<p><strong>凸包 (Convex Hull)</strong>  </p>
+<ul>
+<li>集合 <span class="arithmatex">\(C\)</span> 中所有点的凸组合构成的集合称为 <span class="arithmatex">\(C\)</span> 的 <strong>凸包 (Convex Hull)</strong>，表示为：</li>
+</ul>
+<div class="arithmatex">\[
+\text{conv } C = \{\alpha_1 x_1 + \cdots + \alpha_k x_k \mid x_1, \cdots, x_k \in C, \alpha_1 + \cdots + \alpha_k = 1, \alpha_i \geq 0\}
+\]</div>
+</li>
+</ul>
+<hr />
+<h3 id="hyperplane-and-halfspace">超平面与半空间 (Hyperplane and Halfspace)<a class="headerlink" href="#hyperplane-and-halfspace" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>超平面 (Hyperplane)</strong>  </p>
+<ul>
+<li>定义为：</li>
+</ul>
+<div class="arithmatex">\[
+H = \{x \mid a^T x = b\}, \; (a \neq 0)
+\]</div>
+</li>
+<li>
+<p><strong>半空间 (Halfspace)</strong>  </p>
+<ul>
+<li>上半空间 (Upper halfspace):</li>
+</ul>
+<div class="arithmatex">\[
+H^+ = \{x \mid a^T x \leq b\}, \; (a \neq 0)
+\]</div>
+<ul>
+<li>下半空间 (Lower halfspace):</li>
+</ul>
+<div class="arithmatex">\[
+H^- = \{x \mid a^T x \geq b\}, \; (a \neq 0)
+\]</div>
+</li>
+<li>
+<p><strong>性质</strong>  </p>
+<ul>
+<li>超平面和半空间都是凸集 (Convex)。</li>
+</ul>
+</li>
+<li>
+<p><strong>多面体 (Polyhedron)</strong>  </p>
+<ul>
+<li>多面体是有限个半空间与超平面的交集，定义为：</li>
+</ul>
+<div class="arithmatex">\[
+P = \bigcap_{i=1}^m H_i, \quad 
+\]</div>
+<blockquote>
+<p><span class="arithmatex">\(H_i\)</span> 是超平面或半空间。</p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<h3 id="norm-ball-and-norm-cone">范数球与范数锥 (Norm Ball and Norm Cone)<a class="headerlink" href="#norm-ball-and-norm-cone" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>范数球 (Norm Ball)</strong>  </p>
+<ul>
+<li>以点 <span class="arithmatex">\(x_c\)</span> 为中心，半径为 <span class="arithmatex">\(r\)</span> 的范数球定义为：</li>
+</ul>
+<div class="arithmatex">\[
+B(x_c, r) = \{x \mid \|x - x_c\| \leq r\}
+\]</div>
+<ul>
+<li>常见的范数球包括：<ul>
+<li><span class="arithmatex">\(l_1\)</span>-球：<span class="arithmatex">\(\{x \mid \|x - x_c\|_1 \leq r\}\)</span></li>
+<li><span class="arithmatex">\(l_\infty\)</span>-球：<span class="arithmatex">\(\{x \mid \|x - x_c\|_\infty \leq r\}\)</span></li>
+<li><span class="arithmatex">\(l_2\)</span>-球 (欧几里得球, Euclidean Ball)：<span class="arithmatex">\(\{x \mid \|x - x_c\|_2 \leq r\}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>范数锥 (Norm Cone)</strong>  </p>
+<ul>
+<li>范数锥定义为：</li>
+</ul>
+<div class="arithmatex">\[
+\{(x, t) \mid \|x\|_2 \leq t\} \subseteq \mathbb{R}^{n+1}
+\]</div>
+<ul>
+<li>欧几里得范数锥也被称为 <strong>二阶锥 (Second-order Cone)</strong> 或 <strong>冰淇淋锥 (Ice-cream Cone)</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>性质</strong>  </p>
+<ul>
+<li>范数球和范数锥都是凸集 (Convex)。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="cone-and-conic-combination">锥与锥组合 (Cone and Conic Combination)<a class="headerlink" href="#cone-and-conic-combination" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>锥的定义 (Cone)</strong>  </p>
+<ul>
+<li>如果对于集合 <span class="arithmatex">\(C\)</span> 中的任意元素 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(\theta x \in C\)</span> 且 <span class="arithmatex">\(\forall \theta \geq 0\)</span>，则集合 <span class="arithmatex">\(C\)</span> 是一个锥。</li>
+</ul>
+</li>
+<li>
+<p><strong>锥组合 (Conic Combination)</strong>  </p>
+<ul>
+<li>定义为：</li>
+</ul>
+<div class="arithmatex">\[
+x = \theta_1 x_1 + \theta_2 x_2, \quad \text{其中 } \theta_1 \geq 0, \; \theta_2 \geq 0
+\]</div>
+</li>
+<li>
+<p><strong>凸锥 (Convex Cone)</strong>  </p>
+<ul>
+<li>包含其所有点的锥组合的集合称为 <strong>凸锥</strong>。</li>
+<li>若对任意标量 <span class="arithmatex">\(\alpha, \beta \geq 0\)</span> 和任意 <span class="arithmatex">\(x, y \in C\)</span>，<span class="arithmatex">\(\alpha x + \beta y \in C\)</span>，则锥 <span class="arithmatex">\(C\)</span> 是凸锥。</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; cjs
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.top", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.instant", "navigation.instant.progress", "toc.follow", "navigation.tracking", "content.code.copy", "content.code.select", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
