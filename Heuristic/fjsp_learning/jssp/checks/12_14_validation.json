@@ -1,0 +1,139 @@
+{
+  "preview_directory": "C:\\Users\\86183\\AppData\\Local\\Temp\\jssp_notes_12_14_preview",
+  "markdown": {
+    "12_优秀解集合_Big_Valley与Path_Relinking.md": {
+      "characters": 9013,
+      "math_expressions": 102,
+      "tables": 6,
+      "local_links_checked": 6
+    },
+    "13_标准数据集与可复现实验.md": {
+      "characters": 9616,
+      "math_expressions": 35,
+      "tables": 7,
+      "local_links_checked": 6
+    },
+    "14_发展脉络回顾与FJSP扩展.md": {
+      "characters": 11270,
+      "math_expressions": 137,
+      "tables": 9,
+      "local_links_checked": 5
+    },
+    "index.md": {
+      "characters": 2664,
+      "math_expressions": 0,
+      "tables": 1,
+      "local_links_checked": 22
+    },
+    "12_sources_verified.md": {
+      "characters": 3533,
+      "math_expressions": 4,
+      "tables": 1,
+      "local_links_checked": 0
+    },
+    "14_sources_verified.md": {
+      "characters": 4875,
+      "math_expressions": 14,
+      "tables": 2,
+      "local_links_checked": 0
+    },
+    "12_14_validation.md": {
+      "characters": 1680,
+      "math_expressions": 0,
+      "tables": 0,
+      "local_links_checked": 2
+    }
+  },
+  "pr_values": [
+    12,
+    12,
+    11,
+    13,
+    11
+  ],
+  "statistics": {
+    "LS_example": {
+      "best": 11,
+      "mean": 11.8,
+      "median": 12,
+      "worst": 12,
+      "sample_std": 0.4472135954999579,
+      "mean_rpd_bks": 7.272727272727273,
+      "mean_improvement": 21.333333333333332,
+      "optimal_hits": 1,
+      "runs": 5
+    },
+    "SA_example": {
+      "best": 11,
+      "mean": 11.2,
+      "median": 11,
+      "worst": 12,
+      "sample_std": 0.4472135954999579,
+      "mean_rpd_bks": 1.8181818181818183,
+      "mean_improvement": 25.333333333333336,
+      "optimal_hits": 4,
+      "runs": 5
+    }
+  },
+  "fjsp_enumeration": {
+    "A": {
+      "value": 8,
+      "schedule": {
+        "(1, 1)": [
+          1,
+          0,
+          3
+        ],
+        "(2, 1)": [
+          1,
+          3,
+          5
+        ],
+        "(1, 2)": [
+          2,
+          3,
+          5
+        ],
+        "(2, 2)": [
+          2,
+          5,
+          8
+        ]
+      }
+    },
+    "B": {
+      "value": 7,
+      "schedule": {
+        "(2, 1)": [
+          1,
+          0,
+          2
+        ],
+        "(1, 1)": [
+          1,
+          2,
+          5
+        ],
+        "(2, 2)": [
+          2,
+          2,
+          5
+        ],
+        "(1, 2)": [
+          2,
+          5,
+          7
+        ]
+      }
+    },
+    "assignments": 8,
+    "queue_combinations": 60,
+    "feasible_queues": 26,
+    "optimum": 7,
+    "job_bound": 5,
+    "workload_bound": 5,
+    "fastest_machine_value": 6,
+    "split_machine_value": 4
+  },
+  "browser_visual_qa": "See 12_14_validation.md for actual coverage"
+}

@@ -1,13 +1,6 @@
----
-tags:
-  - JSP
-  - 精确算法
-  - CP-SAT
----
-
 # 第 11 节：下界与精确求解——B&B、MILP 与 CP/CP-SAT
 
-状态：第一版，待 review。<br>
+状态：本轮审校完成，待用户 review。<br>
 本节目标：读懂下界与可行上界怎样夹住最优值；用部分析取图的最长路给分支定界剪枝；并能区分 MILP 与 CP/CP-SAT 的模型结构、求解状态和最优性证明。
 
 本节延续 3×3 固定机器 JSSP。机器与加工时间沿用前文：
@@ -18,7 +11,7 @@ tags:
 | $J_2$ | $O_{2,1}$：$(M_2,2)$ | $O_{2,2}$：$(M_3,1)$ | $O_{2,3}$：$(M_1,4)$ |
 | $J_3$ | $O_{3,1}$：$(M_3,4)$ | $O_{3,2}$：$(M_1,3)$ | $O_{3,3}$：$(M_2,1)$ |
 
-前置：[第 10 节：Shifting Bottleneck 与单机子问题](./10_Shifting_Bottleneck与单机子问题.md)。基础假设与前文一致：所有 job 从时间 0 可用，后续工序等待其工艺前序；工序不可抢占，使用固定机器，同机不能重叠；本节进一步采用正整数加工时间，目标是最小化最大完工时间 $C_{\max}$。放松其他机器的冲突可得到单机下界；已有部分机器顺序时，下界只约束这些顺序的完整扩展，不能当作原始问题的无条件全局下界。
+前置：[第 10 节：Shifting Bottleneck 与单机子问题](10_Shifting_Bottleneck与单机子问题.md)。基础假设与前文一致：所有 job 从时间 0 可用，后续工序等待其工艺前序；工序不可抢占，使用固定机器，同机不能重叠；本节进一步采用正整数加工时间，目标是最小化最大完工时间 $C_{\max}$。放松其他机器的冲突可得到单机下界；已有部分机器顺序时，下界只约束这些顺序的完整扩展，不能当作原始问题的无条件全局下界。
 
 ## 11.1 最优值被什么夹住？
 
@@ -221,7 +214,7 @@ CP-SAT 的时间变量是整数。此例的加工时间都是整数，固定任�
 
 | 状态 | 可以得出的结论 |
 |---|---|
-| `OPTIMAL` | 在所用模型和停止准则下，求解器报告达到最优（或已达到配置的 gap 停止条件；应一并检查 gap 参数与 bound）。 |
+| `OPTIMAL` | 求解器报告最优或达到设定的 gap 容差；精确最优性还需核对实际 gap 与 bound。 |
 | `FEASIBLE` | 找到可行解，但 **状态本身不表示已经证明最优**；看 incumbent、`best_objective_bound` 与剩余 gap。 |
 | `INFEASIBLE` | 求解器证明模型无可行解。对本例已知可行，若出现此状态，应检查模型编码或数据。 |
 | `UNKNOWN` | 在限时、限内存或其他停止条件下，既没有找到可行解，也没有证明不可行；不能解释成无解。 |
@@ -251,8 +244,7 @@ $$
 - 把 Job 长度或最大机器负载当成一定紧的下界。本例机器负载给 10，但最优值是 11。
 - 把某个 B&B 节点的 $\mathrm{LB}(N)$ 当成全局下界。其他待处理分支仍可能含有更好的解。
 - 看到部分图有环还继续解码。正加工时间下，这个节点已不可行。
-- 只因 `FEASIBLE` 有目标值就写“最优”。该状态不提供最优性证明。
-- 把 `UNKNOWN` 说成“模型无解”。它表示当前停止时既没有可行解，也没有不可行证明。
+- 求解状态的准确含义见上表：`FEASIBLE` 不证明最优，`UNKNOWN` 也不证明无解。
 - 在 Big-M 模型中随便取一个小 $M$。过小会错误删掉合法次序；要先证明安全上界。
 - 把浮点时间直接交给 CP-SAT。需说明整数化的时间单位和精度。
 - 只报告一个 gap 数字却不定义公式、最小化/最大化方向、incumbent 和 bound。
@@ -289,14 +281,10 @@ $$
 | 本例怎样证明 11？ | $M_1$ 单机 release/tail 松弛给下界 11；可行排程给上界 11 |
 | Big-M 怎样检查？ | 先给可行 horizon，再证明放松一侧的 $M$ 足够大；本例安全 $H=\sum p=22$ |
 | CP/CP-SAT 核心调度约束？ | job precedence + machine NoOverlap + makespan 目标 |
-| 求解状态怎样说？ | `FEASIBLE` 有解未证最优；`UNKNOWN` 未找到解且未证无解 |
+| 求解状态怎样说？ | 按 11.8 区分有解、已证最优与未知；同时报告 bound 和停止参数 |
 | gap 报告什么？ | incumbent、bound、公式、停止参数与求解状态 |
 
-下一节暂拟主题：优秀解集合、Big Valley、Path Relinking 与 Hybrid。章节进度与后续安排见 [专题目录](./index.md)；第 12 节尚未编写。
-
-参考核验：2026-10-11。JSSP 离散线性规划背景核对 Manne 原论文页；B&B 与单机问题的历史表述核对 Carlier、Pinson 原论文页；区间、precedence、NoOverlap、makespan、求解状态与 gap 对照 OR-Tools 官方文档。
-
-提交前检查：3×3 负载、释放时刻、尾长、六种单机顺序、可行上界与 $H=22$ 由 [第 7–11 节检查脚本](https://github.com/fengmaker/my-website/blob/main/Heuristic/fjsp_learning/jssp/scripts/07_11_check_notes.py) 独立重算；检查符号、公式与链接。没有安装或运行 OR-Tools，本节给出模型与伪代码，不附实际求解器运行结果。最终格式检查范围见 [验收记录](./验收记录.md)。
+下一节：[优秀解集合、Big Valley、Path Relinking 与混合搜索](12_优秀解集合_Big_Valley与Path_Relinking.md)。从单次搜索的 current/best 扩展到多个好解的质量、多样性与结构协作。
 
 参考资料：
 
@@ -306,3 +294,5 @@ $$
 - Google OR-Tools, [CP-SAT Solver](https://developers.google.com/optimization/cp/cp_solver)。核对 CP-SAT 状态说明。
 - Google OR-Tools, [Python API: CpSolver.best_objective_bound](https://or-tools.github.io/docs/pdoc/ortools/sat/python/cp_model.html#ortools.sat.python.cp_model.CpSolver.best_objective_bound)。核对最小化时返回当前最好下界的定义。
 - Google OR-Tools, [SatParameters API: gap limits](https://or-tools.github.io/docs/javadoc/com/google/ortools/sat/SatParameters.html)。核对绝对、相对 gap 定义及 gap 停止条件的说明。
+
+审校与核算范围见 [全套审校记录](assets/01_14_review.md)。

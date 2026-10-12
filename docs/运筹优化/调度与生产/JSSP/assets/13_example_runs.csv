@@ -1,0 +1,11 @@
+data_kind,instance,algorithm,seed,makespan,feasible,elapsed,evaluations
+illustrative,toy_3x3,LS_example,0,12,true,,
+illustrative,toy_3x3,LS_example,1,12,true,,
+illustrative,toy_3x3,LS_example,2,12,true,,
+illustrative,toy_3x3,LS_example,3,11,true,,
+illustrative,toy_3x3,LS_example,4,12,true,,
+illustrative,toy_3x3,SA_example,0,11,true,,
+illustrative,toy_3x3,SA_example,1,12,true,,
+illustrative,toy_3x3,SA_example,2,11,true,,
+illustrative,toy_3x3,SA_example,3,11,true,,
+illustrative,toy_3x3,SA_example,4,11,true,,

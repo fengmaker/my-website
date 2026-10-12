@@ -790,31 +790,31 @@
     "07_关键块邻域与N5.md": {
       "math_expressions": 118,
       "tables": 7,
-      "characters": 8446,
+      "characters": 8169,
       "preview": "07.html"
     },
     "08_模拟退火_SA.md": {
       "math_expressions": 90,
       "tables": 5,
-      "characters": 9237,
+      "characters": 8946,
       "preview": "08.html"
     },
     "09_禁忌搜索_TS.md": {
       "math_expressions": 78,
       "tables": 7,
-      "characters": 9905,
+      "characters": 9683,
       "preview": "09.html"
     },
     "10_Shifting_Bottleneck与单机子问题.md": {
-      "math_expressions": 271,
+      "math_expressions": 272,
       "tables": 9,
-      "characters": 14350,
+      "characters": 13296,
       "preview": "10.html"
     },
     "11_下界与精确求解_BB_MILP_CP.md": {
-      "math_expressions": 189,
+      "math_expressions": 188,
       "tables": 7,
-      "characters": 12959,
+      "characters": 12547,
       "preview": "11.html"
     }
   }

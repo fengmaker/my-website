@@ -217,8 +217,15 @@ nav:
                   - 09 · 禁忌搜索（TS）: 运筹优化/调度与生产/JSSP/09_禁忌搜索_TS.md
                   - 10 · Shifting Bottleneck 与单机子问题: 运筹优化/调度与生产/JSSP/10_Shifting_Bottleneck与单机子问题.md
                   - 11 · 下界与精确求解：B&B、MILP、CP: 运筹优化/调度与生产/JSSP/11_下界与精确求解_BB_MILP_CP.md
+                  - 12 · 优秀解集合、Big Valley 与 Path Relinking: 运筹优化/调度与生产/JSSP/12_优秀解集合_Big_Valley与Path_Relinking.md
+                  - 13 · 标准数据集与可复现实验: 运筹优化/调度与生产/JSSP/13_标准数据集与可复现实验.md
+                  - 14 · 发展脉络回顾与 FJSP 扩展: 运筹优化/调度与生产/JSSP/14_发展脉络回顾与FJSP扩展.md
                   - 写作准则: 运筹优化/调度与生产/JSSP/笔记写作准则.md
                   - 第 7–11 节验收记录: 运筹优化/调度与生产/JSSP/验收记录.md
+                  - 全套审校记录: 运筹优化/调度与生产/JSSP/assets/01_14_review.md
+                  - 第 12–14 节验收记录: 运筹优化/调度与生产/JSSP/assets/12_14_validation.md
+                  - 第 12 节来源核验: 运筹优化/调度与生产/JSSP/assets/12_sources_verified.md
+                  - 第 14 节来源核验: 运筹优化/调度与生产/JSSP/assets/14_sources_verified.md
               - 批量生产（LSP）: 运筹优化/调度与生产/LotSizingProblem.md
           - 航空分配与排班:
               - 航班分配（FAP）: 运筹优化/应用建模/FAP.md
